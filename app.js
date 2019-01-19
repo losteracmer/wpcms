@@ -14,12 +14,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(require('./routes/validation'));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('./routes/validation'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login',require('./routes/login'));
@@ -42,4 +42,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(3000,function(error){
+  if(error){
+    console.log('监听错误')
+
+  }else {
+    console.log("正在监听3000");
+    
+  }
+})
 module.exports = app;

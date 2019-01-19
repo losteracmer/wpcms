@@ -17,8 +17,10 @@ function creat(account){
 function check(account ,code,cb){
     let sql = `SELECT * FROM admins WHERE account = '${account}' AND temporarycode = '${code}'`
     mysql.query(sql).then(resset=>{
-        if(resset.length > 0) cb(true);
-        cb(false);
+        if(resset.length > 0) 
+            cb(true);
+        else
+            cb(false);
     })
 }
 

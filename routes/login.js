@@ -26,8 +26,8 @@ router.use("/", (Request, Response) => {
             if (resset[0].password === lastPassword) {
                 let key = temporarycode.creat(account);
                 //登录成功后，生成key返回给前台，并且每次都以key和account作为凭证进行操作
-                Response.cookie('login_status',key,{ expires: new Date(Date.now() + 100000)});
-                Response.cookie('admin',account,{ expires: new Date(Date.now() + 100000)});
+                Response.cookie('login_status',key,{ expires: new Date(Date.now() + 100000000)});
+                Response.cookie('admin',account,{ expires: new Date(Date.now() + 100000000)});
                 Response.send({
                     code: 200,
                     msg: "登录成功",
