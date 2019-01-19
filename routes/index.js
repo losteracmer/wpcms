@@ -1,8 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const mysql = require('../common/mysql');
 
-const conn = require('../common/mysql');
+router.use('/getlist',(Request,Response)=>{
+  
+})
 
-let sql = 'select * from customer';
 
 
+module.exports =routerl;
