@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const temporarycode = require('../utils/temporarycode');
 router.use((Request,Response,Next)=>{
-    console.log("cookies",Request.cookies);
+    console.log("url:",Request.url," cookies",Request.cookies);
     var url = Request.url;
     if(url.startsWith("/assets")||url.startsWith("/dist")||url.startsWith("/img")||url.startsWith("/src")||url == '/admin_login.html'||url=='/login'){
         Next();

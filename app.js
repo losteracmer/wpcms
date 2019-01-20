@@ -24,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login',require('./routes/login'));
 
+app.use('/index',require('./routes/index'));
+
+app.use('/labour',require('./routes/labour'));
+
+app.use('/customer',require('./routes/customer'));
+
 
 // 未发现路由
 app.use(function(req, res, next) {
