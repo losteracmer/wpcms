@@ -7,6 +7,12 @@ const mysql = require('../common/mysql');
 
 router.use("/getdetail",(Request,Response)=>{
     let customer_id = Request.query.customer_id;
+    if(!customer_id){
+        Response.send({
+            code:302,
+            href:'/customer_list.html'
+        })
+    }
     let sql = `select * from customer where customer_id = ${customer_id}`;
 
     mysql.query(sql).then(resset=>{
@@ -45,9 +51,9 @@ router.use("/change",(Request,Response)=>{
     let customer_from = queryObj.customer_from;
     let customer_star = queryObj.customer_star;
     let customer_id = queryObj.customer_id;
-
-    let sql = `update customer set real_name =?, mobile_1 = ?,mobile_2 =?,address = ?,customer_from =?,customer_star=? where customer_id=? `;
-    let par = [real_name,mobile_1,mobile_2,address,customer_from,customer_star,customer_id];
+    let remark = queryObj.remark;
+    let sql = `update customer set real_name =?, mobile_1 = ?,mobile_2 =?,address = ?,customer_from =?,customer_star=?,remark = ? where customer_id=? `;
+    let par = [real_name,mobile_1,mobile_2,address,customer_from,customer_star,customer_id,remark];
     mysql.update(sql,par).then(result=>{
         console.log(result)
         if(result.affectedRows == 1){
@@ -79,5 +85,26 @@ router.use("/delete",(Request,Response)=>{
     
 })
 
+router.use('/maintenance',(Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+    let sql = `SELECT 
+    machine_id,DATE_FORMAT(maintain_time,'%Y-%m-%d %h:%s') AS 'maintain_time',maintain_status,labour_id,labour_name ,
+    festatus_id ,allot_status,customer_id,real_name,machine_code,maintain_record,
+    machine_model ,labour_avatarUrl,fe_model,fe_id from maintenance where customer_id = ${customer_id}`;
+
+    mysql.query(sql).then(resset=>{
+        Response.send({
+            code:200,
+            maintenance:resset
+        })
+    }).catch(error=>{
+        console.error('get maintenance error:',error);
+        
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+    })
+})
 
 module.exports=router;

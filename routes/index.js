@@ -3,11 +3,9 @@ const router = express.Router();
 const mysql = require('../common/mysql');
 
 router.use('/getlist',(Request,Response)=>{
-    let sql = `SELECT customer.customer_id ,customer.real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
+    let sql = `SELECT customer_id ,real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
     fe_periodicity - DATEDIFF(NOW(),last_time) AS "valid_time",customer_star,customer_area,address ,
-    allot_status,labour.labour_name  FROM festatus LEFT JOIN labour ON festatus.allot_status = labour.labour_id  ,
-    customer,filterelement,sales,machine WHERE festatus.fe_id = filterelement.fe_id AND festatus.sale_id = sales.sale_id AND 
-    sales.customer_id = customer.customer_id AND machine.machine_id = sales.machine_id AND (lazy_time<NOW() OR lazy_time IS NULL) 
+    allot_status,labour_name from service where (lazy_time<NOW() OR lazy_time IS NULL) 
     ORDER BY DATE_ADD(last_time,INTERVAL fe_periodicity DAY)`
 
     mysql.query(sql).then(resset =>{
@@ -22,6 +20,25 @@ router.use('/getlist',(Request,Response)=>{
         })
     })
 })
+
+router.use('/getlistajax',(Request,Response)=>{
+    let sql = `SELECT customer_id ,real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
+    fe_periodicity - DATEDIFF(NOW(),last_time) AS "valid_time",customer_star,customer_area,address ,
+    allot_status,labour_name from service where (lazy_time<NOW() OR lazy_time IS NULL) 
+    ORDER BY DATE_ADD(last_time,INTERVAL fe_periodicity DAY)`
+
+    mysql.query(sql).then(resset =>{
+        Response.send({
+            data:resset
+        })
+    }).catch(error=>{
+        console.error("index list 错误:",error);
+        Response.send({
+            code:500
+        })
+    })
+})
+
 
 router.use('/delayremind',(Request,Response)=>{
 

@@ -20,17 +20,17 @@ $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').a
 //  Show / hide columns dynamically                 //
 //==================================================//
 
-var table = $('#show_hide_col').DataTable({
-    "scrollY": "200px",
-    "paging": false
-});
+// var table = $('#index_list_table').DataTable({
+//     "scrollY": "200px",
+//     "paging": true
+// });
 
 $('a.toggle-vis').on('click', function(e) {
     e.preventDefault();
 
     // Get the column API object
     /*var column = table.column($(this).attr('data-column'));*/
-    var column = $('#show_hide_col').dataTable().api().column($(this).attr('data-column'));
+    var column = $('#index_list_table').dataTable().api().column($(this).attr('data-column'));
     // Toggle the visibility
     column.visible(!column.visible());
 });
