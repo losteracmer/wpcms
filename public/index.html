@@ -444,26 +444,29 @@
 							<div class="card-body">
 								<div class="bt-switch card-title">
 									<label for="validshow">是否显示未过期客户: </label>
-									<input id="validshow" type="checkbox" checked data-on-color="warning" data-off-color="success" data-on-text="全部显示"
+									<input id="validshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="全部显示"
 									 data-off-text="只显示以过期">
 									<label for="allotshow">派工显示: </label>
-									<input id="allotshow" type="checkbox" checked data-on-color="warning" data-off-color="success" data-on-text="全部显示"
-									 data-off-text="只显示未派工">
+									<input id="allotshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="全部显示"
+									 data-off-text="只显示已派工">
+									 <label for="lazyshow">是否只显示推迟客户: </label>
+									 <input id="lazyshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="不显示"
+									 data-off-text="显示">
 								</div>
 								<div>
-									点击显示/隐藏列: 
-									<a href="#!" class="toggle-vis" data-column="0">星级</a> - 
-									<a href="#!" class="toggle-vis" data-column="1">区域</a> - 
-									<a href="#!" class="toggle-vis" data-column="2">机器型号</a> - 
-									<a href="#!" class="toggle-vis" data-column="3">滤芯型号</a> - 
-									<a href="#!" class="toggle-vis" data-column="4">最近更换</a> - 
-									<a href="#!" class="toggle-vis" data-column="5">有效期</a> - 
-									<a href="#!" class="toggle-vis" data-column="6">用户姓名</a> - 
-									<a href="#!" class="toggle-vis" data-column="7">联系方式</a> - 
-									<a href="#!" class="toggle-vis" data-column="8">地址</a> - 
-									<a href="#!" class="toggle-vis" data-column="9">派工</a> - 
-									<a href="#!" class="toggle-vis" data-column="10">操作</a> - 
-									
+									点击显示/隐藏列:
+									<a href="#!" class="toggle-vis" data-column="0">星级</a> -
+									<a href="#!" class="toggle-vis" data-column="1">区域</a> -
+									<a href="#!" class="toggle-vis" data-column="2">机器型号</a> -
+									<a href="#!" class="toggle-vis" data-column="3">滤芯型号</a> -
+									<a href="#!" class="toggle-vis" data-column="4">最近更换</a> -
+									<a href="#!" class="toggle-vis" data-column="5">有效期</a> -
+									<a href="#!" class="toggle-vis" data-column="6">用户姓名</a> -
+									<a href="#!" class="toggle-vis" data-column="7">联系方式</a> -
+									<a href="#!" class="toggle-vis" data-column="8">地址</a> -
+									<a href="#!" class="toggle-vis" data-column="9">派工</a> -
+									<a href="#!" class="toggle-vis" data-column="10">操作</a> -
+
 								</div>
 								<div class="table-responsive">
 									<table id="index_list_table" class="table table-striped table-bordered display table-hover">
@@ -640,7 +643,6 @@
 
 	<script src="./dist/js/template-web.js"></script>
 	<script>
-
 		// $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
 		// var radioswitch = function () {
 		// 	var bt = function () {
@@ -666,6 +668,7 @@
 	<script>
 		var Gfesid = null;
 		var Gindex_table = null;
+		var Goption = {validshow:true,allotshow:true};
 		// function customerDetail(that) {
 		// 	var fesid = $(that).parent().data('fesid');
 		// 	alert(fesid);
@@ -803,130 +806,169 @@
 					</td>`
 		};
 
-		function TableInit(option){
+		function TableInit() {
 
-			$.ajax({
-				url: "/index/getlist",
-				type: "get",
-				data:option,
-				success: function (data, textStatus) {
-					console.log(data);
 
-					Gindex_table = $("#index_list_table").DataTable({
-						dom: 'Bfrtip',
-						//columnDefs:[{"targets":[11],"visible":false}],
-						// buttons: [
-						// 	'copy', 'csv', 'excel', 'pdf', 'print'
-						// ],
-						"destroy": true,
-						buttons: [{
-							extend: 'print',
-							text:'打印',
-							exportOptions: {
-								columns: [1, 2,3,4, 5,6,7,8,9]
-								//visible:true
-								//columns:$(".odd")
-							}
-						},{
-							extend:'excel',
-							text:'导出表格'
-						} ],
-						ajax:'/index/getlistajax',
-						//data: data.list,
-						oLanguage: {
-							"sSearch": "搜索",
-							"sProcessing": "正在获取数据，请稍后...",
-							"sLengthMenu": "显示 _MENU_ 条",
-							"sZeroRecords": "没有您要搜索的内容",
-							"sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
-							"sInfoEmpty": "记录数为0",
-							"sInfoFiltered": "(全部记录数 _MAX_ 条)",
-							"sInfoPostFix": "",
-							"oPaginate": {
-								"sFirst": "第一页",
-								"sPrevious": "上一页",
-								"sNext": "下一页",
-								"sLast": "最后一页",
 
-							}
-						},
-						columns: [{
-								title: "星级",
-								data: "customer_star"
-							},
-							{
-								title: "区域",
-								data: "customer_area"
-							},
-							{
-								title: "机器型号",
-								data: "machine_model"
-							},
-							{
-								title: "滤芯型号",
-								data: "fe_model"
-							},
-							{
-								title: "最近更换",
-								data: "last_time"
-							},
-							{
-								title: "有效期",
-								data: "valid_time"
-							}, {
-								title: "用户姓名",
-								data: "real_name"
-							}, {
-								title: "联系方式",
-								data: "mobile_1"
-							}, {
-								title: "地址",
-								data: "address"
-							}, {
-								title: "派工",
-								data: "labour_name"
-							}, {
-								title: '操作',
-								data: 'festatus_id',
-								render: (data, type, full) => {
-									return createButton(data)
-								}
-							}
-						]
-					})
-					$('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass(
-						'btn btn-cyan text-white mr-1');
-					//document.getElementById("list_body").innerHTML =lists;
-					//index_list_table.rows.add(data.list);
+			Gindex_table = $("#index_list_table").DataTable({
+				dom: 'Bfrtip',
+				//columnDefs:[{"targets":[11],"visible":false}],
+				// buttons: [
+				// 	'copy', 'csv', 'excel', 'pdf', 'print'
+				// ],
+				"destroy": true,
+				buttons: [{
+					extend: 'print',
+					text: '打印',
+					exportOptions: {
+						columns: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+						//visible:true
+						//columns:$(".odd")
+					}
+				}, {
+					extend: 'excel',
+					text: '导出表格'
+				}],
+				ajax: {
+					url:`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`,
+					
 				},
-				error: function (jqxhr, textStatus) {
-					console.log("请求错误：" + jqxhr);
-				}
+				//data: data.list,
+				oLanguage: {
+					"sSearch": "搜索",
+					"sProcessing": "正在获取数据，请稍后...",
+					"sLengthMenu": "显示 _MENU_ 条",
+					"sZeroRecords": "没有您要搜索的内容",
+					"sInfo": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条",
+					"sInfoEmpty": "记录数为0",
+					"sInfoFiltered": "(全部记录数 _MAX_ 条)",
+					"sInfoPostFix": "",
+					"oPaginate": {
+						"sFirst": "第一页",
+						"sPrevious": "上一页",
+						"sNext": "下一页",
+						"sLast": "最后一页",
+
+					}
+				},
+				columns: [{
+						title: "星级",
+						data: "customer_star"
+					},
+					{
+						title: "区域",
+						data: "customer_area"
+					},
+					{
+						title: "机器型号",
+						data: "machine_model"
+					},
+					{
+						title: "滤芯型号",
+						data: "fe_model"
+					},
+					{
+						title: "最近更换",
+						data: "last_time"
+					},
+					{
+						title: "有效期",
+						data: "valid_time"
+					}, {
+						title: "用户姓名",
+						data: "real_name"
+					}, {
+						title: "联系方式",
+						data: "mobile_1"
+					}, {
+						title: "地址",
+						data: "address"
+					}, {
+						title: "派工",
+						data: "labour_name"
+					}, {
+						title: '操作',
+						data: 'festatus_id',
+						render: (data, type, full) => {
+							return createButton(data)
+						}
+					}
+				]
 			})
+			$('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass(
+				'btn btn-cyan text-white mr-1');
+			//document.getElementById("list_body").innerHTML =lists;
+			//index_list_table.rows.add(data.list);
+
+
 		}
 		$(document).ready(function () {
 
 			$("#validshow").bootstrapSwitch({
-				onSwitchChange:function(event,data){
-					console.log('switch change'+data);
-					if(data){
+				onSwitchChange: function (event, data) {
+					console.log('switch change' + data);
+					if (data) {
 						$("#validshow").removeAttr("checked");
-					}else {
-						$("#validshow").attr("checked","checked");
+						Goption.validshow = true;
+					} else {
+						$("#validshow").attr("checked", "checked");
+						Goption.validshow = false;
 					}
 					var allotshowStatus = $('#allotshow').attr('checked');
-					
-					TableInit({validshow:data,allotshow:allotshowStatus});
-					
-			}
-		})
+					//Gindex_table.ajax.data = Goption;
+					//console.log('重新加载url；'+`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`)
+					Gindex_table.ajax.url(`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`).load();
+
+
+				}
+			})
+
+			$("#allotshow").bootstrapSwitch({
+				onSwitchChange: function (event, data) {
+					console.log('switch change' + data);
+					if (data) {
+						$("#allotshow").removeAttr("checked");
+						Goption.allotshow = true;
+					} else {
+						$("#allotshow").attr("checked", "checked");
+						Goption.allotshow = false;
+					}
+					var allotshowStatus = $('#allotshow').attr('checked');
+					//Gindex_table.ajax.data = Goption;
+					//console.log('重新加载url；'+`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`)
+					Gindex_table.ajax.url(`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`).load();
+
+
+				}
+			})
+			$("#lazyshow").bootstrapSwitch({
+				onSwitchChange: function (event, data) {
+					console.log('switch change' + data);
+					if (data) {
+						$("#lazyshow").removeAttr("checked");
+						Goption.lazyshow = false;
+					} else {
+						$("#lazyshow").attr("checked", "checked");
+						Goption.lazyshow = true;
+					}
+					var lazyshowStatus = $('#lazyshow').attr('checked');
+					//Gindex_table.ajax.data = Goption;
+					//console.log('重新加载url；'+`/index/getlistajax?validshow=${Goption.validshow}&lazyshow=${Goption.allotshow}`)
+					Gindex_table.ajax.url(`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}&lazyshow=${Goption.lazyshow}`).load();
+
+
+				}
+			})
 			var validshowStatus = $('#validshow').attr('checked');
 			console.log(validshowStatus)
 
-			TableInit({validshow:true,allotshow:true});
+			TableInit({
+				validshow: true,
+				allotshow: true
+			});
 			$("input[name='delytime']").TouchSpin();
 			var index_list_table = $("#index_list_table")
-			
+
 
 		})
 		$(document).ready(function () {

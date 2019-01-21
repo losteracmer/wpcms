@@ -22,11 +22,24 @@ router.use('/getlist',(Request,Response)=>{
 })
 
 router.use('/getlistajax',(Request,Response)=>{
+    let lazyshow = Request.query.lazyshow;
+    let validshow = Request.query.validshow;
+    let allotshow = Request.query.allotshow;
+
+    let sqlpartV = ` and valid_time<=0 `;
+    let sqlpartA = ` and allot_status is not null `;
     let sql = `SELECT customer_id ,real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
     fe_periodicity - DATEDIFF(NOW(),last_time) AS "valid_time",customer_star,customer_area,address ,
-    allot_status,labour_name from service where (lazy_time<NOW() OR lazy_time IS NULL) 
+    allot_status,labour_name from service where (lazy_time<NOW() OR lazy_time IS NULL) ${validshow=='true'?'':sqlpartV}${allotshow=='true'?'':sqlpartA}
     ORDER BY DATE_ADD(last_time,INTERVAL fe_periodicity DAY)`
 
+    if(lazyshow == 'true'){
+        sql = `SELECT customer_id ,real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
+    fe_periodicity - DATEDIFF(NOW(),last_time) AS "valid_time",customer_star,customer_area,address ,
+    allot_status,labour_name from service where lazy_time>NOW() 
+    ORDER BY DATE_ADD(last_time,INTERVAL fe_periodicity DAY)`
+    }
+    console.log(sql)
     mysql.query(sql).then(resset =>{
         Response.send({
             data:resset

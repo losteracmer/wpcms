@@ -37,7 +37,11 @@ router.use("/getdetail",(Request,Response)=>{
     })
 })
 router.use("/getlist",(Request,Response)=>{
-    
+    let sql = `select * from customer`;
+
+    mysql.query(sql).then(resset=>{
+        
+    })
 })
 
 
