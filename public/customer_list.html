@@ -413,7 +413,7 @@
 									<h4 class="card-title">全部用户</h4>
 									<div class="ml-auto">
 										<div class="btn-group">
-											<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createuser">
+											<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createCustomerModal">
 												添加用户
 											</button>
 										</div>
@@ -443,58 +443,12 @@
 				<!-- End Right sidebar -->
 				<!-- ============================================================== -->
 			</div>
-			<!-- Share Modal -->
-			<div class="modal fade" id="Sharemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> Share With</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-									<input type="text" class="form-control" placeholder="Enter Name Here" aria-label="Username">
-								</div>
-								<div class="row">
-									<div class="col-3 text-center">
-										<a href="#Whatsapp" class="text-success">
-											<i class="display-6 mdi mdi-whatsapp"></i><br><span class="text-muted">Whatsapp</span>
-										</a>
-									</div>
-									<div class="col-3 text-center">
-										<a href="#Facebook" class="text-info">
-											<i class="display-6 mdi mdi-facebook"></i><br><span class="text-muted">Facebook</span>
-										</a>
-									</div>
-									<div class="col-3 text-center">
-										<a href="#Instagram" class="text-danger">
-											<i class="display-6 mdi mdi-instagram"></i><br><span class="text-muted">Instagram</span>
-										</a>
-									</div>
-									<div class="col-3 text-center">
-										<a href="#Skype" class="text-cyan">
-											<i class="display-6 mdi mdi-skype"></i><br><span class="text-muted">Skype</span>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Send</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+
 			<!-- Create Modal -->
-			<div class="modal fade" id="createuser" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+			<div class="modal fade" id="createCustomerModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-						<form>
+						<form id="addCustomerForm">
 							<div class="modal-header">
 								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> 添加新客户</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -504,30 +458,30 @@
 							<div class="modal-body">
 								<div class="input-group mb-3">
 									<button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-									<input type="text" class="form-control" placeholder="姓名" aria-label="name">
+									<input type="text" class="form-control" placeholder="姓名" aria-label="name" name="real_name">
 								</div>
 								<div class="input-group mb-3">
 									<button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-									<input type="text" class="form-control" placeholder="电话1" aria-label="no">
+									<input type="text" class="form-control" placeholder="电话1" aria-label="no" name="mobile_1">
 								</div>
 								<div class="input-group mb-3">
 									<button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-									<input type="text" class="form-control" placeholder="电话2" aria-label="no">
+									<input type="text" class="form-control" placeholder="电话2" aria-label="no" name="mobile_2">
 								</div>
 								<div class="input-group mb-3">
 									<button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-									<input type="text" class="form-control" placeholder="区域" aria-label="no">
+									<input type="text" class="form-control" placeholder="区域" aria-label="no" name="customer_area">
 								</div>
 								<div class="input-group mb-3">
 									<button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-									<input type="text" class="form-control" placeholder="详细地址" aria-label="no">
+									<input type="text" class="form-control" placeholder="详细地址" aria-label="no" name="address">
 								</div>
 								<div class="input-group mb-3">
-									<select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+									<select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="customer_from">
 										<optgroup label="用户来源">
-											<option value="dianmian">店面</option>
-											<option value="wanggou">网购</option>
-											<option value="fuwu">服务</option>
+											<option value="店面">店面</option>
+											<option value="网购">网购</option>
+											<option value="服务">服务</option>
 										</optgroup>
 									</select>
 								</div>
@@ -536,28 +490,28 @@
 									<h4 class="btn-block">选择用户星级</h4>
 									<div class="form-check form-check-inline">
 										<div class="custom-control custom-radio">
-											<input type="radio" class="custom-control-input" id="star-1" name="radio-stacked">
+											<input type="radio" class="custom-control-input" id="star-1" name="customer_star" value="1">
 											<label class="custom-control-label" for="star-1">1</label>
 										</div>
 									</div>
 									<div class="form-check form-check-inline">
 										<div class="custom-control custom-radio">
-											<input type="radio" class="custom-control-input" id="star-2" name="radio-stacked">
+											<input type="radio" class="custom-control-input" id="star-2" name="customer_star" value="2">
 											<label class="custom-control-label" for="star-2">2</label>
 										</div>
 									</div>
 									<div class="form-check form-check-inline">
 										<div class="custom-control custom-radio">
-											<input type="radio" class="custom-control-input" id="star-3" name="radio-stacked">
+											<input type="radio" class="custom-control-input" id="star-3" name="customer_star" value="3">
 											<label class="custom-control-label" for="star-3">3</label>
 										</div>
 									</div>
 								</div>
-								<textarea class="form-control" rows="3" placeholder="输入备注信息"></textarea>
+								<textarea class="form-control" rows="3" placeholder="输入备注信息" name="remark"></textarea>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-success"><i class="ti-save"></i> Save</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-success" id="addCustomerBtn"><i class="ti-save"></i> 保存</button>
 							</div>
 						</form>
 					</div>
@@ -685,7 +639,7 @@
 			
 
 			Gcustomer_list = $("#customer_list").DataTable({
-				dom: 'B',
+				dom: 'Bfrtip',
 				buttons: [{
 					extend: 'print',
 					text: '打印',
@@ -754,6 +708,28 @@
 			})
 			$('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass(
 				'btn btn-cyan text-white mr-1');
+		})
+		$(document).ready(function(){
+			$("#addCustomerBtn").on('click',function(){
+				var customerObj = $("#addCustomerForm").serialize();
+				$.ajax({
+					url:'/customer/add',
+					data:customerObj,
+					type:'POST',
+					success:function(data){
+						if(data.code == 200){
+							toastr.success(data.msg)
+							$("#createCustomerModal").modal('hide');
+							Gcustomer_list.ajax.reload();
+						}else{
+							toastr.error(data.code,data.msg);
+						}
+					},
+					error:function(error){
+						toastr.error('网络异常!');
+					}
+				})
+			})
 		})
 	</script>
 

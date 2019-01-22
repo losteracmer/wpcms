@@ -45,6 +45,22 @@ router.use("/getlistajax",(Request,Response)=>{
             data:resset
         })
     }).catch(error=>{
+        console.error('get customer list ajax error:',error);
+        Response.send({
+            code:500,
+            msg:'服务错误'
+        })
+    })
+})
+router.use("/getlist",(Request,Response)=>{
+    let sql = `select * from customer`;
+
+    mysql.query(sql).then(resset=>{
+        Response.send({
+            code:200,
+            customerlist:resset
+        })
+    }).catch(error=>{
         console.error('get customer list error:',error);
         Response.send({
             code:500,
@@ -52,7 +68,6 @@ router.use("/getlistajax",(Request,Response)=>{
         })
     })
 })
-
 
 router.use("/change",(Request,Response)=>{
     let queryObj = Request.body;
@@ -90,11 +105,42 @@ router.use("/change",(Request,Response)=>{
 
 })
 
-
-
 router.use("/add",(Request,Response)=>{
-    
+    let queryObj = Request.body;
+    console.log('add customer: ',queryObj);
+    let real_name = queryObj.real_name;
+    let mobile_1 = queryObj.mobile_1;
+    let mobile_2 = queryObj.mobile_2;
+    let address = queryObj.address;
+    let customer_area = queryObj.customer_area;
+    let customer_from = queryObj.customer_from;
+    let customer_star = queryObj.customer_star;
+    let remark = queryObj.remark;
+    let sql = `insert into customer(real_name , mobile_1 ,mobile_2 ,customer_area,address ,customer_from ,customer_star,remark,create_time)  values(?,?,?,?,?,?,?,?,?) `;
+    let par = [real_name,mobile_1,mobile_2,customer_area,address,customer_from,customer_star,remark,new Date()];
+    mysql.update(sql,par).then(result=>{
+        console.log(result)
+        if(result.affectedRows == 1){
+            Response.send({
+                code:200,
+                msg:'添加客户资料成功'
+            })
+        }else {
+            Response.send({
+                code:403,
+                msg:'添加失败'
+            })
+        }
+    }).catch(error=>{
+        console.log('change customer error:',error)
+        Response.send({
+            code:500,
+            msg:'添加失败,服务器错误'
+        })
+    })
+
 })
+
 
 router.use("/delete",(Request,Response)=>{
     
