@@ -30,10 +30,10 @@ app.use('/labour',require('./routes/labour'));
 
 app.use('/customer',require('./routes/customer'));
 
-
+app.use('/machine',require('./routes/machine'));
 // 未发现路由
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.redirect("/error-404.html");
 });
 
 

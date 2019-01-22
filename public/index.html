@@ -360,7 +360,7 @@
 									<a href="index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 更换周期 </span></a>
 								</li>
 								<li class="sidebar-item">
-									<a href="pro_index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 销售分析
+									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 销售分析
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -393,7 +393,7 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 净水机
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -642,45 +642,11 @@
 
 
 	<script src="./dist/js/template-web.js"></script>
-	<script>
-		// $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
-		// var radioswitch = function () {
-		// 	var bt = function () {
-		// 		$(".bt-switch input[type='checkbox']").on("switch-change", function () {
-		// 			console.log('点击')
-		// 			$(".radio-switch").bootstrapSwitch("toggleRadioState")
-		// 		}), $(".radio-switch").on("switch-change", function () {
-		// 			$(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck")
-		// 		}), $(".radio-switch").on("switch-change", function () {
-		// 			$(".radio-switch").bootstrapSwitch("toggleRadioStateAllowUncheck", !1)
-		// 		})
-		// 	};
-		// 	return {
-		// 		init: function () {
-		// 			bt()
-		// 		}
-		// 	}
-		// }();
-		// $(document).ready(function () {
-		// 	radioswitch.init()
-		// });
-	</script>
+
 	<script>
 		var Gfesid = null;
 		var Gindex_table = null;
 		var Goption = {validshow:true,allotshow:true};
-		// function customerDetail(that) {
-		// 	var fesid = $(that).parent().data('fesid');
-		// 	alert(fesid);
-		// }
-
-		// function distribution(that) {
-		// 	var fesid = $(that).parent().data('fesid');
-		// }
-
-		// function delayremind(that) {
-
-		// }
 
 		function setDelayTime() {
 
@@ -737,6 +703,7 @@
 		function setEvent() {
 			//console.log('设置事件');
 			//console.log($(".dropdown-item"))
+			$("a.event").off();  //清空所有事件...
 			$("a[data-event='delay']").bind('click', function () {
 
 				var fesid = $(this).parent().data('fesid');

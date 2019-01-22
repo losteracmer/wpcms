@@ -1,602 +1,659 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- Tell the browser to be responsive to screen width -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<!-- Favicon icon -->
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-		<title>沁园净水机客户管理系统</title>
-		<!-- This page CSS -->
-		<link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-		<!-- Custom CSS -->
-		<link href="dist/css/style.min.css" rel="stylesheet">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- Favicon icon -->
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+	<title>沁园净水机客户管理系统</title>
+	<!-- This page CSS -->
+	<link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="dist/css/style.min.css" rel="stylesheet">
+	<style>
+		.card-active{
+			transform: translateY(-4px) scale(1.01);
+			box-shadow: 0 14px 24px rgba(62,57,107,.8);
+		}
+	</style>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-	</head>
+</head>
 
-	<body>
-		<!-- ============================================================== -->
-		<!-- Preloader - style you can find in spinners.css -->
-		<!-- ============================================================== -->
-		<div class="preloader">
-			<div class="lds-ripple">
-				<div class="lds-pos"></div>
-				<div class="lds-pos"></div>
-			</div>
+<body>
+	<!-- ============================================================== -->
+	<!-- Preloader - style you can find in spinners.css -->
+	<!-- ============================================================== -->
+	<div class="preloader">
+		<div class="lds-ripple">
+			<div class="lds-pos"></div>
+			<div class="lds-pos"></div>
 		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<div id="main-wrapper">
 		<!-- ============================================================== -->
-		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- Topbar header - style you can find in pages.scss -->
 		<!-- ============================================================== -->
-		<div id="main-wrapper">
-			<!-- ============================================================== -->
-			<!-- Topbar header - style you can find in pages.scss -->
-			<!-- ============================================================== -->
-			<header class="topbar">
-				<nav class="navbar top-navbar navbar-expand-md navbar-dark">
-					<div class="navbar-header">
-						<!-- This is for the sidebar toggle which is visible on mobile only -->
-						<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-							<i class="ti-menu ti-close"></i>
-						</a>
-						<!-- ============================================================== -->
-						<!-- Logo -->
-						<!-- ============================================================== -->
-						<div class="navbar-brand">
-							<a href="index.html" class="logo">
-								<!-- Logo icon -->
-								<b class="logo-icon">
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                            </b>
-								<!--End Logo icon -->
-								<!-- Logo text -->
-								<span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
-							</a>
-						</div>
-						<!-- ============================================================== -->
-						<!-- End Logo -->
-						<!-- ============================================================== -->
-						<!-- ============================================================== -->
-						<!-- Toggle which is visible on mobile only -->
-						<!-- ============================================================== -->
-						<a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<i class="ti-more"></i>
+		<header class="topbar">
+			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
+				<div class="navbar-header">
+					<!-- This is for the sidebar toggle which is visible on mobile only -->
+					<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+						<i class="ti-menu ti-close"></i>
+					</a>
+					<!-- ============================================================== -->
+					<!-- Logo -->
+					<!-- ============================================================== -->
+					<div class="navbar-brand">
+						<a href="index.html" class="logo">
+							<!-- Logo icon -->
+							<b class="logo-icon">
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+								<img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+								<!-- Light Logo icon -->
+								<img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+							</b>
+							<!--End Logo icon -->
+							<!-- Logo text -->
+							<span class="logo-text">
+								<!-- dark Logo text -->
+								<img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+								<!-- Light Logo text -->
+								<img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+							</span>
 						</a>
 					</div>
 					<!-- ============================================================== -->
 					<!-- End Logo -->
 					<!-- ============================================================== -->
-					<div class="navbar-collapse collapse" id="navbarSupportedContent">
-						<!-- ============================================================== -->
-						<!-- toggle and nav items -->
-						<!-- ============================================================== -->
-						<ul class="navbar-nav float-left mr-auto">
-							<!-- <li class="nav-item d-none d-md-block">
+					<!-- ============================================================== -->
+					<!-- Toggle which is visible on mobile only -->
+					<!-- ============================================================== -->
+					<a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse"
+					 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="ti-more"></i>
+					</a>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-collapse collapse" id="navbarSupportedContent">
+					<!-- ============================================================== -->
+					<!-- toggle and nav items -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav float-left mr-auto">
+						<!-- <li class="nav-item d-none d-md-block">
                             <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
                                 <i class="mdi mdi-menu font-24"></i>
                             </a>
                         </li> -->
-							<!-- ============================================================== -->
-							<!-- Search -->
-							<!-- ============================================================== -->
-							<li class="nav-item search-box">
-								<a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-									<div class="d-flex align-items-center">
-										<i class="mdi mdi-magnify font-20 mr-1"></i>
-										<div class="ml-1 d-none d-sm-block">
-											<span>Search</span>
-										</div>
+						<!-- ============================================================== -->
+						<!-- Search -->
+						<!-- ============================================================== -->
+						<li class="nav-item search-box">
+							<a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+								<div class="d-flex align-items-center">
+									<i class="mdi mdi-magnify font-20 mr-1"></i>
+									<div class="ml-1 d-none d-sm-block">
+										<span>Search</span>
 									</div>
+								</div>
+							</a>
+							<form class="app-search position-absolute">
+								<input type="text" class="form-control" placeholder="Search &amp; enter">
+								<a class="srh-btn">
+									<i class="ti-close"></i>
 								</a>
-								<form class="app-search position-absolute">
-									<input type="text" class="form-control" placeholder="Search &amp; enter">
-									<a class="srh-btn">
-										<i class="ti-close"></i>
-									</a>
-								</form>
-							</li>
-						</ul>
+							</form>
+						</li>
+					</ul>
+					<!-- ============================================================== -->
+					<!-- Right side toggle and nav items -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav float-right">
 						<!-- ============================================================== -->
-						<!-- Right side toggle and nav items -->
+						<!-- Messages -->
 						<!-- ============================================================== -->
-						<ul class="navbar-nav float-right">
-							<!-- ============================================================== -->
-							<!-- Messages -->
-							<!-- ============================================================== -->
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="font-22 mdi mdi-email-outline"></i>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true"
+							 aria-expanded="false">
+								<i class="font-22 mdi mdi-email-outline"></i>
 
-								</a>
-								<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
-									<span class="with-arrow">
-                                    <span class="bg-danger"></span>
-									</span>
-									<ul class="list-style-none">
-										<li>
-											<div class="drop-title text-white bg-danger">
-												<h4 class="m-b-0 m-t-5">5 New</h4>
-												<span class="font-light">Messages</span>
-											</div>
-										</li>
-										<li>
-											<div class="message-center message-body">
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="user-img">
-                                                    <img src="assets/images/users/1.jpg" alt="user" class="rounded-circle">
-                                                    <span class="profile-status online pull-right"></span>
-													</span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Pavan kumar</h5>
-														<span class="mail-desc">Just see the my admin!</span>
-														<span class="time">9:30 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="user-img">
-                                                    <img src="assets/images/users/2.jpg" alt="user" class="rounded-circle">
-                                                    <span class="profile-status busy pull-right"></span>
-													</span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Sonu Nigam</h5>
-														<span class="mail-desc">I've sung a song! See you at</span>
-														<span class="time">9:10 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="user-img">
-                                                    <img src="assets/images/users/3.jpg" alt="user" class="rounded-circle">
-                                                    <span class="profile-status away pull-right"></span>
-													</span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Arijit Sinh</h5>
-														<span class="mail-desc">I am a singer!</span>
-														<span class="time">9:08 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="user-img">
-                                                    <img src="assets/images/users/4.jpg" alt="user" class="rounded-circle">
-                                                    <span class="profile-status offline pull-right"></span>
-													</span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Pavan kumar</h5>
-														<span class="mail-desc">Just see the my admin!</span>
-														<span class="time">9:02 AM</span>
-													</div>
-												</a>
-											</div>
-										</li>
-										<li>
-											<a class="nav-link text-center link text-dark" href="javascript:void(0);">
-												<b>See all e-Mails</b>
-												<i class="fa fa-angle-right"></i>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<!-- ============================================================== -->
-							<!-- End Messages -->
-							<!-- ============================================================== -->
-							<!-- ============================================================== -->
-							<!-- Comment -->
-							<!-- ============================================================== -->
-							<li class="nav-item dropdown border-right">
-								<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="mdi mdi-bell-outline font-22"></i>
-									<span class="badge badge-pill badge-info noti">3</span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
-									<span class="with-arrow">
-                                    <span class="bg-primary"></span>
-									</span>
-									<ul class="list-style-none">
-										<li>
-											<div class="drop-title bg-primary text-white">
-												<h4 class="m-b-0 m-t-5">4 New</h4>
-												<span class="font-light">Notifications</span>
-											</div>
-										</li>
-										<li>
-											<div class="message-center notifications">
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="btn btn-danger btn-circle">
-                                                    <i class="fa fa-link"></i>
-                                                </span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Luanch Admin</h5>
-														<span class="mail-desc">Just see the my new admin!</span>
-														<span class="time">9:30 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="btn btn-success btn-circle">
-                                                    <i class="ti-calendar"></i>
-                                                </span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Event today</h5>
-														<span class="mail-desc">Just a reminder that you have event</span>
-														<span class="time">9:10 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="btn btn-info btn-circle">
-                                                    <i class="ti-settings"></i>
-                                                </span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Settings</h5>
-														<span class="mail-desc">You can customize this template as you want</span>
-														<span class="time">9:08 AM</span>
-													</div>
-												</a>
-												<!-- Message -->
-												<a href="javascript:void(0)" class="message-item">
-													<span class="btn btn-primary btn-circle">
-                                                    <i class="ti-user"></i>
-                                                </span>
-													<div class="mail-contnet">
-														<h5 class="message-title">Pavan kumar</h5>
-														<span class="mail-desc">Just see the my admin!</span>
-														<span class="time">9:02 AM</span>
-													</div>
-												</a>
-											</div>
-										</li>
-										<li>
-											<a class="nav-link text-center m-b-5 text-dark" href="javascript:void(0);">
-												<strong>Check all notifications</strong>
-												<i class="fa fa-angle-right"></i>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
-							<!-- ============================================================== -->
-							<!-- End Comment -->
-							<!-- ============================================================== -->
-							<!-- ============================================================== -->
-							<!-- User profile and search -->
-							<!-- ============================================================== -->
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="40">
-									<span class="m-l-5 font-medium d-none d-sm-inline-block">Jonathan Doe <i class="mdi mdi-chevron-down"></i></span>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-									<span class="with-arrow">
-                                    <span class="bg-primary"></span>
-									</span>
-									<div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-										<div class="">
-											<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="60">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
+								<span class="with-arrow">
+									<span class="bg-danger"></span>
+								</span>
+								<ul class="list-style-none">
+									<li>
+										<div class="drop-title text-white bg-danger">
+											<h4 class="m-b-0 m-t-5">5 New</h4>
+											<span class="font-light">Messages</span>
 										</div>
-										<div class="m-l-10">
-											<h4 class="m-b-0">Jonathan Doe</h4>
-											<p class=" m-b-0">jon@gmail.com</p>
+									</li>
+									<li>
+										<div class="message-center message-body">
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="user-img">
+													<img src="assets/images/users/1.jpg" alt="user" class="rounded-circle">
+													<span class="profile-status online pull-right"></span>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Pavan kumar</h5>
+													<span class="mail-desc">Just see the my admin!</span>
+													<span class="time">9:30 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="user-img">
+													<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle">
+													<span class="profile-status busy pull-right"></span>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Sonu Nigam</h5>
+													<span class="mail-desc">I've sung a song! See you at</span>
+													<span class="time">9:10 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="user-img">
+													<img src="assets/images/users/3.jpg" alt="user" class="rounded-circle">
+													<span class="profile-status away pull-right"></span>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Arijit Sinh</h5>
+													<span class="mail-desc">I am a singer!</span>
+													<span class="time">9:08 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="user-img">
+													<img src="assets/images/users/4.jpg" alt="user" class="rounded-circle">
+													<span class="profile-status offline pull-right"></span>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Pavan kumar</h5>
+													<span class="mail-desc">Just see the my admin!</span>
+													<span class="time">9:02 AM</span>
+												</div>
+											</a>
 										</div>
+									</li>
+									<li>
+										<a class="nav-link text-center link text-dark" href="javascript:void(0);">
+											<b>See all e-Mails</b>
+											<i class="fa fa-angle-right"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<!-- ============================================================== -->
+						<!-- End Messages -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- Comment -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown border-right">
+							<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
+							 aria-expanded="false">
+								<i class="mdi mdi-bell-outline font-22"></i>
+								<span class="badge badge-pill badge-info noti">3</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+								<span class="with-arrow">
+									<span class="bg-primary"></span>
+								</span>
+								<ul class="list-style-none">
+									<li>
+										<div class="drop-title bg-primary text-white">
+											<h4 class="m-b-0 m-t-5">4 New</h4>
+											<span class="font-light">Notifications</span>
+										</div>
+									</li>
+									<li>
+										<div class="message-center notifications">
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="btn btn-danger btn-circle">
+													<i class="fa fa-link"></i>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Luanch Admin</h5>
+													<span class="mail-desc">Just see the my new admin!</span>
+													<span class="time">9:30 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="btn btn-success btn-circle">
+													<i class="ti-calendar"></i>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Event today</h5>
+													<span class="mail-desc">Just a reminder that you have event</span>
+													<span class="time">9:10 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="btn btn-info btn-circle">
+													<i class="ti-settings"></i>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Settings</h5>
+													<span class="mail-desc">You can customize this template as you want</span>
+													<span class="time">9:08 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item">
+												<span class="btn btn-primary btn-circle">
+													<i class="ti-user"></i>
+												</span>
+												<div class="mail-contnet">
+													<h5 class="message-title">Pavan kumar</h5>
+													<span class="mail-desc">Just see the my admin!</span>
+													<span class="time">9:02 AM</span>
+												</div>
+											</a>
+										</div>
+									</li>
+									<li>
+										<a class="nav-link text-center m-b-5 text-dark" href="javascript:void(0);">
+											<strong>Check all notifications</strong>
+											<i class="fa fa-angle-right"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<!-- ============================================================== -->
+						<!-- End Comment -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true"
+							 aria-expanded="false">
+								<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="40">
+								<span class="m-l-5 font-medium d-none d-sm-inline-block">Jonathan Doe <i class="mdi mdi-chevron-down"></i></span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+								<span class="with-arrow">
+									<span class="bg-primary"></span>
+								</span>
+								<div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+									<div class="">
+										<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="60">
 									</div>
-									<a class="dropdown-item" href="javascript:void(0)">
-										<i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-									<a class="dropdown-item" href="javascript:void(0)">
-										<i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-									<a class="dropdown-item" href="javascript:void(0)">
-										<i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void(0)">
-										<i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void(0)">
-										<i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-									<div class="dropdown-divider"></div>
-									<div class="p-l-30 p-10">
-										<a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a>
+									<div class="m-l-10">
+										<h4 class="m-b-0">Jonathan Doe</h4>
+										<p class=" m-b-0">jon@gmail.com</p>
 									</div>
 								</div>
-							</li>
-							<!-- ============================================================== -->
-							<!-- User profile and search -->
-							<!-- ============================================================== -->
-						</ul>
-					</div>
-				</nav>
-			</header>
-			<!-- ============================================================== -->
-			<!-- End Topbar header -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- Left Sidebar - style you can find in sidebar.scss  -->
-			<!-- ============================================================== -->
-			<aside class="left-sidebar">
-				<!-- Sidebar scroll-->
-				<div class="scroll-sidebar">
-					<!-- Sidebar navigation-->
-					<nav class="sidebar-nav">
-						<ul id="sidebarnav">
-							<!-- User Profile-->
-							<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">首页</span></li>
-							<li class="sidebar-item">
-								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
-								<ul aria-expanded="false" class="collapse  first-level">
-									<li class="sidebar-item">
-										<a href="index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 更换周期 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="pro_index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 销售分析 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="index3.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 模式 </span></a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">客户</span></li>
-							<li class="sidebar-item">
-								<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">客户 </span></a>
-								<ul aria-expanded="false" class="collapse first-level">
-									<li class="sidebar-item">
-										<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 客户管理 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu"> 客户详情 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="#" class="sidebar-link"><i class="mdi mdi-email-secure"></i><span class="hide-menu"> Email Compose </span></a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">设备</span></li>
-							<li class="sidebar-item">
-								<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">设备管理 </span></a>
-								<ul aria-expanded="false" class="collapse first-level">
-									<li class="sidebar-item">
-										<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 净水机 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu"> 滤芯 </span></a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">员工</span></li>
-							<li class="sidebar-item">
-								<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">员工管理 </span></a>
-								<ul aria-expanded="false" class="collapse first-level">
-									<li class="sidebar-item">
-										<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 员工列表 </span></a>
-									</li>
-									<li class="sidebar-item">
-										<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu"> 员工详情 </span></a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-					<!-- End Sidebar navigation -->
+								<a class="dropdown-item" href="javascript:void(0)">
+									<i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+								<a class="dropdown-item" href="javascript:void(0)">
+									<i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+								<a class="dropdown-item" href="javascript:void(0)">
+									<i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="javascript:void(0)">
+									<i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="javascript:void(0)">
+									<i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+								<div class="dropdown-divider"></div>
+								<div class="p-l-30 p-10">
+									<a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a>
+								</div>
+							</div>
+						</li>
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+					</ul>
 				</div>
-				<!-- End Sidebar scroll-->
-			</aside>
-			<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- Page wrapper  -->
-			<!-- ============================================================== -->
-			<div class="page-wrapper">
+			</nav>
+		</header>
+		<!-- ============================================================== -->
+		<!-- End Topbar header -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<aside class="left-sidebar">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<!-- User Profile-->
+						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">首页</span></li>
+						<li class="sidebar-item">
+							<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
+							<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item">
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 更换周期 </span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="pro_index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 销售分析
+										</span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="index3.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> 模式 </span></a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">客户</span></li>
+						<li class="sidebar-item">
+							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">客户 </span></a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<li class="sidebar-item">
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 客户管理
+										</span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu">
+											客户详情 </span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="#" class="sidebar-link"><i class="mdi mdi-email-secure"></i><span class="hide-menu"> Email Compose
+										</span></a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">设备</span></li>
+						<li class="sidebar-item">
+							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">设备管理 </span></a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<li class="sidebar-item">
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 净水机
+										</span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu">
+											滤芯 </span></a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">员工</span></li>
+						<li class="sidebar-item">
+							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">员工管理 </span></a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<li class="sidebar-item">
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-email"></i><span class="hide-menu"> 员工列表
+										</span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-email-alert"></i><span class="hide-menu">
+											员工详情 </span></a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Page wrapper  -->
+		<!-- ============================================================== -->
+		<div class="page-wrapper">
 
-				<!-- ============================================================== -->
-				<!-- Container fluid  -->
-				<!-- ============================================================== -->
-				<div class="container-fluid">
-					<!--
+			<!-- ============================================================== -->
+			<!-- Container fluid  -->
+			<!-- ============================================================== -->
+			<div class="container-fluid">
+				<!--
 						begin
                     -->
-					<div class="row">
-						<div class="col-lg-3 col-xlg-2 col-md-5">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title m-t-10">滤芯</h4>
-								</div>
-								<div>
-									<hr>
-								</div>
-								<div class="card-body">
-									<div class="card border-bottom border-success">
-										<div class="d-flex flex-row">
-											<div class="p-10 bg-success">
-												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-											<div class="p-10">
-												<h3 class="text-success m-b-0">PP棉</h3>
-												<span class="text-muted">6个月</span>
-											</div>
-										</div>
-									</div>
-									<div class="card border-bottom border-success">
-										<div class="d-flex flex-row">
-											<div class="p-10 bg-success">
-												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-											<div class="p-10">
-												<h3 class="text-success m-b-0">PP棉</h3>
-												<span class="text-muted">6个月</span>
-											</div>
-										</div>
-									</div>
-									<div class="card border-right border-cyan">
-										<div class="card-body">
-											<div class="d-flex no-block align-items-center">
-												<div>
-													<span class="text-cyan display-6"><i class="ti-panel"></i></span>
-												</div>
-												<div class="ml-auto">
-													<h2>超滤膜</h2>
-													<h6 class="text-cyan">一年</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+				<div class="row">
+					<div class="col-lg-3 col-xlg-2 col-md-5">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title m-t-10">全部滤芯</h4>
 							</div>
-						</div>
-						<div class="col-lg-9 col-xlg-9 col-md-12">
-
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title m-t-10">对应表</h4>
-								</div>
-								<div>
-									<hr>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-6 col-xlg-6 col-md-6">
-											<h4>机器</h4>
-											<div class="card bg-info">
-												<div class="card-body">
-													<div class="d-flex no-block align-items-center">
-														<div>
-															<span class="text-white display-6"><i class="ti-panel"></i></span>
-														</div>
-														<div class="ml-auto text-white">
-															<h2>RO-356P</h2>
-															
-														</div>
-													</div>
-												</div>
+							<div>
+								<hr>
+							</div>
+							<div class="card-body" id="feList">
+								<script type="text/template" id="feListTemplate">
+									<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
+									<div class="card border-bottom border-success">
+										<div class="d-flex flex-row">
+											<div class="p-10 bg-success">
+												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
 											</div>
-											<div class="card bg-info">
-												<div class="card-body">
-													<div class="d-flex no-block align-items-center">
-														<div>
-															<span class="text-white display-6"><i class="ti-panel"></i></span>
-														</div>
-														<div class="ml-auto text-white">
-															<h2>RO-356P</h2>
-															
-														</div>
-													</div>
-												</div>
+											<div class="p-10">
+												<h3 class="text-success m-b-0"><%=item.fe_model%></h3>
+												<span class="text-muted"><%=item.fe_periodicity%>天</span>
 											</div>
 										</div>
-										<div class="col-md-1 col-xlg-1 col-md-1">
+									</div>
+									<%}%>
+								</script>
+								
+								<div class="card border-bottom border-success">
+									<div class="d-flex flex-row">
+										<div class="p-10 bg-success">
+											<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
 										</div>
-										<div class="col-md-5 col-xlg-5 col-md-5">
-											<h4>滤芯</h4>
-											<div class="card border-bottom border-success">
-												<div class="d-flex flex-row">
-													<div class="p-10 bg-success">
-														<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-													<div class="p-10">
-														<h3 class="text-success m-b-0">PP棉</h3>
-														<span class="text-muted">6个月</span>
-													</div>
-												</div>
-											</div>
-											<div class="card border-bottom border-success">
-												<div class="d-flex flex-row">
-													<div class="p-10 bg-success">
-														<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-													<div class="p-10">
-														<h3 class="text-success m-b-0">PP棉</h3>
-														<span class="text-muted">6个月</span>
-													</div>
-												</div>
-											</div>
-											<div class="card border-bottom border-success">
-												<div class="d-flex flex-row">
-													<div class="p-10 bg-success">
-														<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-													<div class="p-10">
-														<h3 class="text-success m-b-0">PP棉</h3>
-														<span class="text-muted">6个月</span>
-													</div>
-												</div>
-											</div>
-											<div class="card border-bottom border-success">
-												<div class="d-flex flex-row">
-													<div class="p-10 bg-success">
-														<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3></div>
-													<div class="p-10">
-														<h3 class="text-success m-b-0">PP棉</h3>
-														<span class="text-muted">6个月</span>
-													</div>
-												</div>
-											</div>
+										<div class="p-10">
+											<h3 class="text-success m-b-0">PP棉</h3>
+											<span class="text-muted">6个月</span>
 										</div>
 									</div>
 								</div>
 
 							</div>
-
+							<div class="card-footer">
+								<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addFe">添加滤芯</button>
+							</div>
 						</div>
 					</div>
+					<div class="col-lg-9 col-xlg-9 col-md-12">
 
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title m-t-10">对应表</h4>
+							</div>
+							<div>
+								<hr>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6 col-xlg-6 col-md-6">
+										<div class="card" id="machineCardList">
+											<h4 class="card-title">机器</h4>
+											<hr>
+											<div class="card-body" id="machineList">
+												<!-- 内部小card  begin -->
+												<script type="text/template" id="machineListTemplate">
+													<%for(var i=0;i<machinelist.length;i++){ var item = machinelist[i];%>
+													<div class="card machine-card bg-info" data-machine_id='<%=item.machine_id%>'>
+														<div class="card-body " >
+															<div class="d-flex no-block align-items-center">
+																<div>
+																	<span class="text-white display-6"><i class="ti-panel"></i></span>
+																</div>
+																<div class="ml-auto text-white">
+																	<h2><%=item.machine_model%></h2>
+																</div>
+															</div>
+														</div>
+													</div>
+													<%}%>
+												</script>
+												<div class="card bg-info">
+													<div class="card-body">
+														<div class="d-flex no-block align-items-center">
+															<div>
+																<span class="text-white display-6"><i class="ti-panel"></i></span>
+															</div>
+															<div class="ml-auto text-white">
+																<h2>RO-356P</h2>
+
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- 内部小card  end -->
+											</div>
+											<div class="card-footer">
+													<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachine">添加机器</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-1 col-xlg-1 col-md-1">
+									</div>
+									<div class="col-md-5 col-xlg-5 col-md-5">
+										<h4 class="card-title" id="feListTitle">滤芯</h4>
+										<hr>
+										<div class="card">
+											<div class="card-body" id="machineFeList">
+												<Script type="text/template" id="machineFeListTemplate">
+													<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
+													<div class="card border-bottom border-success">
+														<div class="d-flex flex-row">
+															<div class="p-10 bg-success">
+																<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
+															</div>
+															<div class="p-10">
+																<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
+																<span class="text-muted"><%=item.fe_periodicity%>天</span>
+															</div>
+														</div>
+													</div>
+													<%}%>
+												</Script>
+												<!-- 内部小card begin -->
+
+												<div class="card border-bottom border-success">
+													<div class="d-flex flex-row">
+														<div class="p-10 bg-success">
+															<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
+														</div>
+														<div class="p-10">
+															<h3 class="text-success m-b-0">PP棉</h3>
+															<span class="text-muted">6个月</span>
+														</div>
+													</div>
+												</div>
+												<div class="card border-bottom border-success">
+													<div class="d-flex flex-row">
+														<div class="p-10 bg-success">
+															<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
+														</div>
+														<div class="p-10">
+															<h3 class="text-success m-b-0">PP棉</h3>
+															<span class="text-muted">6个月</span>
+														</div>
+													</div>
+												</div>
+												<div class="card border-bottom border-success">
+													<div class="d-flex flex-row">
+														<div class="p-10 bg-success">
+															<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
+														</div>
+														<div class="p-10">
+															<h3 class="text-success m-b-0">PP棉</h3>
+															<span class="text-muted">6个月</span>
+														</div>
+													</div>
+												</div>
+												<!-- 内部小card end -->
+
+											</div>
+											<div class="card-footer">
+													<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe">为此机器添加滤芯</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
 				</div>
-				<!-- ============================================================== -->
-				<!-- End Container fluid  -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- footer -->
-				<!-- ============================================================== -->
-				<footer class="footer text-center">
-					All Rights Reserved by SST. Designed and Developed by SST.
-				</footer>
-				<!-- ============================================================== -->
-				<!-- End footer -->
-				<!-- ============================================================== -->
+
 			</div>
 			<!-- ============================================================== -->
-			<!-- End Page wrapper  -->
+			<!-- End Container fluid  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- footer -->
+			<!-- ============================================================== -->
+			<footer class="footer text-center">
+				All Rights Reserved by SST. Designed and Developed by SST.
+			</footer>
+			<!-- ============================================================== -->
+			<!-- End footer -->
 			<!-- ============================================================== -->
 		</div>
 		<!-- ============================================================== -->
-		<!-- End Wrapper -->
+		<!-- End Page wrapper  -->
 		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
 
-		<!-- ============================================================== -->
-		<!-- All Jquery -->
-		<!-- ============================================================== -->
-		<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-		<!-- Bootstrap tether Core JavaScript -->
-		<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-		<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- apps -->
-		<script src="dist/js/app.min.js"></script>
-		<script src="dist/js/app.init.js"></script>
-		<script src="dist/js/app-style-switcher.js"></script>
-		<!-- slimscrollbar scrollbar JavaScript -->
-		<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-		<script src="assets/extra-libs/sparkline/sparkline.js"></script>
-		<!--Wave Effects -->
-		<script src="dist/js/waves.js"></script>
-		<!--Menu sidebar -->
-		<script src="dist/js/sidebarmenu.js"></script>
-		<!--Custom JavaScript -->
-		<script src="dist/js/custom.min.js"></script>
-		<!--This page plugins -->
-		<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
-		<!-- start - This is for export functionality only -->
-		<!--<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- apps -->
+	<script src="dist/js/app.min.js"></script>
+	<script src="dist/js/app.init.js"></script>
+	<script src="dist/js/app-style-switcher.js"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
+	<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+	<!--Wave Effects -->
+	<script src="dist/js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="dist/js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="dist/js/custom.min.js"></script>
+	<script src="assets/libs/toastr/build/toastr.min.js"></script>
+
+	<!--This page plugins -->
+	<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+	<!-- start - This is for export functionality only -->
+	<!--<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
 		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
@@ -604,28 +661,71 @@
 		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>-->
 
-		<!--本地打印js -->
-		<script src="assets/libs/print/buttons.flash.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/buttons.html5.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/buttons.print.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/dataTables.buttons.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/jszip.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/pdfmake.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/libs/print/vfs_fonts.js" type="text/javascript" charset="utf-8"></script>
-		<script>
-			//=============================================//
-			//    File export                              //
-			//=============================================//
+	<script src="./dist/js/template-web.js"></script>
+	<script>
 
-			$('#file_export').DataTable({
-				dom: 'Bfrtip',
-				//columnDefs:[{"targets":[11],"visible":false}],
-				buttons: [
-					'copy', 'csv', 'excel', 'pdf', 'print'
-				]
-			});
-			$('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-cyan text-white mr-1');
-		</script>
-	</body>
+		function getAllMachine(){
+			$.ajax({
+				url:'/machine/getmachinelist',
+				success:function(data,textStatus){
+					if(data.code == 200){
+						var machineListStr = template('machineListTemplate',data);
+						$("#machineList").html(machineListStr);
+					}else {
+						toastr.error(data.msg);
+					}
+				},
+				error:function(error){
+					toastr.error('网络连接失败...');
+				}
+			})
+		}
+		function getAllFe(){
+			$.ajax({
+				url:'/machine/getfelist',
+				success:function(data,textStatus){
+					console.log(JSON.stringify(data))
+					if(data.code == 200){
+						var feStr = template('feListTemplate',data);
+						$("#feList").html(feStr);
+					}else {
+						toastr.error(data.msg);
+					}
+				},
+				error:function(error){
+					toastr.error('网络连接失败...');
+				}
+			})
+		}
+		$(document).ready(function(){
+			getAllMachine();
+			getAllFe();
+
+			$('#machineCardList .card-body').on('click','.card',function(){
+				var machine_id = $(this).data('machine_id');
+				$(this).prevAll().removeClass('card-active');
+				$(this).nextAll().removeClass('card-active');
+				$(this).addClass('card-active');
+				$.ajax({
+					url:'/machine/getmachinefe',
+					data:{
+						machine_id:machine_id
+					},
+					success:function(data,textStatus){
+						if(data.code == 200){
+						var feStr = template('machineFeListTemplate',data);
+						$("#machineFeList").html(feStr);
+						}else {
+							toastr.error(data.msg);
+						}
+					},
+					error:function(error){
+						toastr.error('网络故障...')
+					}
+				})
+			})
+		})
+	</script>
+</body>
 
 </html>

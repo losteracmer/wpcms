@@ -404,7 +404,7 @@
 					<div class="col-lg-4 col-xlg-3 col-md-5">
 						<div class="card">
 							<div class="card-body">
-								<center class="m-t-30"> <img src="assets/images/users/5.jpg" class="rounded-circle" width="150" />
+								<center class="m-t-30"> <img id="customer_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle" width="150" />
 									<h4 class="card-title m-t-10" id="real_name">正在加载...</h4>
 								</center>
 							</div>
@@ -442,6 +442,9 @@
 									<div class="card-body">
 										<div class="profiletimeline m-t-0" id="maintenance">
 											<script type="text/template" id="maintenanceTemplate">
+												<%if(maintenance.length == 0){%>
+													<div class="card-title">该用户没有更换记录</div>
+												<%}%>
 												<%for(var i=0;i<maintenance.length;i++){ var item = maintenance[i];%>
 											
 												<div class="sl-item">
@@ -664,12 +667,18 @@
 				success: function (data, textStatus) {
 					console.log('get data: ' + JSON.stringify(data))
 					if (data.code == 200) {
-						$("#real_name").html(data.detail.real_name);
+						var badge ;
+						if(data.detail.customer_status == 0){
+							badge = '<span class="badge badge-success badge-pill">  正常</span>';
+						}else{
+							badge = '<span class="badge badge-danger badge-pill">  僵尸</span>';
+						}
+						$("#real_name").html(data.detail.real_name+badge);
 						$("#address").html(data.detail.address);
 						$("#mobile_1").html(data.detail.mobile_1);
 						$("#mobile_2").html(data.detail.mobile_2);
 						$("#address").html(data.detail.address);
-						$("#address").html(data.detail.address);
+						$("#customer_avatarUrl").attr('src',data.detail.customer_avatarUrl);
 						//input 内容更新
 						$("#p_real_name").val(data.detail.real_name);
 						$("#p_mobile_1").val(data.detail.mobile_1)

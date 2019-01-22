@@ -36,11 +36,20 @@ router.use("/getdetail",(Request,Response)=>{
         })
     })
 })
-router.use("/getlist",(Request,Response)=>{
+router.use("/getlistajax",(Request,Response)=>{
     let sql = `select * from customer`;
 
     mysql.query(sql).then(resset=>{
-        
+        Response.send({
+            code:200,
+            data:resset
+        })
+    }).catch(error=>{
+        console.error('get customer list error:',error);
+        Response.send({
+            code:500,
+            msg:'服务错误'
+        })
     })
 })
 
@@ -81,6 +90,8 @@ router.use("/change",(Request,Response)=>{
 
 })
 
+
+
 router.use("/add",(Request,Response)=>{
     
 })
@@ -111,4 +122,25 @@ router.use('/maintenance',(Request,Response)=>{
     })
 })
 
+router.use('/setlazy',(Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+
+    let sql = `update customer set customer_status = -1 where customer_id = ?`
+    let par = [customer_id];
+    
+    mysql.update(sql,par).then(result=>{
+        Response.send({
+            code:200,
+            msg:'设置成功'
+        })
+        
+    }).catch(error=>{
+        console.error('set customer lazy error:',error);
+        
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+    })
+})
 module.exports=router;
