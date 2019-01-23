@@ -116,14 +116,17 @@ router.use("/add",(Request,Response)=>{
     let customer_from = queryObj.customer_from;
     let customer_star = queryObj.customer_star;
     let remark = queryObj.remark;
-    let sql = `insert into customer(real_name , mobile_1 ,mobile_2 ,customer_area,address ,customer_from ,customer_star,remark,create_time)  values(?,?,?,?,?,?,?,?,?) `;
-    let par = [real_name,mobile_1,mobile_2,customer_area,address,customer_from,customer_star,remark,new Date()];
+
+    let customer_id = (new Date()).getTime();
+    let sql = `insert into customer(customer_id,real_name , mobile_1 ,mobile_2 ,customer_area,address ,customer_from ,customer_star,remark,create_time)  values(?,?,?,?,?,?,?,?,?,?) `;
+    let par = [customer_id,real_name,mobile_1,mobile_2,customer_area,address,customer_from,customer_star,remark,new Date()];
     mysql.update(sql,par).then(result=>{
         console.log(result)
         if(result.affectedRows == 1){
             Response.send({
                 code:200,
-                msg:'添加客户资料成功'
+                customer_id :customer_id,
+                msg:'添加新客户成功'
             })
         }else {
             Response.send({
@@ -190,3 +193,5 @@ router.use('/setlazy',(Request,Response)=>{
     })
 })
 module.exports=router;
+
+

@@ -461,7 +461,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<div class="btn-group">
-														<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#choseuser">
+														<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#choseCustomerModal">
 															选择客户
 														</button>
 													</div>
@@ -472,13 +472,13 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label for="real_name">姓名</label>
-													<input type="text" class="form-control" id="real_name" name="real_name">
+													<input type="text" class="form-control" id="real_name" name="real_name" required>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label for="customer_from">来源</label>
-													<select class="custom-select form-control" id="customer_from" name="customer_from">
+													<select class="custom-select form-control" id="customer_from" name="customer_from" required>
 														<option value="店面">店面</option>
 														<option value="网购">网购</option>
 														<option value="服务">服务</option>
@@ -490,7 +490,7 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label for="mobile_1">电话1</label>
-													<input type="tel" class="form-control" id="mobile_1" name="mobile_1"> </div>
+													<input type="tel" class="form-control" id="mobile_1" name="mobile_1" required> </div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
@@ -510,15 +510,16 @@
 													<label>客户星级</label>
 													<div class="c-inputs-stacked">
 														<div class="custom-control custom-radio custom-control-inline">
-															<input type="radio" id="customerStar1" name="customerStar" class="custom-control-input" value="1">
+															<input type="radio" id="customerStar1" name="customer_star" class="custom-control-input" value="1"
+															 checked>
 															<label class="custom-control-label" for="customerStar1">1</label>
 														</div>
 														<div class="custom-control custom-radio custom-control-inline">
-															<input type="radio" id="customerStar2" name="customerStar" class="custom-control-input" value="2">
+															<input type="radio" id="customerStar2" name="customer_star" class="custom-control-input" value="2">
 															<label class="custom-control-label" for="customerStar2">2</label>
 														</div>
 														<div class="custom-control custom-radio custom-control-inline">
-															<input type="radio" id="customerStar3" name="customerStar" class="custom-control-input" value="3">
+															<input type="radio" id="customerStar3" name="customer_star" class="custom-control-input" value="3">
 															<label class="custom-control-label" for="customerStar3">3</label>
 														</div>
 													</div>
@@ -530,7 +531,7 @@
 											<div class="col-md-12">
 												<div class="from-group">
 													<label for="address">详细地址</label>
-													<input type="text" class="form-control" id="address" name="address">
+													<input type="text" class="form-control" id="address" name="address" required>
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -554,7 +555,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<div class="btn-group">
-														<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#chosemachine">
+														<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#choseMachineModal">
 															选择机器
 														</button>
 													</div>
@@ -563,8 +564,9 @@
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
-													<label for="machine_id">机器型号</label>
-													<input type="text" class="form-control" placeholder="请选择机器型号" id="machine_id" name="machine_id" disabled>
+													<label for="machine_model">机器型号</label>
+													<input type="text" class="form-control" placeholder="请选择机器型号" id="machine_model" name="machine_model"
+													 disabled>
 												</div>
 											</div>
 											<div class="col-md-6">
@@ -573,7 +575,12 @@
 													<input type="text" class="form-control" id="machine_code" name="machine_code">
 												</div>
 											</div>
-
+											<div class="col-md-12 disabled" hidden>
+												<div class="form-group">
+													<label for="machine_id">机器ID</label>
+													<input name="machine_id" id="machine_id" rows="6" class="form-control"></input>
+												</div>
+											</div>
 										</div>
 									</section>
 									<!-- Step 3 -->
@@ -594,8 +601,8 @@
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<label for="decisions1">备注信息 :</label>
-													<textarea name="decisions" id="sale_remark" rows="4" class="form-control"></textarea>
+													<label for="sale_remark">备注信息 :</label>
+													<textarea name="sale_remark" id="sale_remark" rows="4" class="form-control"></textarea>
 												</div>
 											</div>
 										</div>
@@ -619,12 +626,12 @@
 				<!-- ============================================================== -->
 			</div>
 			<!-- Create Modal -->
-			<div class="modal fade" id="choseuser" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+			<div class="modal fade" id="choseCustomerModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<form>
 							<div class="modal-header">
-								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择用户</h5>
+								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择客户</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -638,21 +645,21 @@
 													<option value="<%=item.customer_id%>"><%=item.real_name +" | "+item.mobile_1%></option>
 												<%}%>
 											</script>
-										<option>Select</option>
+										<option>加载客户列表失败</option>
 
 									</select>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-								<button type="button" onclick="fun()" class="btn btn-success"><i class="ti-save"></i> 确定</button>
+								<button type="button" onclick="fun()" class="btn btn-success" id="saveChoseCustomer"><i class="ti-save"></i> 确定</button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 			<!-- Create Modal2 -->
-			<div class="modal fade" id="chosemachine" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+			<div class="modal fade" id="choseMachineModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<form>
@@ -665,22 +672,21 @@
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="firstName1">选择机器型号</label>
-									<select class="select2 custom-select form-control" style="width: 100%; height:36px;">
-										<option>Select</option>
-										<optgroup label="可用机器型号">
-											<option value="AK">Alaska</option>
-											<option value="HI">Hawaii</option>
-											<option value="CA">California</option>
-											<option value="NV">Nevada</option>
-											<option value="OR">Oregon</option>
-											<option value="WA">Washington</option>
-											</potgroup>
+									<select class="select2 custom-select form-control" style="width: 100%; height:36px;" id="machineList">
+										<script id="machineListTemplate" type="text/template">
+											<%for(var i=0;i<machinelist.length;i++){var item = machinelist[i];%>
+													<option value="<%=item.machine_id+'|'+item.machine_model%>"><%=item.machine_model%></option>
+												<%}%>
+											</script>
+										<option>
+										<option>加载机器列表失败</option>
+										</option>
 									</select>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-success"><i class="ti-save"></i> 确定</button>
+								<button type="button" class="btn btn-success" id="savaChoseMachine"><i class="ti-save"></i> 确定</button>
 							</div>
 						</form>
 					</div>
@@ -741,6 +747,7 @@
 
 	<script>
 		//Custom design form example
+		var customer_id = null;
 		$(".tab-wizard").steps({
 			headerTag: "h6",
 			bodyTag: "section",
@@ -751,23 +758,69 @@
 				previous: '上一步',
 				next: "下一步"
 			},
-			onStepChanging: function(event, currentIndex, newIndex) {
-				console.log(currentIndex+"|"+newIndex);
-				// Allways allow previous action even if the current form is not valid!
-				return false;
+			onStepChanging: function (event, currentIndex, newIndex) {
+				console.log(currentIndex + "|" + newIndex);
+				if (currentIndex == 0) {
+					var customer_id = $("#customer_id").val();
+					if (customer_id != '') return true;
+					let formObj = $("#createOrderForm").serialize();
+					let finish = false;
+					$.ajax({
+						url: '/customer/add',
+						async: false,
+						type: 'POST',
+						data: formObj,
+						success: function (data, textStatus) {
+							if (data.code == 200) {
+								customer_id = data.customer_id;
+								$("#customer_id").val(customer_id);
+								toastr.success(data.msg);
+								finish = true;
+							} else {
+								toastr.error(data.msg);
+							}
+						},
+						error: function (error) {
+							toastr.error(data.msg);
+						}
+					})
+					// Allways allow previous action even if the current form is not valid!
+					return finish;
+				}else if(currentIndex == 1){
+					if($("#machine_id").val() ==''){
+						toastr.error('必须选择机器型号!');
+						return false;
+					}else {
+						return true;
+					}
+				}
+				return true;
+
 			},
 			onFinished: function (event, currentIndex) {
 				var FormObj = $("#createOrderForm").serialize();
 				console.log(FormObj)
 				$.ajax({
 					type: "post",
-					url: "http://localhost:8080",
+					url: "/sales/add",
 					async: false,
-					data: {
-						event: event
+					data: FormObj,
+					success:function(data){
+						if(data.code == 200){
+							toastr.success(data.msg);
+							setTimeout(() => {
+								window.location.href = 'index.html';
+							}, 1000);
+							
+						}else {
+							toastr.error(data.msg);
+						}
+					},
+					error:function(error){
+						toastr.error('网络故障');
 					}
 				});
-				alert('提交成功')
+				
 
 			}
 		});
@@ -790,8 +843,57 @@
 				}
 			})
 		}
+
+		function getmachineList() {
+			$.ajax({
+				url: '/machine/getmachinelist',
+				success: function (data) {
+					if (data.code == 200) {
+						var machineListStr = template('machineListTemplate', data);
+						$("#machineList").html(machineListStr);
+					} else {
+						toastr.error(data.msg)
+					}
+				}
+			})
+		}
 		$(document).ready(function () {
 			getCustomerList();
+			getmachineList();
+
+			$("#savaChoseMachine").on('click', function () {
+				var choseMachine_msg = $("#machineList").val();
+				var machine_id = choseMachine_msg.split("|")[0];
+				var machine_model = choseMachine_msg.split("|")[1];
+				$("#machine_model").val(machine_model);
+				$("#machine_id").val(machine_id);
+				$("#choseMachineModal").modal('hide');
+			})
+
+			$("#saveChoseCustomer").on('click', function () {
+
+				var customer_id = $("#customerList").val();
+				$.ajax({
+					url: "/customer/getdetail",
+					data: {
+						customer_id
+					},
+					success: function (data) {
+						if (data.code == 200) {
+							for (var key in data.detail) {
+								console.log(key);
+								$("#" + key).val(data.detail[key]);
+							}
+						} else {
+							toastr.error(data.msg);
+						}
+					},
+					error: function (error) {
+						toastr.error('网络出错,获取客户信息失败');
+					}
+				})
+				$("#choseCustomerModal").modal('hide');
+			})
 		})
 	</script>
 </body>
