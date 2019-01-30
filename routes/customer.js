@@ -81,7 +81,7 @@ router.use("/change",(Request,Response)=>{
     let customer_id = queryObj.customer_id;
     let remark = queryObj.remark;
     let sql = `update customer set real_name =?, mobile_1 = ?,mobile_2 =?,address = ?,customer_from =?,customer_star=?,remark = ? where customer_id=? `;
-    let par = [real_name,mobile_1,mobile_2,address,customer_from,customer_star,customer_id,remark];
+    let par = [real_name,mobile_1,mobile_2,address,customer_from,customer_star,remark,customer_id];
     mysql.update(sql,par).then(result=>{
         console.log(result)
         if(result.affectedRows == 1){

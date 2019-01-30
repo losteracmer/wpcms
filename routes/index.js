@@ -127,4 +127,43 @@ router.use('/getcustomerid',(Request,Response)=>{
     })
 })
 
+
+router.use('/finished',(Request,Response)=>{
+    let fesid = Request.query.fesid;
+
+    let sql = `select * from festatus where festatus_id = ${fesid}`;
+    mysql.query(sql).then(resset=>{
+        if(resset.length == 0){
+            Response.send({
+                code :403,
+                msg:'没有找到这条记录'
+            })
+            return;
+        }
+        let allot_status = resset[0].allot_status;
+        console.log('finished allot_status :',allot_status);
+        if(allot_status){
+            let sql2 = `insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values(?,?,?,?,?)`;
+            let par = [new Date(),1,allot_status,fesid,'[record by system]'];
+            mysql.insert(sql2,par).then(result =>{
+                Response.send({
+                    code:200,
+                    msg:'以设置完成派工'
+                })
+            })
+        }else{
+            let sql2 = `insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values(?,?,?,?,?)`;
+            let par = [new Date(),1,'system',fesid,'by system'];
+            mysql.insert(sql2,par).then(result =>{
+                Response.send({
+                    code:200,
+                    msg:'由于未设置派工员工，设置为 默认 '
+                })
+            })
+        }
+    })
+
+   
+
+})
 module.exports =router;

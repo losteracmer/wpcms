@@ -30,4 +30,4 @@ module.exports = {
     setPassword:setPassword,
     createAdminAccount:createAdminAccount
 }
-createAdminAccount('sst','sst','sst');
+createAdminAccount('admin','admin','admin');
