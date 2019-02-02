@@ -10,19 +10,11 @@
 	<meta name="author" content="">
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-	<title>沁园净水机客户管理系统</title>
-	<!-- This page CSS -->
-	<link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
-
+	<title>Nice admin Template - The Ultimate Multipurpose admin template</title>
 	<!-- Custom CSS -->
 	<link href="dist/css/style.min.css" rel="stylesheet">
-	<style>
-		.card-active{
-			transform: translateY(-4px) scale(1.01);
-			box-shadow: 0 14px 24px rgba(62,57,107,.8);
-		}
-	</style>
+	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -377,6 +369,7 @@
 			</div>
 			<!-- End Sidebar scroll-->
 		</aside>
+		<!-- ============================================================== -->
 		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
 		<!-- ============================================================== -->
@@ -388,224 +381,137 @@
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<!--
-						begin
-                    -->
+				<!-- ============================================================== -->
+				<!-- Start Page Content -->
+				<!-- ============================================================== -->
+				<!-- Row -->
 				<div class="row">
-					<div class="col-lg-3 col-xlg-2 col-md-5">
+					<!-- Column -->
+					<div class="col-lg-12 col-xlg-12 col-md-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title m-t-10">全部滤芯</h4>
+								<center class="m-t-30"> <img id="customer_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle"
+									 width="150" />
+									<h4 class="card-title m-t-10" id="labour_name">正在加载...</h4>
+								</center>
 							</div>
 							<div>
 								<hr>
-							</div>
-							<div class="card-body" id="feList">
-								<script type="text/template" id="feListTemplate">
-									<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-									<div class="card border-bottom border-success">
-										<div class="d-flex flex-row">
-											<div class="p-10 bg-success">
-												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-											</div>
-											<div class="p-10">
-												<h3 class="text-success m-b-0"><%=item.fe_model%></h3>
-												<span class="text-muted"><%=item.fe_periodicity%>天</span>
-											</div>
-										</div>
-									</div>
-									<%}%>
-								</script>
-
-							</div>
-							<div class="card-footer">
-								<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addFe" data-toggle="modal"
-								 data-target="#addFeModal">添加滤芯</button>
 							</div>
 						</div>
+						
 					</div>
-					<div class="col-lg-9 col-xlg-9 col-md-12">
-
+					<!-- Column -->
+					<!-- Column -->
+					<div class="col-lg-12 col-xlg-12 col-md-12">
 						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title m-t-10">对应表</h4>
-							</div>
-							<div>
-								<hr>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6 col-xlg-6 col-md-6">
-										<div class="card" id="machineCardList">
-											<h4 class="card-title">机器</h4>
-											<hr>
-											<div class="card-body" id="machineList">
-												<!-- 内部小card  begin -->
-												<script type="text/template" id="machineListTemplate">
-													<%for(var i=0;i<machinelist.length;i++){ var item = machinelist[i];%>
-													<div class="card machine-card bg-info" data-machine_id='<%=item.machine_id%>'>
-														<div class="card-body " >
-															<div class="d-flex no-block align-items-center">
-																<div>
-																	<span class="text-white display-6"><i class="ti-panel"></i></span>
-																</div>
-																<div class="ml-auto text-white">
-																	<h2><%=item.machine_model%></h2>
-																</div>
-															</div>
+							<!-- Tabs -->
+							<ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab"
+									 aria-controls="pills-timeline" aria-selected="true">滤芯</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="pills-timeline-tab" data-toggle="pill" href="#peijianTimeLine" role="tab"
+									 aria-controls="pills-timeline" aria-selected="false">配件</a>
+								</li>
+							</ul>
+							<!-- Tabs -->
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="lvxinTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
+									<div class="card-body">
+										<div class="profiletimeline m-t-0" id="maintenance">
+											<script type="text/template" id="maintenanceTemplate">
+												<%if(maintenance.length == 0){%>
+													<div class="card-title">该员工没有滤芯更换记录</div>
+												<%}%>
+												<%for(var i=0;i<maintenance.length;i++){ var item = maintenance[i];%>
+											
+												<div class="sl-item">
+													<div class="sl-left"> <img src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>" alt="user" class="rounded-circle" /> </div>
+													<div class="sl-right">
+														<div>
+															<a href="javascript:void(0)" class="link">更换: <%=item.fe_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
+															<div class="sub_title">更换对象: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
+															<%if(item.maintain_record){%>
+															<blockquote class="m-t-10">
+																	<%=item.maintain_record%>
+															</blockquote>
+															<%}%>
+															<h6>时间: <%=item.maintain_time%></h6>
 														</div>
 													</div>
-													<%}%>
-												</script>
-
-												<!-- 内部小card  end -->
-											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachine"
-												 data-toggle="modal" data-target="#addMachineModal">添加机器</button>
-											</div>
+												</div>
+												<hr>
+												<%}%>
+											</script>
 										</div>
 									</div>
-									<div class="col-md-1 col-xlg-1 col-md-1">
-									</div>
-									<div class="col-md-5 col-xlg-5 col-md-5">
-										<h4 class="card-title" id="feListTitle">滤芯</h4>
+								</div>
+								<div class="tab-pane fade" id="peijianTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
+									<div class="card-body">
+										
 										<hr>
-										<div class="card">
-											<div class="card-body" id="machineFeList">
-												<Script type="text/template" id="machineFeListTemplate">
-													<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-													<div class="card border-bottom border-success">
-														<div class="d-flex flex-row">
-															<div class="p-10 bg-success">
-																<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-															</div>
-															<div class="p-10">
-																<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
-																<span class="text-muted"><%=item.fe_periodicity%>天</span>
-															</div>
+										<h4>配件维修记录:</h4>
+										<div class="profiletimeline m-t-0" id="accmaintain">
+											<script type="text/template" id="accmaintainTemplate">
+												<%if(accmaintain.length == 0){%>
+													<div class="card-title">该用户没有配件更换记录</div>
+												<%}%>
+												<%for(var i=0;i<accmaintain.length;i++){ var item = accmaintain[i];%>
+											
+												<div class="sl-item">
+													<div class="sl-left"> <img src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>" alt="user" class="rounded-circle" /> </div>
+													<div class="sl-right">
+														<div>
+															<a href="javascript:void(0)" class="link">更换: <%=item.accessory_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
+															<div class="sub_title">更换对象: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
+															<%if(item.accmaintain_record){%>
+															<blockquote class="m-t-10">
+																	<%=item.accmaintain_record%>
+															</blockquote>
+															<%}%>
+															<%if(item.accmaintain_status == 1){%>
+															<h6>维修时间: <%=item.finish_time%></h6>
+															<%}else{%>
+																<h6 class="text-warning">未完成</h6>
+																<button type="button" class="btn waves-effect waves-light btn-xs btn-info doitbtn-makesucess" data-accmaintain_id="<%=item.accmaintain_id%>" >设置完成</button>
+															<%}%>
 														</div>
 													</div>
-													<%}%>
-												</Script>
-												<!-- 内部小card begin -->
-
-
-												<!-- 内部小card end -->
-
-											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe"
-												 data-toggle="modal" data-target="##">为此机器添加滤芯</button>
-											</div>
+												</div>
+												<hr>
+												<%}%>	
+											</script>
 										</div>
 									</div>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
+					<!-- Column -->
 				</div>
-
+				<!-- Row -->
+				<!-- ============================================================== -->
+				<!-- End PAge Content -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Right sidebar -->
+				<!-- ============================================================== -->
+				<!-- .right-sidebar -->
+				<!-- ============================================================== -->
+				<!-- End Right sidebar -->
+				<!-- ============================================================== -->
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->
 			<!-- ============================================================== -->
-			<!-- addfe Modal -->
-			<div class="modal fade" id="addFeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新滤芯</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入滤芯型号" id="p_fe_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入滤芯保质期(天)" id="p_fe_periodicity">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddFeBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<!-- addMachine Modal -->
-			<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新机器</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入机器型号" id="p_machine_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入价格（可不填）" id="p_machine_price">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddMachineBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="modal fade" id="addMachineFeModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<form id="choseFeForm">
-								<div class="modal-header">
-									<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择滤芯</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<div class="form-group">
-										<label for="firstName1">选择可用滤芯</label>
-										<select name='feId' id="chosefeselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
-	
-											<script id="MfeListTemplate" type="text/template">
-												<%for(var i=0;i<felist.length;i++){var item = felist[i];%>
-													<option value="<%=item.fe_id%>"><%=item.fe_model%></option>
-												<%}%>
-											</script>
-										</select>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-									<button type="button" class="btn btn-success" id="saveAddMachineFeBtn"><i class="ti-save"></i> 确定</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-				All Rights Reserved by SST. Designed and Developed by SST.
+				All Rights Reserved by Nice admin. Designed and Developed by
+				<a href="https://wrappixel.com">WrapPixel</a>.
 			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
@@ -640,189 +546,130 @@
 	<!--Custom JavaScript -->
 	<script src="dist/js/custom.min.js"></script>
 	<script src="assets/libs/toastr/build/toastr.min.js"></script>
-
-	<!--This page plugins -->
-	<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+	<!--This page JavaScript -->
+	<script src="../../assets/libs/block-ui/jquery.blockUI.js"></script>
+	<script src="../../assets/extra-libs/block-ui/block-ui.js"></script>
 	<script src="js/adminMsg.js"></script>
-	<!-- start - This is for export functionality only -->
-	<!--<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>-->
 
 	<script src="./dist/js/template-web.js"></script>
 	<script>
-		var Gmachine_id = null;
-		function getAllMachine() {
-			$.ajax({
-				url: '/machine/getmachinelist',
-				success: function (data, textStatus) {
-					if (data.code == 200) {
-						var machineListStr = template('machineListTemplate', data);
-						$("#machineList").html(machineListStr);
-					} else {
-						toastr.error(data.msg);
-					}
+		function doBolckUI() {
+			$.blockUI({
+				message: '<i class="fas fa-spin fa-sync text-white"></i><i class="text-white">提交请求中...</i>',
+				overlayCSS: {
+					backgroundColor: '#000',
+					opacity: 0.5,
+					cursor: 'wait'
 				},
-				error: function (error) {
-					toastr.error('网络连接失败...');
+				css: {
+					color: '#333',
+					border: 0,
+					padding: 0,
+					backgroundColor: 'transparent'
+				},
+			})
+		}
+
+		function getorder(pars) {
+			$.ajax({
+				url: '/sales/customerorder',
+				data: pars,
+				success: function (data, textStatus) {
+					var orderlistStr = template('orderListTemplate', data);
+					$("#choseorderselect").html(orderlistStr);
+				},
+				error: function (xhr, textStatus) {
+					alert('网络异常')
 				}
 			})
 		}
 
-		function getAllFe() {
+		function getaccmaintain(pars) {
+			//获取配件列表
+			console.log("getaccmaintain");
 			$.ajax({
-				url: '/machine/getfelist',
+				url: '/accessories/getlist',
 				success: function (data, textStatus) {
-					console.log(JSON.stringify(data))
-					if (data.code == 200) {
-						var feStr = template('feListTemplate', data);
-						$("#feList").html(feStr);
-					} else {
-						toastr.error(data.msg);
-					}
+					console.log('accessories list 请求成功' + JSON.stringify(data));
+
+					var accessorieslistStr = template('accessoriesListTemplate', data);
+					$("#choseaccessoriesselect").html(accessorieslistStr);
 				},
-				error: function (error) {
-					toastr.error('网络连接失败...');
+				error: function (xhr, textStatus) {
+					alert('网络异常')
 				}
 			})
-		}
-		function getMachineFe(machine_id){
-			$.ajax({
-					url: '/machine/getmachinefe',
-					data: {
-						machine_id: machine_id
-					},
-					success: function (data, textStatus) {
-						if (data.code == 200) {
-							var feStr = template('machineFeListTemplate', data);
-							$("#machineFeList").html(feStr);
-
-						} else if(data.code==403){
-							var feStr = template('machineFeListTemplate', data);
-							$("#machineFeList").html(feStr);
-							toastr.warning(data.msg);
-						}
-					},
-					error: function (error) {
-						toastr.error('网络故障...')
-					}
-				})
 		}
 		$(document).ready(function () {
-			getAllMachine();
-			getAllFe();
-
-			$('#machineCardList .card-body').on('click', '.card', function () {
-				var machine_id = $(this).data('machine_id');
-				$(this).prevAll().removeClass('card-active');
-				$(this).nextAll().removeClass('card-active');
-				$(this).addClass('card-active');
-				Gmachine_id = machine_id;
-
-				getMachineFe(machine_id);
-			})
-			$("#saveAddFeBtn").on('click', function () {
-				console.log('click');
-
-				var fe_model = $("#p_fe_model").val();
-				var fe_periodicity = $("#p_fe_periodicity").val();
-				$.ajax({
-					url: '/machine/addfe',
-					data: {
-						fe_model,
-						fe_periodicity
-					},
-					success: function (data) {
-						if (data.code == 200) {
-							toastr.success(data.msg)
-							$("#addFeModal").modal('hide');
-							getAllFe();
-						} else {
-							toastr.error(data.msg)
-						}
-					},
-					error: function (data) {
-						toastr.error('网络异常！');
-					}
-				})
-			})
-			$("#saveAddMachineBtn").on('click', function () {
-				console.log('click');
-
-				var machine_model = $("#p_machine_model").val();
-				var machine_price = $("#p_machine_price").val();
-				$.ajax({
-					url: '/machine/addmachine',
-					data: {
-						machine_model,
-						machine_price
-					},
-					success: function (data) {
-						if (data.code == 200) {
-							toastr.success(data.msg)
-							$("#addMachineModal").modal('hide');
-							getAllMachine();
-						} else {
-							toastr.error(data.msg)
-						}
-					},
-					error: function (data) {
-						toastr.error('网络异常！');
-					}
-				})
-			})
-			$("#addMachineFe").on('click',function(){
-				if(Gmachine_id == null){
-					toastr.warning("请选点击左侧机器，再进行添加操作");
-					return ;
-				}
-				var machine_id = Gmachine_id;
-				$.ajax({
-					url:'/machine/getaddfelist',
-					data:{
-						machine_id:machine_id
-					},
-					success:function(data,textStatus){
-						//console.log(JSON.stringify(data));
+			var pars = window.location.href.split('?')[1];
+			console.log('参数:' + pars);
+			$.ajax({
+				url: '/labour/getdetail' + '?' + pars,
+				success: function (data, textStatus) {
+					console.log('get data: ' + JSON.stringify(data))
+					if (data.code == 200) {
+						$("#labour_name").html(data.detail.labour_name);
+						$("#labour_avatarUrl").attr('src', data.detail.labour_avatarUrl);
+						//input 内容更新
+					} else if (data.code == 302) {
 						
+						window.location.href = data.href;
+					} else {
+						toastr.error(data.msg);
+					}
+				}
+			});
+			//滤芯维修记录
+			$.ajax({
+				url: '/labour/maintenance' + '?' + pars,
+				success: function (data, textStatus) {
+					if (data.code == 200) {
+
+						var maintenanceStr = template('maintenanceTemplate', data);
+						$("#maintenance").html(maintenanceStr);
+					} else {
+						toastr.warning(data.msg);
+					}
+				}
+			})
+			//配件维修记录
+			$.ajax({
+				url: '/labour/accmaintenance' + '?' + pars,
+				success: function (data, textStatus) {
+					if (data.code == 200) {
+
+						var accmaintainStr = template('accmaintainTemplate', data);
+						$("#accmaintain").html(accmaintainStr);
+					} else {
+						toastr.warning(data.msg);
+					}
+				}
+			})
+
+		})
+		$(document).ready(function () {			
+			$("#accmaintain").on("click", ".doitbtn-makesucess", function (that) {
+				var accmaintain_id = $(this).data('accmaintain_id');
+
+				$.ajax({
+					url: '/accessories/setaccmaintainfinish',
+					data: {
+						accmaintain_id: accmaintain_id
+					},
+					success: function (data) {
 						if (data.code == 200) {
-							var feListStr = template('MfeListTemplate',data);
-							$("#chosefeselect").html(feListStr);
-							$("#addMachineFeModal").modal('show');
+							toastr.success(data.msg);
+							//getaccmaintain(window.location.href.split('?')[1]);
+							setTimeout(() => {
+								window.location.reload();		
+							}, 1300);
 							
 						} else {
-							toastr.error(data.msg)
-						}
-					}
-				})
-			})
-			$("#saveAddMachineFeBtn").on('click',function(){
-				var machine_id = Gmachine_id;
-				var fe_id = $("#chosefeselect").val();
-				if(!fe_id){
-					return;
-				}
-				$.ajax({
-					url:"/machine/addmachinefe",
-					data:{
-						machine_id,
-						fe_id
-					},
-					success:function(data){
-						if(data.code == 200){
-							toastr.success(data.msg);
-							$("#addMachineFeModal").modal('hide');
-							getMachineFe(machine_id);
-						}else {
 							toastr.error(data.msg);
 						}
 					},
-					error:function(error){
-						toastr.error(data.msg);
+					error: function (error) {
+						toastr.error('网络异常');
 					}
 				})
 			})
@@ -830,4 +677,4 @@
 	</script>
 </body>
 
-</html>1
+</html>

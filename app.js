@@ -34,8 +34,12 @@ app.use('/machine',require('./routes/machine'));
 
 app.use('/sales',require('./routes/sales'));
 
+app.use('/accessories',require('./routes/accessories'));
+
+app.use('/analysis',require('./routes/analysis'));
 // 未发现路由
 app.use(function(req, res, next) {
+  console.log('##########非访问:',req.url);
   res.redirect("/error-404.html");
 });
 
@@ -51,13 +55,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000,function(error){
-  if(error){
-    console.log('监听错误')
+// app.listen(3000,function(error){
+//   if(error){
+//     console.log('监听错误')
 
-  }else {
-    console.log("正在监听3000");
+//   }else {
+//     console.log("正在监听3000");
     
-  }
-})
+//   }
+// })
 module.exports = app;

@@ -4,7 +4,7 @@ var createCryptedPassword = require('../utils/createncryptedPasswd');
 const encode = require('../utils/encode');
 const mysql = require('../common/mysql');
 const temporarycode = require('../utils/temporarycode');
-router.use("/", (Request, Response) => {
+router.use("/login", (Request, Response) => {
     console.log('adminLogin:', Request.query)
     let account = Request.body.account;
     let password = Request.body.password;
@@ -51,5 +51,28 @@ router.use("/", (Request, Response) => {
     })
 })
 
-
+router.use('/getadminmsg',(Request,Response)=>{
+    let adminAccount = Request.cookies.admin;
+    
+    let sql = `select * from admins where account = '${adminAccount}'`;
+    mysql.query(sql).then(resset=>{
+        if(resset.length == 0){
+            Response.send({
+                code:403,
+                msg:'没找到该管理员账户，cookies过期 请重新登录'
+            })
+            return;
+        }
+        Response.send({
+            code:200,
+            adminMsg:resset[0]
+        })
+    }).catch(error=>{
+        console.log('get admin msg error',error);
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+    })
+})
 module.exports=router;

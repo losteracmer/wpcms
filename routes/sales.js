@@ -55,6 +55,31 @@ router.use("/getorderlistajax",(Request,Response)=>{
 
 })
 
+router.use("/customerorder",(Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+    if(!customer_id){
+        Response.send({
+            code:403,
+            msg:'缺少参数'
+        })
+        return ;
+    }
+    let sql = `select sale_id,real_name,machine_model,machine_code,DATE_FORMAT(sale_time,'%Y %m %d %H:%i')AS 'sale_time',sale_store from orders where customer_id = ${customer_id}`;
+    mysql.query(sql).then(resset=>{
+        Response.send({
+            code:200,
+            order:resset
+        })
+    }).catch(error=>{
+        console.log('get order customer list :',error);
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+        
+    })
+
+})
 
 router.use("/update",(Request,Response)=>{
     

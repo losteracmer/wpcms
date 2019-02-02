@@ -9,10 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Nice admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <title>员工管理</title>
     <!-- Custom CSS -->
-    <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./dist/css/style.min.css" rel="stylesheet">
+    <link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -380,19 +382,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Basic Echart</h4>
-                    </div>
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Basic Echart</li>
-                                </ol>
-                            </nav>
-                        </div>
+                        <h4 class="page-title">全部员工</h4>
                     </div>
                 </div>
             </div>
@@ -403,34 +393,153 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
-
-                    <div class="col-lg-12">
+                    <div class="col-12">
                         <div class="card">
-                            <div class="card-body analytics-info">
-                                <h4 class="card-title">滤芯更换分析图</h4>
-                                <div id="stacked-line" style="height:400px;"></div>
+                            <div class="card-body">
+                                <div class="m-t-30">
+                                    <div id='labourListFormDiv'>
+                                        <script type="text/template" id="labourListTemplate">
+                                            <%for(var i=0;i<labourlist.length;i++){ var item = labourlist[i];%>
+                                            <form class="labourForm " data-id="<%=item.labour_id%>">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-3">
+                                                        <label for="labour_name">姓名</label>
+                                                        <input type="text" class="form-control" name="labour_name" placeholder="请输入姓名" value="<%=item.labour_name%>">
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="labour_id">账户名</label>
+                                                        <input type="text" class="form-control" name="labour_id" placeholder="登录账户名" value="<%=item.labour_id%>" readonly>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="labour_pw">登录密码</label>
+                                                        <input type="text" class="form-control" name="labour_pw" placeholder="登录密码" value="<%=item.labour_pw%>">
+                                                    </div>
+
+                                                    <div class="form-group col-md-3">
+                                                        <label for="labour_auhtriory">权限</label>
+                                                        <div class="custom-control custom-checkbox">
+                                                            
+                                                            <%if(item.labour_authriory&1){%>
+                                                                <input type="checkbox" class="custom-control-input" id="customCheck1<%=item.labour_id%>" checked name="labour_authriory1">
+                                                            <%} else{%>
+                                                                <input type="checkbox" class="custom-control-input" id="customCheck1<%=item.labour_id%>" name="labour_authriory1">                                                        
+                                                            <%}%>
+                                                            <label class="custom-control-label" for="customCheck1<%=item.labour_id%>" >查看所有用户</label>
+                                                        </div>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <%if(item.labour_authriory&2){%>
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck2<%=item.labour_id%>" checked name="labour_authriory2">
+                                                            <%}else{%>
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck2<%=item.labour_id%>" name="labour_authriory2">
+                                                            <%}%>
+                                                            <label class="custom-control-label" for="customCheck2<%=item.labour_id%>"  >待定...</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <button class="btn btn-success waves-effect waves-light labourDetailBtn" type="button" data-id="<%=item.labour_id%>" >查看
+                                                        </button>
+                                                        <button class="btn btn-success waves-effect waves-light labourChangeBtn" type="button" data-id="<%=item.labour_id%>">修改
+                                                        </button>
+                                                        <button class="btn btn-danger waves-effect waves-light labourDeleteBtn"  type="button" data-id="<%=item.labour_id%>">删除
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <%}%>
+                                        </script>
+                                    </div>
+                                    <hr>
+                                </div>
+
+                                <button class="btn btn-info waves-effect waves-light" id="addNewLabourBtn">添加
+                                </button>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
+            <!-- sample modal content -->
+            <div id="labourDeleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">确定删除此员工？</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>这个操作非常危险!</h4>
+                            <p>将员工删除后，此员工的一切信息，相关维修记录将同步删除，非必要情况，不建议删除</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-light" id="confirmLabourDeleteBtn">确认删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal -->
+            <div class="modal fade" id="addNewLabourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="addLabourForm">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10">添加一个新员工</i></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">添加一个新员工:</h4>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label for="labour_name">姓名</label>
+                                                <input type="text" class="form-control" name="labour_name" placeholder="请输入姓名">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="labour_id">账户名</label>
+                                                <input type="text" class="form-control" name="labour_id" placeholder="登录账户名">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="labour_pw">登录密码</label>
+                                                <input type="text" class="form-control" name="labour_pw" placeholder="登录密码">
+                                            </div>
+
+                                            <div class="form-group col-md-3">
+                                                <label for="labour_auhtriory">权限</label>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck11"
+                                                        name="labour_authriory1">
+
+                                                    <label class="custom-control-label" for="customCheck11">查看所有用户</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck22"
+                                                        name="labour_authriory2">
+                                                    <label class="custom-control-label" for="customCheck22">待定...</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-success" id="confirmAddLabourBtn"><i class="fas fa-paper-plane"></i>
+                                        确定</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
@@ -457,118 +566,127 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
-    <script src="../../dist/js/app.min.js"></script>
-    <script src="../../dist/js/app.init.js"></script>
-    <script src="../../dist/js/app-style-switcher.js"></script>
+    <script src="./dist/js/app.min.js"></script>
+    <script src="./dist/js/app.init.js"></script>
+    <script src="./dist/js/app-style-switcher.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="./assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="./assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
-    <script src="../../dist/js/waves.js"></script>
+    <script src="./dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="../../dist/js/sidebarmenu.js"></script>
+    <script src="./dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../../dist/js/custom.min.js"></script>
-    <!-- This Page JS -->
-    <script src="../../assets/libs/echarts/dist/echarts-en.min.js"></script>
-    <script src="js/adminMsg.js"></script>
-    <!-- <script src="../../dist/js/pages/echarts/line/line-charts.js"></script> -->
+    <script src="assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="./dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="./assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
+	<script src="js/adminMsg.js"></script>
+    <script src="./dist/js/template-web.js"></script>
+
     <script>
-        $(function () {
-            var stackedChart = echarts.init(document.getElementById('stacked-line'));
-            var option = {
-
-                grid: {
-                    left: '1%',
-                    right: '2%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                // Add legend
-                legend: {
-                    data: ['PP棉', '颗粒碳', '碳棒', '后置碳', '超滤膜']
-                },
-
-                // Add custom colors
-                //color: ['#2962FF', '#7460ee', '#f62d51', '#36bea6', '#212529'],
-
-                // Enable drag recalculate
-                calculable: true,
-
-                // Hirozontal axis
-                xAxis: [{
-                    type: 'category',
-                    boundaryGap: false,
-                    data: [
-                        '1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','12月'
-                    ]
-                }],
-
-                // Vertical axis
-                yAxis: [{
-                    type: 'value'
-                }],
-
-                // Add series
-                series: [{
-                        name: 'PP棉',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [120, 132, 101, 134, 90, 230, 210]
-                    },
-                    {
-                        name: '颗粒碳',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [220, 182, 191, 234, 290, 330, 310]
-                    },
-                    {
-                        name: '碳棒',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [150, 232, 201, 154, 190, 330, 410]
-                    },
-                    {
-                        name: '后置碳',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [320, 332, 301, 334, 390, 330, 320]
-                    },
-                    {
-                        name: '超滤膜',
-                        type: 'line',
-                        stack: 'Total',
-                        data: [820, 932, 901, 934, 1290, 1330, 1320]
-                    }
-                ]
-                // Add series
-
-            };
+        var Glabour_id = null;
+        function getLabourList() {
             $.ajax({
-                url:'analysis/getechat',
-                data:{
-                    year:2019,            
-                },
-                success:function(data){
-                    if(data.code == 200){
-                        option.series = data.series;
-                        option.legend = data.legend;
-                        
-                        stackedChart.setOption(option);
-                    }
+                url: 'labour/getlist',
+                success: function (data, textStatus) {
+                   // console.log(JSON.stringify(data))
+                    var labourListStr = template('labourListTemplate',
+                        data);
+                    $("#labourListFormDiv").html(labourListStr);
                 }
             })
-            
+        }
+        $(document).ready(function () {
+            getLabourList()
+            $("#addNewLabourBtn").on('click', function () {
+                $("#addNewLabourModal").modal('show');
+            })
+            $("#confirmAddLabourBtn").on('click', function (data) {
+                var labourObj = $("#addLabourForm").serialize();
+                console.log(labourObj);
+                $.ajax({
+                    url: 'labour/add',
+                    type: 'POST',
+                    data: labourObj,
+                    success: function (data, textStatus) {
+                        if (data.code == 200) {
+                            toastr.success(data.msg);
+                            $("#addNewLabourModal").modal('hide');
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1200);
+
+                        } else {
+                            toastr.error(data.msg);
+                        }
+                    },
+                    error: function (err) {
+                        alert("网络异常")
+                    }
+                })
+            })
+            $("#confirmLabourDeleteBtn").on('click',function(){
+                console.log('删除id: '+Glabour_id);
+                
+                $.ajax({
+                    url:'/labour/delete',
+                    data:{
+                        labour_id :Glabour_id
+                    },
+                    success:function(data){
+                        if(data.code == 200){
+                            toastr.success(data.msg);
+                            window.location.reload();
+                        }else {
+                            toastr.error(data.msg);
+                        }
+                    },
+                    error:function(error){
+                        toastr.error('网络故障，删除失败');
+                    }
+                })
+            })
+            //绑定事件
+            $("#labourListFormDiv").on("click", ".labourForm .labourDetailBtn", function () {
+                console.log($(this).data("id"));
+                var labour_id = $(this).data("id")
+                window.location.href = `/labour_detail.html?labour_id=${labour_id}`;
+            })
+            $("#labourListFormDiv").on("click", ".labourForm .labourDeleteBtn", function () {
+                
+                var labour_id = $(this).data("id")
+                console.log('click id：'+labour_id)
+                Glabour_id = labour_id;
+                $("#labourDeleteModal").modal('show');
+            })
+            $("#labourListFormDiv").on("click", ".labourForm .labourChangeBtn", function () {
+                var labout_id = $(this).data("id");
+                var labourObj = $("form[data-id='" + labout_id + "']").serialize();
+                //console.log(labourObj);
+                $.ajax({
+                    url: 'labour/change',
+                    type: 'POST',
+                    data: labourObj,
+                    success: function (data, textStatus) {
+                        if (data.code == 200) {
+                            toastr.success(data.msg);
+                        } else {
+                            toastr.error(data.msg);
+                        }
+                    },
+                    error: function (err) {
+                        alert("网络异常")
+                    }
+                })
+
+            })
         })
-        
     </script>
 </body>
 
