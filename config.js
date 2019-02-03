@@ -13,5 +13,7 @@ var config =
     //mysql的配置
     mysqlConfig:mysqlConfig,
 
+    //app version
+    lastVersion:1
 }
 module.exports = config;

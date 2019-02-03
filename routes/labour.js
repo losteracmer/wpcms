@@ -139,7 +139,7 @@ router.use('/maintenance',(Request,Response)=>{
     let sql = `SELECT 
     machine_id,DATE_FORMAT(maintain_time,'%Y-%m-%d %h:%i') AS 'maintain_time',maintain_status,labour_id,labour_name ,
     festatus_id ,allot_status,customer_id,real_name,machine_code,maintain_record,address,
-    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id from maintenance where labour_id = '${labour_id}'`;
+    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id from maintenance where labour_id = '${labour_id}' order by maintain_time desc`;
 
     mysql.query(sql).then(resset=>{
         Response.send({

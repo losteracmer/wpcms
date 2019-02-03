@@ -13,7 +13,7 @@ router.use('/labourlogin',(Request,Response)=>{
     mysql.query(sql).then(resset =>{
         if(resset.length == 0){
             Response.send({
-                code:200,
+                code:403,
                 msg:'没有找到此用户'
             })
             return ;
@@ -21,7 +21,11 @@ router.use('/labourlogin',(Request,Response)=>{
         if(resset[0].labour_pw == labour_pw){
             Response.send({
                 code:200,
-                msg:'登录成功'
+                msg:'登录成功',
+                labour_id:resset[0].labour_id,
+                labour_name:resset[0].labour_name,
+                labour_avatarUrl :resset[0].labour_avatarUrl
+
             })
         }
     })
