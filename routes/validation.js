@@ -4,7 +4,7 @@ const temporarycode = require('../utils/temporarycode');
 router.use((Request,Response,Next)=>{
     console.log("url:",Request.url," cookies",Request.cookies);
     var url = Request.url;
-    if(url.startsWith("/assets")||url.startsWith("/dist")||url.startsWith("/img")||url.startsWith("/src")||url == '/admin_login.html'||url=='/login/login'){
+    if(url.startsWith("/assets")||url.startsWith("/dist")||url.startsWith("/img")||url.startsWith("/src")||url == '/admin_login.html'||url=='/login/login'||url.startsWith("/app")){
         Next();
         
         return;

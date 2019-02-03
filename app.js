@@ -37,6 +37,8 @@ app.use('/sales',require('./routes/sales'));
 app.use('/accessories',require('./routes/accessories'));
 
 app.use('/analysis',require('./routes/analysis'));
+
+app.use('/app',require('./routes/wpcms_app'));
 // 未发现路由
 app.use(function(req, res, next) {
   console.log('##########非访问:',req.url);
