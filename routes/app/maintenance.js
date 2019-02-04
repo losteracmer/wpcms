@@ -66,7 +66,7 @@ router.use('/finishedmaintenance',(Request,Response)=>{
     let sql = `SELECT 
     machine_id,DATE_FORMAT(maintain_time,'%Y-%m-%d %h:%i') AS 'maintain_time',maintain_status,labour_id,labour_name ,
     festatus_id ,allot_status,customer_id,real_name,machine_code,maintain_record,address,
-    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id from maintenance where labour_id = '${labour_id}' order by maintain_time desc`;
+    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id,mobile_1,mobile_2,maintain_record from maintenance where labour_id = '${labour_id}' and maintain_status=1 order by maintain_time desc`;
 
     mysql.query(sql).then(resset=>{
         Response.send({
@@ -87,11 +87,11 @@ router.use('/finishedmaintenance',(Request,Response)=>{
 router.use('/finishedaccmaintenance',(Request,Response)=>{
     let labour_id = Request.query.labour_id;
 
-    let sql = `select accessory_id,accessory_model,DATE_FORMAT(finish_time,'%Y-%m-%d %h:%i') AS 'finish_time',accmaintain_record,labour_name,sale_id,accessory_id ,accmaintain_status,accmaintain_id ,customer_id, address,real_name from accmaintenance where labour_id = '${labour_id}' order by finish_time desc`;
+    let sql = `select accessory_id,accessory_model,DATE_FORMAT(finish_time,'%Y-%m-%d %h:%i') AS 'finish_time',accmaintain_record,labour_name,sale_id,accessory_id ,accmaintain_status,accmaintain_id ,customer_id, address,real_name ,mobile_1,mobile_2,machine_model from accmaintenance where labour_id = '${labour_id}' and accmaintain_status = 1 order by finish_time desc`;
     mysql.query(sql).then(resset=>{
         Response.send({
             code:200,
-            accmaintain:resset
+            accmaintenance:resset
         })
     }).catch(error=>{
         console.error('get maintenance error:',error);
