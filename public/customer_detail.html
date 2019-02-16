@@ -222,7 +222,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -299,7 +299,8 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
@@ -313,7 +314,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -328,7 +330,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -343,7 +346,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -439,7 +443,11 @@
 							<!-- Tabs -->
 							<ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab"
+									<a class="nav-link active" id="fe_status_bar_option" data-toggle="pill" href="#fe_status_bar" role="tab"
+									 aria-controls="pills-timeline" aria-selected="true">滤芯状态</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link " id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab"
 									 aria-controls="pills-timeline" aria-selected="true">滤芯</a>
 								</li>
 								<li class="nav-item">
@@ -452,8 +460,17 @@
 								</li>
 							</ul>
 							<!-- Tabs -->
+							
+
 							<div class="tab-content" id="pills-tabContent">
-								<div class="tab-pane fade show active" id="lvxinTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
+								<div class="tab-pane fade show active" id="fe_status_bar" role="tabpanel" aria-labelledby="pills-timeline-tab">
+									<div class="card-body">
+										
+										<input class="form-control col-lg-2" type="date" value="2018-5-05">
+										
+									</div>
+								</div>
+								<div class="tab-pane fade" id="lvxinTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
 									<div class="card-body">
 										<div class="profiletimeline m-t-0" id="maintenance">
 											<script type="text/template" id="maintenanceTemplate">
@@ -665,9 +682,9 @@
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
@@ -908,9 +925,9 @@
 							toastr.success(data.msg);
 							//getaccmaintain(window.location.href.split('?')[1]);
 							setTimeout(() => {
-								window.location.reload();		
+								window.location.reload();
 							}, 1300);
-							
+
 						} else {
 							toastr.error(data.msg);
 						}

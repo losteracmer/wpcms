@@ -20,11 +20,11 @@ router.use((Request,Response,Next)=>{
             return;
         }else{
             
-            console.log("以登录..");
+            //console.log("以登录..");
             
             temporarycode.check(Request.cookies.admin,Request.cookies.login_status,(flag)=>{
                 if(flag){
-                    console.log('身份验证成功..');
+                    //console.log('身份验证成功..');
                     Next();
                     return;
                 }else {

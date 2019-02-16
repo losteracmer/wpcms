@@ -171,6 +171,7 @@ router.use('/maintenance',(Request,Response)=>{
     })
 })
 
+//获取用户的配件维修记录
 router.use('/accmaintenance',(Request,Response)=>{
     let customer_id = Request.query.customer_id;
 
@@ -200,6 +201,28 @@ router.use('/setlazy',(Request,Response)=>{
         Response.send({
             code:200,
             msg:'设置成功'
+        })
+        
+    }).catch(error=>{
+        console.error('set customer lazy error:',error);
+        
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+    })
+})
+
+router.use('/setunlazy',(Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+
+    let sql = `update customer set customer_status = 0 where customer_id = ?`
+    let par = [customer_id];
+    
+    mysql.update(sql,par).then(result=>{
+        Response.send({
+            code:200,
+            msg:'设置用户正常成功'
         })
         
     }).catch(error=>{

@@ -231,7 +231,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -308,7 +308,8 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
@@ -322,7 +323,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -337,7 +339,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -352,7 +355,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -399,13 +403,13 @@
 							<div class="card-body">
 								<div class="bt-switch card-title">
 									<label for="validshow">只显示未过期客户: </label>
-									<input id="validshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="全部显示"
-									 data-off-text="只显示以过期">
+									<input id="validshow" type="checkbox" data-on-color="success" data-off-color="info" data-on-text="全部显示"
+									 data-off-text="只显示以过期" >
 									<label for="allotshow">派工显示: </label>
 									<input id="allotshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="全部显示"
 									 data-off-text="只显示已派工">
-									 <label for="lazyshow">只显示推迟客户: </label>
-									 <input id="lazyshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="不显示"
+									<label for="lazyshow">只显示推迟客户: </label>
+									<input id="lazyshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="不显示"
 									 data-off-text="显示">
 								</div>
 								<div>
@@ -497,6 +501,36 @@
 				</div>
 			</div>
 
+			<div class="modal fade" id="setFinishTime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			 aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置完成提醒</i></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h6>手动设置完成时间，若不设置，则默认是今天</h6>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">完成时间:</h4>
+										<form class="m-t-20">
+											<input id="finishtimeid" type="date" value="-1" name="finishTime">
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-success" onclick=setFinishTime()><i class="fas fa-paper-plane" id="confirmfinish"></i>
+										确定</button>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="modal fade" id="delayremind" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -527,13 +561,17 @@
 				</div>
 			</div>
 
+
+
+
+
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
@@ -600,7 +638,10 @@
 	<script>
 		var Gfesid = null;
 		var Gindex_table = null;
-		var Goption = {validshow:true,allotshow:true};
+		var Goption = {
+			validshow: false,
+			allotshow: true
+		};
 
 		function setDelayTime() {
 
@@ -626,6 +667,34 @@
 				},
 				error: function (xhr, textStatus) {
 					alert(JSON.stringify(xhr));
+				}
+			})
+
+		}
+
+		function setFinishTime() {
+
+			var finishtime = $("#finishtimeid").val();
+			//alert(delaytime)
+			var fesid = Gfesid;
+			$.ajax({
+				url: '/index/finished',
+				data: {
+					fesid: fesid,
+					finishtime,
+					finishtime
+				},
+				success: function (data, textStatus) {
+					if (data.code == 200) {
+						toastr.success(data.msg);
+						Gindex_table.ajax.reload();
+						$("#setFinishTime").modal("hide");
+					} else {
+						toastr.warning(data.msg)
+					}
+				},
+				error: function (error) {
+					alert(error)
 				}
 			})
 
@@ -657,7 +726,7 @@
 		function setEvent() {
 			//console.log('设置事件');
 			//console.log($(".dropdown-item"))
-			$("a.event").off();  //清空所有事件...
+			$("a.event").off(); //清空所有事件...
 			$("a[data-event='delay']").bind('click', function () {
 
 				var fesid = $(this).parent().data('fesid');
@@ -684,7 +753,7 @@
 				})
 				$("#choselabour").modal("show");
 			})
-			
+
 			$("a[data-event='detail']").bind('click', function () {
 				var fesid = $(this).parent().data('fesid');
 				$.ajax({
@@ -708,24 +777,8 @@
 			})
 			$("a[data-event='finished']").bind('click', function () {
 				var fesid = $(this).parent().data('fesid');
-
-				$.ajax({
-					url: '/index/finished',
-					data: {
-						fesid: fesid
-					},
-					success: function (data, textStatus) {
-						if (data.code == 200) {
-							toastr.success(data.msg);
-							Gindex_table.ajax.reload();
-						} else {
-							toastr.warning(data.msg)
-						}
-					},
-					error: function (error) {
-						alert(error)
-					}
-				})
+				Gfesid = fesid;
+				$("#setFinishTime").modal("show");
 
 			})
 		}
@@ -771,8 +824,8 @@
 					text: '导出表格'
 				}],
 				ajax: {
-					url:`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`,
-					
+					url: `/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}`,
+
 				},
 				//data: data.list,
 				oLanguage: {
@@ -895,7 +948,9 @@
 					var lazyshowStatus = $('#lazyshow').attr('checked');
 					//Gindex_table.ajax.data = Goption;
 					//console.log('重新加载url；'+`/index/getlistajax?validshow=${Goption.validshow}&lazyshow=${Goption.allotshow}`)
-					Gindex_table.ajax.url(`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}&lazyshow=${Goption.lazyshow}`).load();
+					Gindex_table.ajax.url(
+						`/index/getlistajax?validshow=${Goption.validshow}&allotshow=${Goption.allotshow}&lazyshow=${Goption.lazyshow}`
+					).load();
 
 
 				}
@@ -910,9 +965,6 @@
 			$("input[name='delytime']").TouchSpin();
 			var index_list_table = $("#index_list_table")
 
-
-		})
-		$(document).ready(function () {
 
 		})
 	</script>
