@@ -154,7 +154,7 @@ router.use('/finished',(Request,Response)=>{
             })
         }else{
             let sql2 = `insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values(?,?,?,?,?)`;
-            let par = [finishTime,1,'system',fesid,'by system'];
+            let par = [finishTime,1,null,fesid,'by system'];
             mysql.insert(sql2,par).then(result =>{
                 Response.send({
                     code:200,
@@ -168,3 +168,9 @@ router.use('/finished',(Request,Response)=>{
 
 })
 module.exports =router;
+
+
+let arr = [];
+for(let a of arr){
+    console.log("|",a)
+}

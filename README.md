@@ -34,4 +34,9 @@ dosomething ？
 
 ！imortant  订单创建时，用户以更换滤芯无法
 
-更改了触发器 设置auto_insert_festatus 选项 可以不自动添加
+online 
+更改了触发器 设置auto_insert_festatus 选项 可以不自动添加    
+
+local : 
+更改 service 的视图  增加machine_code 
+修改 maintenance 视图  labour right join maintain on labour_id&&  (对于没有员工的维修记录)

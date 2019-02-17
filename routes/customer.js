@@ -234,6 +234,82 @@ router.use('/setunlazy',(Request,Response)=>{
         })
     })
 })
+
+router.use("/getfestatus",async (Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+    let sql = `SELECT customer_id ,real_name,mobile_1,mobile_2,festatus_id,machine_model,fe_model,DATE_FORMAT(last_time,'%Y-%m-%d') AS 'last_time',
+    fe_periodicity - DATEDIFF(NOW(),last_time) AS "valid_time",customer_star,customer_area,address ,
+    allot_status,labour_name ,machine_model ,machine_id,sale_id  from service where customer_id = ${customer_id} order by sale_id`;
+
+    let resset = await mysql.query(sql);
+    Response.send({
+        code:200,
+        festatus:resset
+    })
+    
+})
+
+//设置 festatus 最近更换时间
+router.use('/finished',(Request,Response)=>{
+    let fesid = Request.query.fesid;
+    let finishTime = Request.query.finishtime;
+    let addrecord = Request.query.addrecord;
+    console.log("finish time:",Request.query);
+    let sql = `select * from festatus where festatus_id = ${fesid}`;
+    mysql.query(sql).then(resset=>{
+        if(resset.length == 0){
+            Response.send({
+                code :403,
+                msg:'没有找到这条记录'
+            })
+            return;
+        }
+        let allot_status = resset[0].allot_status;
+        console.log('finished allot_status :',allot_status);
+        if(addrecord){
+            if(allot_status){
+                let sql2 = `insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values(?,?,?,?,?)`;
+                let par = [finishTime,1,allot_status,fesid,'手动设置'];
+                mysql.insert(sql2,par).then(result =>{
+                    Response.send({
+                        code:200,
+                        msg:'设置成功+'+finishTime
+                    })
+                })
+            }else{
+                let sql2 = `insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values(?,?,?,?,?)`;
+                let par = [finishTime,1,null,fesid,'手动设置'];
+                mysql.insert(sql2,par).then(result =>{
+                    Response.send({
+                        code:200,
+                        msg:'设置成功+'+finishTime
+                    })
+                })
+            }
+        }else {
+            let sql = `update festatus set last_time = '${finishTime}' where festatus_id = ${fesid}`;
+            mysql.query(sql).then(result=>{
+                Response.send({
+                    code:200,
+                    msg:'设置成功'
+                })
+            }).catch(error=>{
+                console.log("set customer finish time error:",error,"\nsql:",sql);
+                
+                Response.send({
+                    code:500,
+                    msg:'设置失败，服务器错误'
+                })
+            })
+            
+        }
+        
+    })
+
+   
+
+})
+
 module.exports=router;
 
 

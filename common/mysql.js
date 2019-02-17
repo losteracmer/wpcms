@@ -63,3 +63,7 @@ exports.insert = function(sql,par) {
         });
     })
 }
+
+exports.end = function(){
+    pool.end();
+}

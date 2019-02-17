@@ -391,7 +391,7 @@
 				<!-- Row -->
 				<div class="row">
 					<!-- Column -->
-					<div class="col-lg-4 col-xlg-3 col-md-5">
+					<div class="col-lg-3 col-xlg-3 col-md-5">
 						<div class="card">
 							<div class="card-body">
 								<center class="m-t-30"> <img id="customer_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle"
@@ -438,7 +438,7 @@
 					</div>
 					<!-- Column -->
 					<!-- Column -->
-					<div class="col-lg-8 col-xlg-9 col-md-7">
+					<div class="col-lg-9 col-xlg-9 col-md-7">
 						<div class="card">
 							<!-- Tabs -->
 							<ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
@@ -447,8 +447,8 @@
 									 aria-controls="pills-timeline" aria-selected="true">滤芯状态</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link " id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab"
-									 aria-controls="pills-timeline" aria-selected="true">滤芯</a>
+									<a class="nav-link " id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab" aria-controls="pills-timeline"
+									 aria-selected="true">滤芯</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" id="pills-timeline-tab" data-toggle="pill" href="#peijianTimeLine" role="tab"
@@ -460,14 +460,47 @@
 								</li>
 							</ul>
 							<!-- Tabs -->
-							
+
 
 							<div class="tab-content" id="pills-tabContent">
 								<div class="tab-pane fade show active" id="fe_status_bar" role="tabpanel" aria-labelledby="pills-timeline-tab">
 									<div class="card-body">
-										
-										<input class="form-control col-lg-2" type="date" value="2018-5-05">
-										
+										<div id="festatusTable" class="col-lg-12">
+
+										</div>
+										<script id="festatusTableTemplate" type="text/template">
+											<div class="card-title"><%=machine_model%></div>
+											
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														
+														<th scope="row"><strong>滤芯型号</strong></th>
+														<%for(var i =0;i<festatus.length;i++){ var item = festatus[i];%>
+															<th><%=item.fe_model%></th>
+														<%}%>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th scope="row"><strong>上次更换</strong></th>
+														<%for(var i =0;i<festatus.length;i++){ var item = festatus[i];%>
+															<th class=""><input class="form-control " type="date" value="<%=item.last_time%>" data-festatusId = "<%=item.festatus_id%>"></th>
+														<%}%>
+													</tr>
+													<tr>
+														<th scope="row"><strong>有效期</strong></th>
+														<%for(var i =0;i<festatus.length;i++){ var item = festatus[i];%>
+															<%if(item.valid_time <=0){%>
+																<th><span style="color:red;"   data-feId = "<%=item.fe_id%>"><%=item.valid_time%></span></th>
+															<%}else {%>
+																<th><span   data-feId = "<%=item.fe_id%>"><%=item.valid_time%></span></th>
+															<%}%>
+														<%}%>
+													</tr>
+												</tbody>
+											</table>
+										</script>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="lvxinTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
@@ -724,220 +757,9 @@
 	<script src="js/adminMsg.js"></script>
 
 	<script src="./dist/js/template-web.js"></script>
+	<script src="./js/customer_detail.js"></script>
 	<script>
-		function doBolckUI() {
-			$.blockUI({
-				message: '<i class="fas fa-spin fa-sync text-white"></i><i class="text-white">提交请求中...</i>',
-				overlayCSS: {
-					backgroundColor: '#000',
-					opacity: 0.5,
-					cursor: 'wait'
-				},
-				css: {
-					color: '#333',
-					border: 0,
-					padding: 0,
-					backgroundColor: 'transparent'
-				},
-			})
-		}
-
-		function getorder(pars) {
-			$.ajax({
-				url: '/sales/customerorder',
-				data: pars,
-				success: function (data, textStatus) {
-					var orderlistStr = template('orderListTemplate', data);
-					$("#choseorderselect").html(orderlistStr);
-				},
-				error: function (xhr, textStatus) {
-					alert('网络异常')
-				}
-			})
-		}
-
-		function getaccmaintain(pars) {
-			//获取配件列表
-			console.log("getaccmaintain");
-			$.ajax({
-				url: '/accessories/getlist',
-				success: function (data, textStatus) {
-					console.log('accessories list 请求成功' + JSON.stringify(data));
-
-					var accessorieslistStr = template('accessoriesListTemplate', data);
-					$("#choseaccessoriesselect").html(accessorieslistStr);
-				},
-				error: function (xhr, textStatus) {
-					alert('网络异常')
-				}
-			})
-		}
-		$(document).ready(function () {
-			var pars = window.location.href.split('?')[1];
-			console.log('参数:' + pars);
-			$.ajax({
-				url: '/customer/getdetail' + '?' + pars,
-				success: function (data, textStatus) {
-					console.log('get data: ' + JSON.stringify(data))
-					if (data.code == 200) {
-						var badge;
-						if (data.detail.customer_status == 0) {
-							badge = '<span class="badge badge-success badge-pill">  正常</span>';
-						} else {
-							badge = '<span class="badge badge-danger badge-pill"> 僵尸</span>';
-						}
-						$("#real_name").html(data.detail.real_name + badge);
-						$("#address").html(data.detail.address);
-						$("#mobile_1").html(data.detail.mobile_1);
-						$("#mobile_2").html(data.detail.mobile_2);
-						$("#address").html(data.detail.address);
-						$("#customer_avatarUrl").attr('src', data.detail.customer_avatarUrl);
-						//input 内容更新
-						$("#p_real_name").val(data.detail.real_name);
-						$("#p_mobile_1").val(data.detail.mobile_1)
-						$("#p_mobile_2").val(data.detail.mobile_2)
-						$("#p_address").val(data.detail.address)
-						$("#p_customer_area").val(data.detail.customer_area)
-						$("#p_customer_from").val(data.detail.customer_from)
-						$("#p_remark").val(data.detail.remark)
-						$(`input[name='customer_star'][value=${data.detail.customer_star}]`).attr('checked', true)
-
-					} else if (data.code == 302) {
-						window.location.href = data.href;
-					} else {
-						toastr.error(data.msg);
-					}
-				}
-			});
-			//滤芯维修记录
-			$.ajax({
-				url: '/customer/maintenance' + '?' + pars,
-				success: function (data, textStatus) {
-					if (data.code == 200) {
-
-						var maintenanceStr = template('maintenanceTemplate', data);
-						$("#maintenance").html(maintenanceStr);
-					} else {
-						toastr.warning(data.msg);
-					}
-				}
-			})
-			//配件维修记录
-			$.ajax({
-				url: '/customer/accmaintenance' + '?' + pars,
-				success: function (data, textStatus) {
-					if (data.code == 200) {
-
-						var accmaintainStr = template('accmaintainTemplate', data);
-						$("#accmaintain").html(accmaintainStr);
-					} else {
-						toastr.warning(data.msg);
-					}
-				}
-			})
-			//用户订单
-			$.ajax({
-				url: '/sales/customerorder' + '?' + pars,
-				success: function (data, textStatus) {
-					if (data.code == 200) {
-						var orderTemplateStr = template('orderTemplate', data);
-						$("#orderList").html(orderTemplateStr);
-					} else {
-						toastr.warning(data.msg);
-					}
-				}
-			})
-			//获取工人列表
-			$.ajax({
-				url: '/labour/getlist',
-				success: function (data, textStatus) {
-					console.log('labour list 请求成功' + data);
-
-					var lobourlistStr = template('labourListTemplate', data);
-					$("#choselabourselect").html(lobourlistStr);
-				},
-				error: function (xhr, textStatus) {
-					alert('网络异常')
-				}
-			})
-
-			getaccmaintain(pars);
-			//获取此用户全部订单
-			getorder(pars);
-		})
-		$(document).ready(function () {
-
-			$("#updatebtn").on('click', function () {
-				doBolckUI();
-				var formStr = $("#customerDetailForm").serialize();
-				console.log(typeof formStr);
-				var pars = window.location.href.split('?')[1]
-				console.log(formStr);
-				$.ajax({
-					url: '/customer/change',
-					type: "POST",
-					data: formStr + "&" + pars,
-					success: (data, textStatus) => {
-						if (data.code == 200) {
-							toastr.success(data.msg)
-						} else {
-							toastr.error(data.msg)
-						}
-					},
-					error: (error) => {
-						toastr.error(JSON.stringify(error));
-					},
-					complete: () => {
-						setTimeout(() => {
-							$.unblockUI()
-						}, 300);
-					}
-				})
-			})
-			$("#addAccmaintainBtn").on('click', function (that) {
-				var addaccFormObj = $("#addAccmaintainForm").serialize();
-				$.ajax({
-					url: '/accessories/addmaintain',
-					data: addaccFormObj,
-					success: function (data, textStatus) {
-						if (data.code == 200) {
-							toastr.success(data.msg);
-							getaccmaintain(window.location.href.split('?')[1]);
-						} else {
-							toastr.error(data.msg)
-						}
-					},
-					error: function (error) {
-						alert('网络错误')
-					}
-				})
-			})
-			$("#accmaintain").on("click", ".doitbtn-makesucess", function (that) {
-				var accmaintain_id = $(this).data('accmaintain_id');
-
-				$.ajax({
-					url: '/accessories/setaccmaintainfinish',
-					data: {
-						accmaintain_id: accmaintain_id
-					},
-					success: function (data) {
-						if (data.code == 200) {
-							toastr.success(data.msg);
-							//getaccmaintain(window.location.href.split('?')[1]);
-							setTimeout(() => {
-								window.location.reload();
-							}, 1300);
-
-						} else {
-							toastr.error(data.msg);
-						}
-					},
-					error: function (error) {
-						toastr.error('网络异常');
-					}
-				})
-			})
-		})
+		
 	</script>
 </body>
 
