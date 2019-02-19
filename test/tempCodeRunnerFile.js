@@ -1,4 +1,4 @@
-function add(x,y){ return new Promise((resolve,reject)=>{
-    resolve(x+y)
-  })}
-  console.log(add(1,2).then(s =>{console.log(s); return new Promise()}));
+let amap = new Map()
+
+amap.set("sss","sst");
+console.log(amap.get("sst"))

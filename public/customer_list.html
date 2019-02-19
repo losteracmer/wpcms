@@ -228,7 +228,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -305,7 +305,8 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
@@ -319,7 +320,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -334,7 +336,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -349,7 +352,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -431,7 +435,8 @@
 			</div>
 
 			<!-- Create Modal -->
-			<div class="modal fade" id="createCustomerModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+			<div class="modal fade" id="createCustomerModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+			 aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<form id="addCustomerForm">
@@ -510,9 +515,9 @@
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
@@ -563,6 +568,7 @@
 	<script>
 		var Gcustomer_list = null;
 		var Gcustomer_id = null;
+
 		function setEvent() {
 			$("a.event").off();
 			$("a[data-event='detail']").bind('click', function () {
@@ -575,32 +581,33 @@
 				var customer_id = $(this).parent().data('customer_id');
 				Gcustomer_id = customer_id;
 				console.log('点击')
-				toastr.warning('确定操作?<br /><br /><button id="confirmLazyCustomer" type="button" class="btn btn-secondary clear">确定</button>',
+				toastr.warning(
+					'确定操作?<br /><br /><button id="confirmLazyCustomer" type="button" class="btn btn-secondary clear">确定</button>',
 					'从此该用户不会出现在首页列表上，即使他还活着', {
 						"progressBar": true,
 						"showMethod": "slideDown",
 						"hideMethod": "slideUp",
 						timeOut: 4000
 					})
-					$("#confirmLazyCustomer").on('click',function(){
-						console.log('toastr 按钮被点击')
-						$.ajax({
-							url:"/customer/setlazy",
-							data:{
-								customer_id:customer_id
-							},
-							success:function(data,textStatus){
-								if(data.code == 200){
-									toastr.success(data.msg)
-								}else{
-									toastr.error(data.msg);
-								}
-							},
-							error:function(error){
-								toastr.error(JSON.stringify(error));
+				$("#confirmLazyCustomer").on('click', function () {
+					console.log('toastr 按钮被点击')
+					$.ajax({
+						url: "/customer/setlazy",
+						data: {
+							customer_id: customer_id
+						},
+						success: function (data, textStatus) {
+							if (data.code == 200) {
+								toastr.success(data.msg)
+							} else {
+								toastr.error(data.msg);
 							}
-						})
+						},
+						error: function (error) {
+							toastr.error(JSON.stringify(error));
+						}
 					})
+				})
 			})
 
 		}
@@ -623,9 +630,14 @@
 
 		$(document).ready(function () {
 
-			
+
 
 			Gcustomer_list = $("#customer_list").DataTable({
+				"lengthChange": true,
+				//允许css控制行高
+				// fixedColumns: {
+				// 	heightMatch: 'none'
+				// },
 				dom: 'Bfrtip',
 				buttons: [{
 					extend: 'print',
@@ -696,23 +708,23 @@
 			$('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass(
 				'btn btn-cyan text-white mr-1');
 		})
-		$(document).ready(function(){
-			$("#addCustomerBtn").on('click',function(){
+		$(document).ready(function () {
+			$("#addCustomerBtn").on('click', function () {
 				var customerObj = $("#addCustomerForm").serialize();
 				$.ajax({
-					url:'/customer/add',
-					data:customerObj,
-					type:'POST',
-					success:function(data){
-						if(data.code == 200){
+					url: '/customer/add',
+					data: customerObj,
+					type: 'POST',
+					success: function (data) {
+						if (data.code == 200) {
 							toastr.success(data.msg)
 							$("#createCustomerModal").modal('hide');
 							Gcustomer_list.ajax.reload();
-						}else{
-							toastr.error(data.code,data.msg);
+						} else {
+							toastr.error(data.code, data.msg);
 						}
 					},
-					error:function(error){
+					error: function (error) {
 						toastr.error('网络异常!');
 					}
 				})

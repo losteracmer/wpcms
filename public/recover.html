@@ -9,20 +9,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-	<title>沁园净水机客户管理系统</title>
-	<!-- This page CSS -->
-	<link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
-
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+	<title>数据恢复</title>
 	<!-- Custom CSS -->
-	<link href="dist/css/style.min.css" rel="stylesheet">
-	<style>
-		.card-active{
-			transform: translateY(-4px) scale(1.01);
-			box-shadow: 0 14px 24px rgba(62,57,107,.8);
-		}
-	</style>
+	<!-- Custom CSS -->
+	<link href="./dist/css/style.min.css" rel="stylesheet">
+	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -230,7 +222,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -307,7 +299,8 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
@@ -321,7 +314,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -336,7 +330,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -351,7 +346,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -377,237 +373,295 @@
 			</div>
 			<!-- End Sidebar scroll-->
 		</aside>
+		<!-- ============================================================== -->
 		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
 		<!-- ============================================================== -->
 		<!-- Page wrapper  -->
 		<!-- ============================================================== -->
 		<div class="page-wrapper">
-
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<div class="page-breadcrumb">
+				<div class="row">
+					<div class="col-5 align-self-center">
+						<h4 class="page-title">数据恢复</h4>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
 			<!-- ============================================================== -->
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<!--
-						begin
-                    -->
 				<div class="row">
-					<div class="col-lg-3 col-xlg-2 col-md-5">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title m-t-10">全部滤芯</h4>
-							</div>
-							<div>
-								<hr>
-							</div>
-							<div class="card-body" id="feList">
-								<script type="text/template" id="feListTemplate">
-									<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-									<div class="card border-bottom border-success">
-										<div class="d-flex flex-row">
-											<div class="p-10 bg-success">
-												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-											</div>
-											<div class="p-10">
-												<h3 class="text-success m-b-0"><%=item.fe_model%></h3>
-												<span class="text-muted"><%=item.fe_periodicity%>天</span>
+					<div class="col-12">
+						<div class="card row " style="flex-direction: row;">
+							<div class="card-body col-sm-12 col-md-12 col-lg-12">
+
+								<form action="/parsecustomer/parsemsg" method="GET">
+									<div class="">
+										<input class="form-control col-lg-12" type="text" placeholder="输入标题模板" id="titleStr" value="序号	星级	来源	区域	地址	姓名	电话2	电话	条码	型号	安装日期	最近更换	PP棉	最近更换	颗粒	最近更换	后置	最近更换	压缩	最近更换	超滤膜	最近更换	RO模">
+										<hr>
+										<input class="form-control col-lg-12" type="text" placeholder="复制粘贴行到此处" id="valueStr">
+									</div>
+									<hr>
+									<div id="active-input" class="row">
+										<div id="machine_model_div" style="display: none;" class="col-lg-4">
+											
+											<div class="form-group ">
+												<label class="col-md-6">机器型号</label>
+												<div class="col-md-6">
+														<button type="button" class="btn btn-info" id="chooseMachineModel">选择机器型号</button>
+													<input type="text" class="form-control form-control-line " id="a_machine_model" readonly>
+													<input type="text" class="form-control form-control-line" hidden id="a_machine_id">
+												</div>
 											</div>
 										</div>
+										<div id="sale_time_div" style="display: none;" class="col-lg-4">
+											<div class="form-group">
+												<label class="col-md-6">安装日期</label>
+												<div class="col-md-6">
+													<input type="date" class="form-control form-control-line" id="a_sale_time">
+												</div>
+											</div>
+										</div>
+
+
 									</div>
-									<%}%>
+									<button class="btn btn-info" type="button" id="submit">提交</button>
+								</form>
+
+							</div>
+							<div class="card-body col-sm-12 col-md-6 col-lg-6">
+								<div class="card-title">客户信息:</div>
+								<form class="form-material " id="customerDetailForm" action="">
+									<div class="form-group">
+										<label class="col-md-12">姓名</label>
+										<div class="col-md-12">
+											<input type="text" class="form-control form-control-line" name="real_name" id="p_real_name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="example-email" class="col-md-12">电话1</label>
+										<div class="col-md-12">
+											<input type="tel" placeholder="" class="form-control form-control-line" name="mobile_1" id="p_mobile_1">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="example-email" class="col-md-12">电话2</label>
+										<div class="col-md-12">
+											<input type="tel" placeholder="" class="form-control form-control-line" name="mobile_2" id="p_mobile_2">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="example-email" class="col-md-12">区域</label>
+										<div class="col-md-12">
+											<input type="text" placeholder="" class="form-control form-control-line" name="customer_area" id="p_customer_area">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="example-email" class="col-md-12">详细地址</label>
+										<div class="col-md-12">
+											<input type="text" placeholder="" class="form-control form-control-line" name="address" id="p_address">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-12">备注</label>
+										<div class="col-md-12">
+											<textarea rows="5" class="form-control form-control-line" id="p_remark" name="remark"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-12">来源</label>
+										<div class="col-sm-12">
+											<select id="p_customer_from" name="customer_from" class="form-control form-control-line">
+												<option value="店面">店面</option>
+												<option value="网购">网购</option>
+												<option value="服务">服务</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-12">选择用户星级</label>
+										<div class="col-sm-12">
+											<div class="form-check form-check-inline">
+												<div class="custom-control custom-radio">
+													<input type="radio" class="custom-control-input" id="star-1" name="customer_star" value="1">
+													<label class="custom-control-label" for="star-1">1</label>
+												</div>
+											</div>
+											<div class="form-check form-check-inline">
+												<div class="custom-control custom-radio">
+													<input type="radio" class="custom-control-input" id="star-2" name="customer_star" value="2">
+													<label class="custom-control-label" for="star-2">2</label>
+												</div>
+											</div>
+											<div class="form-check form-check-inline">
+												<div class="custom-control custom-radio">
+													<input type="radio" class="custom-control-input" id="star-3" name="customer_star" value="3">
+													<label class="custom-control-label" for="star-3">3</label>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</form>
+
+							</div>
+							<div class="card-body col-sm-12 col-md-6 col-lg-6">
+								<div class="card-title">订单信息：</div>
+								<form class="form-material " id="orderForm" action="">
+									<div class="col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="sale_time">安装日期</label>
+											<input type="date" class="form-control" placeholder="" id="sale_time" name="sale_time">
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="machine_model">机器型号</label>
+											<input type="text" class="form-control" placeholder="" id="machine_model" name="machine_model" readonly>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12">
+										<div class="form-group">
+											<label for="machine_code">机器条码</label>
+											<input type="text" class="form-control" id="machine_code" name="machine_code">
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 disabled" hidden>
+										<div class="form-group">
+											<label for="machine_id">机器ID</label>
+											<input name="machine_id" id="machine_id" rows="6" class="form-control"></input>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="card-body col-sm-12 col-md-12 col-lg-12">
+								<div class="card-title">滤芯状态:</div>
+								<form action="" id="festatusForm">
+									<div id="festatusTable" class="col-lg-12">
+
+									</div>
+								</form>
+								
+								<script id="festatusTableTemplate" type="text/template">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+	
+												<th scope="row"><strong>滤芯型号</strong></th>
+												<%for(var i =0;i<festatus.length;i++){ var item = festatus[i];%>
+												<th>
+													<%=item.fe_model%>
+												</th>
+												<%}%>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row"><strong>上次更换</strong></th>
+												<%for(var i =0;i<festatus.length;i++){ var item = festatus[i];%>
+												<th class=""><input class="form-control " type="date" value="<%=item.last_time%>" name="<%=item.fe_id%>"></th>
+												<%}%>
+											</tr>
+										</tbody>
+									</table>
 								</script>
 
 							</div>
-							<div class="card-footer">
-								<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addFe" data-toggle="modal"
-								 data-target="#addFeModal">添加滤芯</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-9 col-xlg-9 col-md-12">
-
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title m-t-10">对应表</h4>
-							</div>
-							<div>
-								<hr>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6 col-xlg-6 col-md-6">
-										<div class="card" id="machineCardList">
-											<h4 class="card-title">机器</h4>
-											<hr>
-											<div class="card-body" id="machineList">
-												<!-- 内部小card  begin -->
-												<script type="text/template" id="machineListTemplate">
-													<%for(var i=0;i<machinelist.length;i++){ var item = machinelist[i];%>
-													<div class="card machine-card bg-info" data-machine_id='<%=item.machine_id%>'>
-														<div class="card-body " >
-															<div class="d-flex no-block align-items-center">
-																<div>
-																	<span class="text-white display-6"><i class="ti-panel"></i></span>
-																</div>
-																<div class="ml-auto text-white">
-																	<h2><%=item.machine_model%></h2>
-																</div>
-															</div>
-														</div>
-													</div>
-													<%}%>
-												</script>
-
-												<!-- 内部小card  end -->
-											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachine"
-												 data-toggle="modal" data-target="#addMachineModal">添加机器</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-1 col-xlg-1 col-md-1">
-									</div>
-									<div class="col-md-5 col-xlg-5 col-md-5">
-										<h4 class="card-title" id="feListTitle">滤芯</h4>
-										<hr>
-										<div class="card">
-											<div class="card-body" id="machineFeList">
-												<Script type="text/template" id="machineFeListTemplate">
-													<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-													<div class="card border-bottom border-success">
-														<div class="d-flex flex-row">
-															<div class="p-10 bg-success">
-																<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-															</div>
-															<div class="p-10">
-																<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
-																<span class="text-muted"><%=item.fe_periodicity%>天</span>
-															</div>
-														</div>
-													</div>
-													<%}%>
-												</Script>
-												<!-- 内部小card begin -->
-
-
-												<!-- 内部小card end -->
-
-											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe"
-												 data-toggle="modal" data-target="##">为此机器添加滤芯</button>
-											</div>
-										</div>
-									</div>
-								</div>
+							<div class="card-body col-sm-12 col-md-12 col-lg-12">
+								<button class="btn btn-info" id="confirmAndSubmit" disabled>确认无误提交</button>
 							</div>
 
 						</div>
-
 					</div>
 				</div>
-
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->
+			<!-- sample modal content -->
+
+			<!-- /.modal -->
+
+			<div class="modal fade" id="choseMachineModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择机器</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="firstName1">选择机器型号</label>
+									<select class="select2 custom-select form-control" style="width: 100%; height:36px;" id="machineList">
+										<script id="machineListTemplate" type="text/template">
+											<%for(var i=0;i<machinelist.length;i++){var item = machinelist[i];%>
+														<option value="<%=item.machine_id+'|'+item.machine_model%>"><%=item.machine_model%></option>
+													<%}%>
+												</script>
+										<option>
+										<option>加载机器列表失败</option>
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-success" id="savaChoseMachine"><i class="ti-save"></i> 确定</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- Create Modal -->
+			<div class="modal fade" id="choseCustomerModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择客户</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="firstName1">选择客户</label>
+									<select class="select2 custom-select form-control" id="customerList" style="width: 100%; height:36px;">
+										<script id="customerListTemplate" type="text/template">
+											<%for(var i=0;i<customerlist.length;i++){var item = customerlist[i];%>
+														<option value="<%=item.customer_id%>"><%=item.real_name +" | "+item.mobile_1%></option>
+													<%}%>
+												</script>
+										<option>加载客户列表失败</option>
+
+									</select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+								<button type="button" onclick="fun()" class="btn btn-success" id="saveChoseCustomer"><i class="ti-save"></i> 确定</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 			<!-- ============================================================== -->
-			<!-- addfe Modal -->
-			<div class="modal fade" id="addFeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新滤芯</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入滤芯型号" id="p_fe_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入滤芯保质期(天)" id="p_fe_periodicity">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddFeBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<!-- addMachine Modal -->
-			<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新机器</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入机器型号" id="p_machine_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入价格（可不填）" id="p_machine_price">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddMachineBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="modal fade" id="addMachineFeModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<form id="choseFeForm">
-								<div class="modal-header">
-									<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择滤芯</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<div class="form-group">
-										<label for="firstName1">选择可用滤芯</label>
-										<select name='feId' id="chosefeselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
-	
-											<script id="MfeListTemplate" type="text/template">
-												<%for(var i=0;i<felist.length;i++){var item = felist[i];%>
-													<option value="<%=item.fe_id%>"><%=item.fe_model%></option>
-												<%}%>
-											</script>
-										</select>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-									<button type="button" class="btn btn-success" id="saveAddMachineFeBtn"><i class="ti-save"></i> 确定</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
@@ -619,43 +673,42 @@
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->
 	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- customizer Panel -->
+	<!-- ============================================================== -->
 
 	<!-- ============================================================== -->
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
-	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="./assets/libs/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
-	<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="./assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- apps -->
-	<script src="dist/js/app.min.js"></script>
-	<script src="dist/js/app.init.js"></script>
-	<script src="dist/js/app-style-switcher.js"></script>
+	<script src="./dist/js/app.min.js"></script>
+	<script src="./dist/js/app.init.js"></script>
+	<script src="./dist/js/app-style-switcher.js"></script>
 	<!-- slimscrollbar scrollbar JavaScript -->
-	<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+	<script src="./assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="./assets/extra-libs/sparkline/sparkline.js"></script>
 	<!--Wave Effects -->
-	<script src="dist/js/waves.js"></script>
+	<script src="./dist/js/waves.js"></script>
 	<!--Menu sidebar -->
-	<script src="dist/js/sidebarmenu.js"></script>
+	<script src="./dist/js/sidebarmenu.js"></script>
 	<!--Custom JavaScript -->
-	<script src="dist/js/custom.min.js"></script>
 	<script src="assets/libs/toastr/build/toastr.min.js"></script>
-
-	<!--This page plugins -->
-	<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+	<script src="./dist/js/custom.min.js"></script>
+	<!--This page JavaScript -->
+	<script src="../assets/libs/block-ui/jquery.blockUI.js"></script>
+	<script src="../assets/extra-libs/block-ui/block-ui.js"></script>
+	<script src="./assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
 	<script src="js/adminMsg.js"></script>
-	<!-- start - This is for export functionality only -->
-	<!--<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>-->
-
 	<script src="./dist/js/template-web.js"></script>
-	<script src="./js/machine.js"></script>
+
+	<script src="./js/recover.js"></script>
+	<script>
+		$().serialize
+	</script>
 </body>
 
-</html>1
+</html>

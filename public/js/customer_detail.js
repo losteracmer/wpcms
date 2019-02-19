@@ -57,6 +57,7 @@ function changeCustomerStatus(that) {
 
 function getCustomerFestatus(pars) {
     $.get("/customer/getfestatus", pars, function (data) {
+        console.log("festatus:",data)
         /**
          * 将传来的滤芯按照不同的机器码区分，分别渲染到前台
          * */
@@ -65,7 +66,7 @@ function getCustomerFestatus(pars) {
         let machineIndex = 0;
         let oneMachine = [];
         for (let item of data.festatus) {
-
+            console.log("其中一个item:",item)
             if (sale_id == null) {
                 sale_id = item.sale_id;
             } else if (item.sale_id != sale_id) {
@@ -73,9 +74,12 @@ function getCustomerFestatus(pars) {
                 sale_id = item.sale_id;
                 allMachine.push(oneMachine);
                 oneMachine = [];
-            } else {
+            } 
+                console.log("push 成功");
+                
                 oneMachine.push(item);
-            }
+            
+            
         }
         if(oneMachine.length != 0)
         allMachine.push(oneMachine);

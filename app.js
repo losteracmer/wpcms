@@ -38,6 +38,9 @@ app.use('/accessories',require('./routes/accessories'));
 
 app.use('/analysis',require('./routes/analysis'));
 
+app.use('/parsecustomer',require("./routes/parseCustomer"));
+
+
 app.use('/app',require('./routes/wpcms_app'));
 // 未发现路由
 app.use(function(req, res, next) {

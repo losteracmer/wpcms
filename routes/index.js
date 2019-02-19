@@ -169,8 +169,3 @@ router.use('/finished',(Request,Response)=>{
 })
 module.exports =router;
 
-
-let arr = [];
-for(let a of arr){
-    console.log("|",a)
-}
