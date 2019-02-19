@@ -133,6 +133,22 @@ $(function () {
         $("#choseMachineModal").modal("hide");
     })
 
+    //删除valueStr 后 清空 a_value
+    $("#valueStr").on("input propertychange",function(){
+        $("#sale_time_div").hide();
+        $("#a_sale_time").val("");
+        $("#machine_model_div").hide();
+        $("#a_machine_model").val("");
+        $("#a_machine_id").val("");
+    })
+    $("#titleStr").on("input propertychange",function(){
+        $("#valueStr").val("");
+        $("#sale_time_div").hide();
+        $("#a_sale_time").val("");
+        $("#machine_model_div").hide();
+        $("#a_machine_model").val("");
+        $("#a_machine_id").val("");
+    })
     //确认提交后
     $("#confirmAndSubmit").on("click",function(){
         doBolckUI();
