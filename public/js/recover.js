@@ -62,7 +62,7 @@ $(function () {
         let a_machine_id = $("#a_machine_id").val();
         let a_machine_model = $("#a_machine_model").val();
         let a_sale_time = $("#a_sale_time").val();
-
+        doBolckUI();
         $.ajax({
             url: '/parsecustomer/parsemsg',
             data: {
@@ -108,7 +108,9 @@ $(function () {
             error: function (error) {
                 toastr.error('网络故障...')
             },
-            complate: function () {}
+            complete: function () {
+                $.unblockUI();
+            }
         })
     })
 })
