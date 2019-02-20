@@ -408,7 +408,7 @@
 								<div class="bt-switch card-title">
 									<label for="validshow">只显示未过期客户: </label>
 									<input id="validshow" type="checkbox" data-on-color="success" data-off-color="info" data-on-text="全部显示"
-									 data-off-text="只显示以过期" >
+									 data-off-text="只显示以过期">
 									<label for="allotshow">派工显示: </label>
 									<input id="allotshow" type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="全部显示"
 									 data-off-text="只显示已派工">
@@ -471,6 +471,10 @@
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->
+
+
+
+			
 			<!-- ============================================================== -->
 			<!-- Create Modal -->
 			<div class="modal fade" id="choselabour" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
@@ -504,38 +508,7 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="modal fade" id="setFinishTime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			 aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置完成提醒</i></h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<h6>手动设置完成时间，若不设置，则默认是今天</h6>
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title">完成时间:</h4>
-										<form class="m-t-20">
-											<input id="finishtimeid" type="date" value="-1" name="finishTime">
-										</form>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-									<button type="button" class="btn btn-success" onclick=setFinishTime()><i class="fas fa-paper-plane" id="confirmfinish"></i>
-										确定</button>
-								</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="modal fade" id="delayremind" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="delayremind" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<form>
@@ -560,10 +533,42 @@
 									<button type="button" class="btn btn-success" onclick=setDelayTime()><i class="fas fa-paper-plane" id="confirmDelay"></i>
 										确定</button>
 								</div>
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
+
+			<div class="modal fade" id="setFinishTime" role="dialog" aria-labelledby="SetFinishTimeModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="SetFinishTimeModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置完成提醒</i></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h6>手动设置完成时间，若不设置，则默认是今天</h6>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">完成时间:</h4>
+										<form class="m-t-20">
+											<input id="finishtimeid" type="date" value="-1" name="finishTime">
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-success" onclick=setFinishTime()><i class="fas fa-paper-plane" id="confirmfinish"></i>确定</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 
 
 

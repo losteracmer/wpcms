@@ -18,7 +18,15 @@ function split(splitstr) {
 
 function format(timeStr) {
     if (timeStr.length == 0) return undefined;
-    let timeArr = timeStr.split("-");
+
+    let timeArr=[];
+    if(timeStr.indexOf("/")!=-1){
+        timeArr= timeStr.split("/");
+    }else if(timeStr.indexOf("-")){
+        timeArr= timeStr.split("-"); 
+    }else if(timeStr.indexOf("\\")!=-1){
+        timeArr= timeStr.split("\\"); 
+    }
     if(timeArr.length!= 3) return undefined;
     if (timeArr[1].length == 1) {
         timeArr[1] = "0" + timeArr[1];
