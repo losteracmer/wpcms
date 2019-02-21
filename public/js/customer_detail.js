@@ -296,7 +296,7 @@ $(document).ready(function () {
         
     })
     //注册 input type date 事件
-    $("#festatusTable").on("input", "input", function () {
+    $("#festatusTable").on("blur", "input", function () {
         let finishtime = $(this).val()
         let _confim = confirm("确定更改时间:" + finishtime);
         if (_confim) {
