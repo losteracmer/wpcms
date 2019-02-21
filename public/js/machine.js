@@ -89,6 +89,7 @@ var Gmachine_id = null;
 						getAllMachine();
 						Gmachine_id = null;
 						$("#deleteMachineBtn").hide();
+						$("#machineFeList").html("");
 					} else{
 						toastr.error(data.msg);
 					}
