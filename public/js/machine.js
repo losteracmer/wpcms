@@ -56,6 +56,27 @@ var Gmachine_id = null;
                 })
                 
 		}
+		function deleteFe(machine_id ,fe_id){
+			$.ajax({
+				url: 'machine/deletemachinefe',
+				data: {
+					machine_id,
+					fe_id
+				},
+				success: function (data, textStatus) {
+					if (data.code == 200) {
+						getMachineFe(machine_id);
+						toastr.success(data.msg);
+					} else{
+						toastr.error(data.msg);
+					}
+				},
+				error: function (error) {
+					toastr.error('网络故障...')
+				},
+				complete:function(){}
+			})
+		}
 		$(document).ready(function () {
 			getAllMachine();
 			getAllFe();
@@ -70,7 +91,12 @@ var Gmachine_id = null;
 
 				getMachineFe(machine_id);
             })
-            
+            $("#machineFeList").on("click",".deleteBtn",function(){
+				let _confirm = confirm("确定删除这个滤芯？");
+				let fe_id = $(this).attr("data-fe_id");
+				deleteFe(Gmachine_id,fe_id);
+				
+			})
 			$("#saveAddFeBtn").on('click', function () {
 				console.log('click');
 

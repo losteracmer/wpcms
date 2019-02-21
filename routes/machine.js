@@ -4,7 +4,7 @@ const mysql = require('../common/mysql');
 
 router.use("/getmachinelist",(Request,Response)=>{
 
-    let sql = `select * from machine `;
+    let sql = `select * from machine order by machine_id desc`;
     mysql.query(sql).then(resset=>{
         Response.send({
             code:200,
@@ -102,6 +102,8 @@ router.use('/addfe',(Request,Response)=>{
     
 });
 
+
+
 router.use('/addmachine',(Request,Response)=>{
     let machine_model = Request.query.machine_model;
     let machine_price = Request.query.machine_price*1;
@@ -150,7 +152,29 @@ router.use('/addmachinefe',(Request,Response)=>{
     })
     
 });
+router.use('/deletemachinefe',(Request,Response)=>{
+    let machine_id = Request.query.machine_id;
+    let fe_id = Request.query.fe_id;
 
+    //先查找有没有这个
+
+    let sql = `delete from machine2filterelement where machine_id =? and fe_id = ?`;
+    let par = [machine_id,fe_id];
+
+    mysql.insert(sql,par).then(result=>{
+        Response.send({
+            code:200,
+            msg:'删除成功'
+        })
+    }).catch(error=>{
+        console.error('delete machine fe error:',error);
+        Response.send({
+            code:500,
+            msg:"删除失败"
+        })
+    })
+    
+});
 
 
 

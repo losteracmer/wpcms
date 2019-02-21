@@ -230,7 +230,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -307,7 +307,8 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
@@ -321,7 +322,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -336,7 +338,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -355,7 +358,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -441,7 +445,13 @@
 								<div class="row">
 									<div class="col-md-6 col-xlg-6 col-md-6">
 										<div class="card" id="machineCardList">
-											<h4 class="card-title">机器</h4>
+											<h4 class="card-title">
+												<span>机器</span>
+												<div class="float-right"><button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark pull-right"
+													 id="addMachine" data-toggle="modal" data-target="#addMachineModal">添加机器</button>
+												</div>
+
+											</h4>
 											<hr>
 											<div class="card-body" id="machineList">
 												<!-- 内部小card  begin -->
@@ -464,45 +474,50 @@
 
 												<!-- 内部小card  end -->
 											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachine"
-												 data-toggle="modal" data-target="#addMachineModal">添加机器</button>
-											</div>
 										</div>
 									</div>
 									<div class="col-md-1 col-xlg-1 col-md-1">
 									</div>
 									<div class="col-md-5 col-xlg-5 col-md-5">
-										<h4 class="card-title" id="feListTitle">滤芯</h4>
-										<hr>
 										<div class="card">
-											<div class="card-body" id="machineFeList">
-												<Script type="text/template" id="machineFeListTemplate">
-													<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-													<div class="card border-bottom border-success">
-														<div class="d-flex flex-row">
-															<div class="p-10 bg-success">
-																<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-															</div>
-															<div class="p-10">
-																<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
-																<span class="text-muted"><%=item.fe_periodicity%>天</span>
-															</div>
-														</div>
-													</div>
-													<%}%>
-												</Script>
-												<!-- 内部小card begin -->
+											<h4 class="card-title" id="feListTitle">
+												<span>滤芯</span>
+												<div class="float-right">
+													<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe"
+													 data-toggle="modal" data-target="##">为此机器添加滤芯</button>
+												</div>
+											</h4>
+											<hr>
+											<div class="card">
+												<div class="card-body" id="machineFeList">
+													<Script type="text/template" id="machineFeListTemplate">
+														<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
+																<div class="card border-bottom border-success">
+																	<div class="d-flex flex-row">
+																		<div class="p-10 bg-success">
+																			<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
+																		</div>
+																		<div class="p-10">
+																			<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
+																			<span class="text-muted"><%=item.fe_periodicity%>天</span>
+																		</div>
+																		<div class="p-10 align-self-end" style="">
+																			<a class="am-badge am-badge-danger deleteBtn" data-fe_id="<%=item.fe_id%>">删除</a>
+																		</div>
+																	</div>
+																</div>
+																<%}%>
+															</Script>
+													<!-- 内部小card begin -->
 
 
-												<!-- 内部小card end -->
+													<!-- 内部小card end -->
 
-											</div>
-											<div class="card-footer">
-												<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe"
-												 data-toggle="modal" data-target="##">为此机器添加滤芯</button>
+												</div>
+
 											</div>
 										</div>
+
 									</div>
 								</div>
 							</div>
@@ -546,7 +561,8 @@
 				</div>
 			</div>
 			<!-- addMachine Modal -->
-			<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			 aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<form>
@@ -575,43 +591,43 @@
 				</div>
 			</div>
 			<div class="modal fade" id="addMachineFeModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<form id="choseFeForm">
-								<div class="modal-header">
-									<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择滤芯</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<div class="form-group">
-										<label for="firstName1">选择可用滤芯</label>
-										<select name='feId' id="chosefeselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
-	
-											<script id="MfeListTemplate" type="text/template">
-												<%for(var i=0;i<felist.length;i++){var item = felist[i];%>
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="choseFeForm">
+							<div class="modal-header">
+								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择滤芯</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="firstName1">选择可用滤芯</label>
+									<select name='feId' id="chosefeselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
+
+										<script id="MfeListTemplate" type="text/template">
+											<%for(var i=0;i<felist.length;i++){var item = felist[i];%>
 													<option value="<%=item.fe_id%>"><%=item.fe_model%></option>
 												<%}%>
 											</script>
-										</select>
-									</div>
+									</select>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-									<button type="button" class="btn btn-success" id="saveAddMachineFeBtn"><i class="ti-save"></i> 确定</button>
-								</div>
-							</form>
-						</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-success" id="saveAddMachineFeBtn"><i class="ti-save"></i> 确定</button>
+							</div>
+						</form>
 					</div>
 				</div>
+			</div>
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
