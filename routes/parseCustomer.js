@@ -267,16 +267,24 @@ router.use("/submit",async (Request,Response)=>{
         let result2 = await mysql.insert(sql2,par2);
 
         feList = await mysql.query(`select * from machine2filterelement as m2f,filterelement as fe where m2f.machine_id = ${machine_id} and fe.fe_id = m2f.fe_id`)
+        let last_maintain = sale_time;
         for(let i = 0;i<feList.length;i++){
             let fe_id = feList[i].fe_id;
             
                 //如果找到这条，就插入？
                 //不找了，因为肯定有
                 let sql3 = `insert into festatus(fe_id,sale_id,last_time) values(?,?,?)`;
-                let par3 = [fe_id,sale_id,body[fe_id]];
+                let last_time = body[fe_id] || new Date();
+                let par3 = [fe_id,sale_id,last_time];
+                
                 let result = await mysql.insert(sql3,par3);
-            
+
+                //找到滤芯更换最近的那个时间
+                last_maintain = (new Date(last_maintain)) >= (new Date(last_time))?last_maintain:last_time;
         }
+        let par4 = [last_maintain,sale_id];
+        let sql4 = `update sales set last_maintain = ? where sale_id = ?`
+        let result3 = await mysql.update(sql4,par4);
         Response.send({
             code:200,
             msg:`插入成功`+`\n ${real_name} 在 ${sale_time} 安装 机器【${machine_model}】\n 如果有误，请删除刚刚创建的客户即可`

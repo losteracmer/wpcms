@@ -4,3 +4,4 @@ console.log(str);
 console.log(date.getDay());
 console.log(date.getTime() < new Date().getTime());
 
+console.log(new Date('2018-1-1')>new Date('2019-1-1'))
