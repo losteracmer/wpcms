@@ -77,6 +77,28 @@ var Gmachine_id = null;
 				complete:function(){}
 			})
 		}
+		function deleteMachine(machine_id){
+			$.ajax({
+				url: '/machine/deletemachine',
+				data: {
+					machine_id
+				},
+				success: function (data, textStatus) {
+					if (data.code == 200) {
+						toastr.success(data.msg);
+						getAllMachine();
+						Gmachine_id = null;
+						$("#deleteMachineBtn").hide();
+					} else{
+						toastr.error(data.msg);
+					}
+				},
+				error: function (error) {
+					toastr.error('网络故障...')
+				},
+				complete:function(){}
+			})
+		}
 		$(document).ready(function () {
 			getAllMachine();
 			getAllFe();
@@ -88,13 +110,21 @@ var Gmachine_id = null;
 				$(this).nextAll().removeClass('card-active');
 				$(this).addClass('card-active');
 				Gmachine_id = machine_id;
-
+				$("#deleteMachineBtn").show();
 				getMachineFe(machine_id);
             })
             $("#machineFeList").on("click",".deleteBtn",function(){
 				let _confirm = confirm("确定删除这个滤芯？");
 				let fe_id = $(this).attr("data-fe_id");
 				deleteFe(Gmachine_id,fe_id);
+				
+			})
+			//删除机器？
+			$("#deleteMachineBtn").on("click",function(){
+				let _confirm = confirm("确定删除这个机器型号（危险操作）？");
+				if(_confirm){
+					deleteMachine(Gmachine_id);
+				}
 				
 			})
 			$("#saveAddFeBtn").on('click', function () {

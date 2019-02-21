@@ -447,9 +447,13 @@
 										<div class="card" id="machineCardList">
 											<h4 class="card-title">
 												<span>机器</span>
+												
 												<div class="float-right"><button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark pull-right"
 													 id="addMachine" data-toggle="modal" data-target="#addMachineModal">添加机器</button>
 												</div>
+												<div class="float-right"><button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark pull-right"
+													style="display:none;" id="deleteMachineBtn">删除</button>
+											   </div>
 
 											</h4>
 											<hr>
@@ -463,9 +467,11 @@
 																<div>
 																	<span class="text-white display-6"><i class="ti-panel"></i></span>
 																</div>
+																
 																<div class="ml-auto text-white">
 																	<h2><%=item.machine_model%></h2>
 																</div>
+																
 															</div>
 														</div>
 													</div>

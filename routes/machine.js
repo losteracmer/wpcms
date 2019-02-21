@@ -176,6 +176,27 @@ router.use('/deletemachinefe',(Request,Response)=>{
     
 });
 
+router.use('/deletemachine',(Request,Response)=>{
+    let machine_id = Request.query.machine_id;
 
+    //先查找有没有这个
+
+    let sql = `delete from machine where machine_id =? `;
+    let par = [machine_id];
+
+    mysql.insert(sql,par).then(result=>{
+        Response.send({
+            code:200,
+            msg:'删除成功'
+        })
+    }).catch(error=>{
+        console.error('delete machine fe error:',error);
+        Response.send({
+            code:500,
+            msg:"删除失败"
+        })
+    })
+    
+});
 
 module.exports = router;
