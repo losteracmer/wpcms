@@ -222,7 +222,7 @@
 													<span class="time">9:10 AM</span>
 												</div>
 											</a>
-											
+
 										</div>
 									</li>
 									<li>
@@ -299,10 +299,15 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期 </span></a>
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+										</span></a>
 								</li>
 								<li class="sidebar-item">
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
+										</span></a>
+								</li>
+								<li class="sidebar-item">
+									<a href="customer_maintain.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 客户维护
 										</span></a>
 								</li>
 							</ul>
@@ -313,7 +318,8 @@
 								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu"> 创建订单
+									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+											创建订单
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -328,7 +334,8 @@
 								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu"> 客户管理
+									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+											客户管理
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -347,7 +354,8 @@
 								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu"> 净水机
+									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+											净水机
 										</span></a>
 								</li>
 							</ul>
@@ -394,8 +402,7 @@
 					<div class="col-lg-12 col-xlg-12 col-md-12">
 						<div class="card">
 							<div class="card-body">
-								<center class="m-t-30"> <img id="labour_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle"
-									 width="150" />
+								<center class="m-t-30"> <img id="labour_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle" width="150" />
 									<h4 class="card-title m-t-10" id="labour_name">正在加载...</h4>
 								</center>
 							</div>
@@ -403,7 +410,7 @@
 								<hr>
 							</div>
 						</div>
-						
+
 					</div>
 					<!-- Column -->
 					<!-- Column -->
@@ -454,7 +461,7 @@
 								</div>
 								<div class="tab-pane fade" id="peijianTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
 									<div class="card-body">
-										
+
 										<hr>
 										<h4>配件维修记录:</h4>
 										<div class="profiletimeline m-t-0" id="accmaintain">
@@ -514,9 +521,9 @@
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-                All Rights Reserved by losteracmer. Designed and Developed by
-                <a href="#">sst</a>.
-            </footer>
+				All Rights Reserved by losteracmer. Designed and Developed by
+				<a href="#">sst</a>.
+			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->
@@ -616,7 +623,7 @@
 						$("#labour_avatarUrl").attr('src', data.detail.labour_avatarUrl);
 						//input 内容更新
 					} else if (data.code == 302) {
-						
+
 						window.location.href = data.href;
 					} else {
 						toastr.error(data.msg);
@@ -651,7 +658,7 @@
 			})
 
 		})
-		$(document).ready(function () {			
+		$(document).ready(function () {
 			$("#accmaintain").on("click", ".doitbtn-makesucess", function (that) {
 				var accmaintain_id = $(this).data('accmaintain_id');
 
@@ -665,9 +672,9 @@
 							toastr.success(data.msg);
 							//getaccmaintain(window.location.href.split('?')[1]);
 							setTimeout(() => {
-								window.location.reload();		
+								window.location.reload();
 							}, 1300);
-							
+
 						} else {
 							toastr.error(data.msg);
 						}

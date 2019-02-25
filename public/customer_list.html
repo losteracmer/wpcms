@@ -312,6 +312,10 @@
 									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
 										</span></a>
 								</li>
+								<li class="sidebar-item">
+									<a href="customer_maintain.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 客户维护
+										</span></a>
+								</li>
 							</ul>
 						</li>
 						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">业务</span></li>
@@ -613,6 +617,33 @@
 					})
 				})
 			})
+			//删除用户
+			$("a[data-event='deletecustomer']").bind('click', function () {
+				var customer_id = $(this).parent().data('customer_id');
+				Gcustomer_id = customer_id;
+				let _confirm = confirm("确定删除这个客户？（危险操作）");
+				if(_confirm){
+					$.ajax({
+						url: '/customer/delete',
+						data: {
+							customer_id:customer_id
+						},
+						success: function (data, textStatus) {
+							if (data.code == 200) {
+								toastr.success(data.msg);
+								Gcustomer_list.ajax.reload();
+							} else{
+								toastr.error(data.msg);
+							}
+						},
+						error: function (error) {
+							toastr.error('网络故障...')
+						},
+						complete:function(){}
+					})
+				}
+
+			})
 
 		}
 
@@ -626,6 +657,7 @@
 							<div data-customer_id='${id}' class="dropdown-menu animated slideInUp" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
 								<a class="dropdown-item detail event" href="javascript:void(0)"  data-event='detail' data-etitle='客户详情'><i class='ti-eye'></i> </a>
 								<a class="dropdown-item lazycustomer event" href="javascript:void(0)"  data-event='lazycustomer' data-etitle='设为僵尸'><i class="ti-pencil-alt"></i> </a>
+								<a class="dropdown-item deletecustomer event" href="javascript:void(0)"  data-event='deletecustomer' data-etitle='删除用户'><i class="ti-delete-alt"></i> </a>
 
 							</div>
 						</div>

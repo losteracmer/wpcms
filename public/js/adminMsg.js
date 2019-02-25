@@ -27,3 +27,25 @@ $(function () {
         window.location.reload();
     })
 })
+//  navigation 模板 请求
+// $(function(){
+//     $.ajax({
+//         url: '/navigation/getnavigation',
+//         data: {
+            
+//         },
+//         success: function (data, textStatus) {
+//             console.log("navi:"+JSON.stringify(data));
+//             if (data.code == 200) {
+//                 var feStr = template('naviListTemplate', data);
+//                     $("#sidebarnav").html(feStr);
+//             } else{
+//                 toastr.error(data.msg);
+//             }
+//         },
+//         error: function (error) {
+//             toastr.error('网络故障...')
+//         },
+//         complate:function(){}
+//     })  
+// })

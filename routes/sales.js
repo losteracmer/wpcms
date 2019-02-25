@@ -100,8 +100,8 @@ router.use("/add",(Request,Response)=>{
     console.log(timeCode);
     
     
-    let sql = `insert into sales(sale_id,customer_id,machine_code,sale_store,sale_time,sale_remark,machine_id) values(?,?,?,?,?,?,?)`;
-    let par = [timeCode,customer_id,machine_code,sale_store,sale_time,sale_remark,machine_id];
+    let sql = `insert into sales(sale_id,customer_id,machine_code,sale_store,sale_time,sale_remark,machine_id,last_maintain) values(?,?,?,?,?,?,?,?)`;
+    let par = [timeCode,customer_id,machine_code,sale_store,sale_time,sale_remark,machine_id,sale_time];
 
     mysql.insert(sql,par).then(result =>{
         Response.send({

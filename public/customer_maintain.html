@@ -10,25 +10,26 @@
 	<meta name="author" content="">
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-	<title>沁园净水机客户管理系统</title>
+	<title>客户维护</title>
 	<!-- This page CSS -->
 	<link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
 	<!-- Custom CSS -->
 	<link href="dist/css/style.min.css" rel="stylesheet">
-	<style>
-		.card-active{
-			transform: translateY(-4px) scale(1.01);
-			box-shadow: 0 14px 24px rgba(62,57,107,.8);
-		}
-	</style>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	
 <![endif]-->
+	<style>
+		.event::after{
+				content: attr(data-etitle);
+			}
+		</style>
 </head>
 
 <body>
@@ -400,237 +401,153 @@
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<!--
-						begin
-                    -->
+				<!-- ============================================================== -->
+				<!-- Start Page Content -->
+				<!-- ============================================================== -->
+				<!-- basic table -->
 				<div class="row">
-					<div class="col-lg-3 col-xlg-2 col-md-5">
+					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title m-t-10">全部滤芯</h4>
-							</div>
-							<div>
-								<hr>
-							</div>
-							<div class="card-body" id="feList">
-								<script type="text/template" id="feListTemplate">
-									<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-									<div class="card border-bottom border-success">
-										<div class="d-flex flex-row">
-											<div class="p-10 bg-success">
-												<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-											</div>
-											<div class="p-10">
-												<h3 class="text-success m-b-0"><%=item.fe_model%></h3>
-												<span class="text-muted"><%=item.fe_periodicity%>天</span>
-											</div>
-										</div>
-									</div>
-									<%}%>
-								</script>
+								<div class="bt-switch card-title">
+									<label for="validshow">待维护客户: </label>
+									<input id="validshow" type="checkbox" data-on-color="success" data-off-color="info" data-on-text="全部显示"
+									 data-off-text="只显示待维护">
+									<label for="allotshow">派工显示: </label>
+									<input id="allotshow" type="checkbox" data-on-color="success" data-off-color="info" data-on-text="已派工"
+									 data-off-text="全部显示">
+									<label for="lazyshow">僵尸客户: </label>
+									<input id="lazyshow" type="checkbox"  data-on-color="success" data-off-color="info" data-on-text="显示"
+									 data-off-text="不显示">
+								</div>
+								<div class="table-responsive">
+									<table id="index_list_table" class="table table-striped table-bordered display table-hover">
+										<tbody id="list_body">
 
-							</div>
-							<div class="card-footer">
-								<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addFe" data-toggle="modal"
-								 data-target="#addFeModal">添加滤芯</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-9 col-xlg-9 col-md-12">
+										</tbody>
 
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title m-t-10">对应表</h4>
-							</div>
-							<div>
-								<hr>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6 col-xlg-6 col-md-6">
-										<div class="card" id="machineCardList">
-											<h4 class="card-title">
-												<span>机器</span>
-
-												<div class="float-right"><button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark pull-right"
-													 id="addMachine" data-toggle="modal" data-target="#addMachineModal">添加机器</button>
-												</div>
-												<div class="float-right"><button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark pull-right"
-													 style="display:none;" id="deleteMachineBtn">删除</button>
-												</div>
-
-											</h4>
-											<hr>
-											<div class="card-body" id="machineList">
-												<!-- 内部小card  begin -->
-												<script type="text/template" id="machineListTemplate">
-													<%for(var i=0;i<machinelist.length;i++){ var item = machinelist[i];%>
-													<div class="card machine-card bg-info" data-machine_id='<%=item.machine_id%>'>
-														<div class="card-body " >
-															<div class="d-flex no-block align-items-center">
-																<div>
-																	<span class="text-white display-6"><i class="ti-panel"></i></span>
-																</div>
-																
-																<div class="ml-auto text-white">
-																	<h2><%=item.machine_model%></h2>
-																</div>
-																
-															</div>
-														</div>
-													</div>
-													<%}%>
-												</script>
-
-												<!-- 内部小card  end -->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-1 col-xlg-1 col-md-1">
-									</div>
-									<div class="col-md-5 col-xlg-5 col-md-5">
-										<div class="card">
-											<h4 class="card-title" id="feListTitle">
-												<span>滤芯</span>
-												<div class="float-right">
-													<button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-dark" id="addMachineFe"
-													 data-toggle="modal" data-target="##">为此机器添加滤芯</button>
-												</div>
-											</h4>
-											<hr>
-											<div class="card">
-												<div class="card-body" id="machineFeList">
-													<Script type="text/template" id="machineFeListTemplate">
-														<%for(var i=0;i<felist.length;i++){ var item = felist[i];%>
-																<div class="card border-bottom border-success">
-																	<div class="d-flex flex-row">
-																		<div class="p-10 bg-success">
-																			<h3 class="text-white box m-b-0"><i class="ti-signal"></i></h3>
-																		</div>
-																		<div class="p-10">
-																			<h3 class="text-success m-b-0"><%=item.fe_model%>></h3>
-																			<span class="text-muted"><%=item.fe_periodicity%>天</span>
-																		</div>
-																		<div class="p-10 align-self-end" style="">
-																			<a class="am-badge am-badge-danger deleteBtn" data-fe_id="<%=item.fe_id%>">删除</a>
-																		</div>
-																	</div>
-																</div>
-																<%}%>
-															</Script>
-													<!-- 内部小card begin -->
-
-
-													<!-- 内部小card end -->
-
-												</div>
-
-											</div>
-										</div>
-
-									</div>
+									</table>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>
-
+				<!-- ============================================================== -->
+				<!-- End PAge Content -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Right sidebar -->
+				<!-- ============================================================== -->
+				<!-- .right-sidebar -->
+				<!-- ============================================================== -->
+				<!-- End Right sidebar -->
+				<!-- ============================================================== -->
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->
+
+
+
+			
 			<!-- ============================================================== -->
-			<!-- addfe Modal -->
-			<div class="modal fade" id="addFeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<!-- Create Modal -->
+			<div class="modal fade" id="choselabour" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
-						<form>
+						<form id="choseLabourForm">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新滤芯</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入滤芯型号" id="p_fe_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入滤芯保质期(天)" id="p_fe_periodicity">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddFeBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<!-- addMachine Modal -->
-			<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			 aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form>
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> 创建新机器</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="text" class="form-control" placeholder="输入机器型号" id="p_machine_model">
-								</div>
-								<div class="input-group mb-3">
-									<button type="button" class="btn btn-info"><i class="ti-add text-white"></i></button>
-									<input type="number" class="form-control" placeholder="输入价格（可不填）" id="p_machine_price">
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-								<button type="button" class="btn btn-success" id="saveAddMachineBtn"><i class="fas fa-paper-plane"></i> 保存</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="modal fade" id="addMachineFeModal" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<form id="choseFeForm">
-							<div class="modal-header">
-								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择滤芯</h5>
+								<h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>选择用户</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
 								<div class="form-group">
-									<label for="firstName1">选择可用滤芯</label>
-									<select name='feId' id="chosefeselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
+									<label for="firstName1">选择派工员工</label>
+									<select name='labourId' id="choselabourselect" class="select2 custom-select form-control" style="width: 100%; height:36px;">
 
-										<script id="MfeListTemplate" type="text/template">
-											<%for(var i=0;i<felist.length;i++){var item = felist[i];%>
-													<option value="<%=item.fe_id%>"><%=item.fe_model%></option>
-												<%}%>
-											</script>
+										<script id="labourListTemplate" type="text/template">
+											<%for(var i=0;i<labourlist.length;i++){var item = labourlist[i];%>
+												<option value="<%=item.labour_id%>"><%=item.labour_name%></option>
+											<%}%>
+										</script>
 									</select>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-success" id="saveAddMachineFeBtn"><i class="ti-save"></i> 确定</button>
+								<button type="button" class="btn btn-success" onclick=setDistribution()><i class="ti-settings"></i> 确定</button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
+			<div class="modal fade" id="delayremind" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置延迟提醒</i></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h6>设置推迟维护后，最近维护时间将为选择值(默认为今天)，且半年后会重新出现</h6>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">最近一次维护时间:</h4>
+										<form class="m-t-20">
+											<input id="delaytimeid" type="date" value="-1" name="delaytimeid">
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-success" onclick=setDelayTime()><i class="fas fa-paper-plane" id="confirmDelay"></i>
+										确定</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="setFinishTime" role="dialog" aria-labelledby="SetFinishTimeModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="SetFinishTimeModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置推迟维护</i></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h6>设置推迟维护后，最近维护时间将为选择值(默认为今天)，且半年后会重新出现</h6>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">手动设置最近维护时间(不填则为今天):</h4>
+										<form class="m-t-20">
+											<input id="finishtimeid" type="date" value="-1" name="finishTime">
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-success" onclick=setFinishTime()><i class="fas fa-paper-plane" id="confirmfinish"></i>确定</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
@@ -649,11 +566,11 @@
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->
 	<!-- ============================================================== -->
-
 	<!-- ============================================================== -->
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
 	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -671,21 +588,38 @@
 	<!--Custom JavaScript -->
 	<script src="dist/js/custom.min.js"></script>
 	<script src="assets/libs/toastr/build/toastr.min.js"></script>
-
 	<!--This page plugins -->
 	<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+	<script src="assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+	<script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
+	<script src="assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+	<script src="dist/js/pages/datatable/datatable-advanced.init.js"></script>
 	<script src="js/adminMsg.js"></script>
 	<!-- start - This is for export functionality only -->
-	<!--<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-		<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>-->
+	<!-- <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script> -->
+
+	<!--本地打印js -->
+	<script src="assets/libs/print/buttons.flash.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/buttons.html5.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/buttons.print.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/dataTables.buttons.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/jszip.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/pdfmake.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/libs/print/vfs_fonts.js" type="text/javascript" charset="utf-8"></script>
+
+
+
 
 	<script src="./dist/js/template-web.js"></script>
-	<script src="./js/machine.js"></script>
+	<script src="./js/customer_maintain.js"></script>
+
+
 </body>
 
-</html>1
+</html>

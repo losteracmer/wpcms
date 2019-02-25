@@ -146,7 +146,25 @@ router.use("/add",(Request,Response)=>{
 
 
 router.use("/delete",(Request,Response)=>{
+    let customer_id = Request.query.customer_id;
+
+    let sql = `delete from customer where customer_id = ?`
+    let par = [customer_id];
     
+    mysql.update(sql,par).then(result=>{
+        Response.send({
+            code:200,
+            msg:'删除成功'
+        })
+        
+    }).catch(error=>{
+        console.error('delete customer error:',error);
+        
+        Response.send({
+            code:500,
+            msg:'服务器错误'
+        })
+    })
 })
 
 router.use('/maintenance',(Request,Response)=>{

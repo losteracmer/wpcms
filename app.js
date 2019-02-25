@@ -40,6 +40,9 @@ app.use('/analysis',require('./routes/analysis'));
 
 app.use('/parsecustomer',require("./routes/parseCustomer"));
 
+app.use('/customermaintain',require("./routes/customerMaintain"));
+
+app.use('/navigation',require("./routes/navigation_html"));
 
 app.use('/app',require('./routes/wpcms_app'));
 // 未发现路由
