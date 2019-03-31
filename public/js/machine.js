@@ -116,8 +116,11 @@ var Gmachine_id = null;
             })
             $("#machineFeList").on("click",".deleteBtn",function(){
 				let _confirm = confirm("确定删除这个滤芯？");
-				let fe_id = $(this).attr("data-fe_id");
-				deleteFe(Gmachine_id,fe_id);
+				if(_confirm){
+					let fe_id = $(this).attr("data-fe_id");
+					deleteFe(Gmachine_id,fe_id);
+				}
+				
 				
 			})
 			//删除机器？
