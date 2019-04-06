@@ -45,4 +45,27 @@ router.use('/accmaintenance', (Request, Response) => {
     })
 })
 
+/*
+完成用户级别（订单级别）的维护。
+*/
+router.use('/customer',async(Request, Response) =>{
+    let labour_id = Request.query.labour_id;
+    let customer_id = Request.query.customer_id;
+    let record = Request.query.record;
+    //获取用户id ，将次用户所有订单 labour_id 志为空，时间更新
+    let sql1 = `UPDATE sales SET maintain_labour = NULL ,last_maintain = NOW() WHERE customer_id = ? `
+    let updateResult = await mysql.update(sql1,[customer_id]);
+
+    let sql2 = `INSERT INTO customermaintain (customer_id,labour_id,maintain_time,record) VALUES(?,?,?,?)`;
+    let par2 = [customer_id,labour_id,new Date(),record]
+
+    let insertResult = await mysql.insert(sql2,par2);
+    //保存数据库
+    Response.send({
+        code:200,
+        msg:"更新成功"
+    })
+    
+
+})
 module.exports = router;

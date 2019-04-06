@@ -40,3 +40,25 @@ online
 local : 
 更改 service 的视图  增加machine_code 
 修改 maintenance 视图  labour right join maintain on labour_id&&  (对于没有员工的维修记录)
+
+圆角列表、图文列表 不要图
+
+####更新 2019-4-6
+         完善app  version 2
+         对新模式重构app
+         完成app后台接口
+         
+添加表
+```sql
+CREATE TABLE `wpcms`.`Untitled`  (
+  `customer_maintain_id` int(32) NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint(64) NOT NULL,
+  `labour_id` varchar(32) NOT NULL,
+  `record` varchar(255) NULL,
+  `maintain_time` datetime NOT NULL,
+  PRIMARY KEY (`customer_maintain_id`),
+  CONSTRAINT `customer_maintain_customer_id_fk` FOREIGN KEY (`customer_id`) REFERENCES `wpcms`.`customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `customer_maintain_labour_id_fk` FOREIGN KEY (`labour_id`) REFERENCES `wpcms`.`labour` (`labour_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+```

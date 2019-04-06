@@ -16,7 +16,7 @@ var config =
     mysqlConfig:mysqlConfig,
 
     //app version
-    lastVersion:1,
+    lastVersion:2,
 
     //机器名称映射表
     machine_name2:machine_name2
