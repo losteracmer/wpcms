@@ -412,6 +412,10 @@
                     <div class="col-5 align-self-center">
                         <h4 class="page-title">全部员工</h4>
                     </div>
+                    <div class="col-5">
+                        <button class="btn btn-default" id="downAPPAlert">APP</button>
+                    </div>
+                    
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -482,7 +486,7 @@
 
                                 <button class="btn btn-info waves-effect waves-light" id="addNewLabourBtn">添加
                                 </button>
-
+                                
                             </div>
                         </div>
                     </div>
@@ -612,6 +616,8 @@
     <!--Custom JavaScript -->
     <script src="assets/libs/toastr/build/toastr.min.js"></script>
     <script src="./dist/js/custom.min.js"></script>
+    <script src="./assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="./assets/libs/sweetalert2/sweet-alert.init.js"></script>
     <!--This page JavaScript -->
     <script src="./assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
     <script src="js/adminMsg.js"></script>
@@ -714,6 +720,14 @@
                     }
                 })
 
+            })
+            $("#downAPPAlert").on("click",function(){
+                
+                swal({   
+                    title: "扫码下载APP!",   
+                        
+                    imageUrl: "/img/APP_EWM.png" 
+                });        
             })
         })
     </script>
