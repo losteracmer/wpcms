@@ -27,6 +27,11 @@ router.use('/labourlogin',(Request,Response)=>{
                 labour_avatarUrl :resset[0].labour_avatarUrl
 
             })
+        }else {
+            Response.send({
+                code:403,
+                msg:'密码错误:'+labour_pw
+            })
         }
     })
 
