@@ -305,7 +305,7 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 客户维护
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -313,7 +313,7 @@
 										</span></a>
 								</li>
 								<li class="sidebar-item">
-									<a href="customer_maintain.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 客户维护
+									<a href="maintain_period.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 更换周期
 										</span></a>
 								</li>
 							</ul>
@@ -509,13 +509,13 @@
 	<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
 	<script src="js/adminMsg.js"></script>
 	<!-- start - This is for export functionality only -->
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+<!--	<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>-->
+<!--	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>-->
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>-->
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>-->
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>-->
+<!--	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>-->
+<!--	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>-->
 	<script src="dist/js/pages/datatable/datatable-advanced.init.js"></script>
 
 
@@ -535,7 +535,7 @@
 					success: function (data, textStatus) {
 						if (data.code == 200) {
 							var customer_id = data.detail.customer_id;
-							window.location.href = '/customer_detail.html?customer_id=' + customer_id;
+							window.open ('/customer_detail.html?customer_id=' + customer_id );
 						} else {
 							alert(data.msg);
 						}
@@ -579,7 +579,7 @@
 
 
 			Gorder_list = $("#customer_list").DataTable({
-				dom: 'Bfrtip',
+				// dom: 'Bfrtip', //暂时用不到打印功能
 				buttons: [{
 					extend: 'print',
 					text: '打印',
@@ -647,7 +647,7 @@
 		})
 		$(document).ready(function () {
 			$("#createOrderBtn").on('click', function () {
-				window.location.href = 'create_order.html';
+				window.open('create_order.html') ;
 
 			})
 			$("#deleteOrederBtn").on('click', function () {

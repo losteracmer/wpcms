@@ -171,9 +171,9 @@ router.use("/delete",(Request,Response)=>{
 router.use('/maintenance',(Request,Response)=>{
     let customer_id = Request.query.customer_id;
     let sql = `SELECT 
-    machine_id,DATE_FORMAT(maintain_time,'%Y-%m-%d %h:%i') AS 'maintain_time',maintain_status,labour_id,labour_name ,
+    machine_id,DATE_FORMAT(maintain_time,'%Y-%m-%d %H:%i') AS 'maintain_time',maintain_status,labour_id,labour_name ,
     festatus_id ,allot_status,customer_id,real_name,machine_code,maintain_record,
-    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id from maintenance where customer_id = ${customer_id}`;
+    machine_model ,labour_avatarUrl,fe_model,fe_id ,maintain_for ,sale_id from maintenance where customer_id = ${customer_id} order by maintain_time desc`;
 
     mysql.query(sql).then(resset=>{
         Response.send({
@@ -194,7 +194,7 @@ router.use('/maintenance',(Request,Response)=>{
 router.use('/accmaintenance',(Request,Response)=>{
     let customer_id = Request.query.customer_id;
 
-    let sql = `select accessory_id,accessory_model,DATE_FORMAT(finish_time,'%Y-%m-%d %h:%i') AS 'finish_time',accmaintain_record,labour_name,sale_id,accessory_id ,accmaintain_status,accmaintain_id from accmaintenance where customer_id = ${customer_id} order by finish_time desc`;
+    let sql = `select accessory_id,accessory_model,DATE_FORMAT(finish_time,'%Y-%m-%d %H:%i') AS 'finish_time',accmaintain_record,labour_name,sale_id,accessory_id ,accmaintain_status,accmaintain_id from accmaintenance where customer_id = ${customer_id} order by finish_time desc`;
     mysql.query(sql).then(resset=>{
         Response.send({
             code:200,

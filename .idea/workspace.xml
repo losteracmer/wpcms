@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e9abaec-d566-4020-9613-50cd1d3be608" name="Default Changelist" comment="" />
+    <list default="true" id="7e9abaec-d566-4020-9613-50cd1d3be608" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/mysql.js" beforeDir="false" afterPath="$PROJECT_DIR$/common/mysql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/create_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/create_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/customer_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/customer_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/customer_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/customer_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/APP_EWM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/upload_82c8131bc7fb5199d4372c41242cab4e.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/upload_b01020fe3630f0260bb57e4f9a23e887.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/upload_ea787caff71889ac3fc02f05f97785c3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/labour_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/labour_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/labour_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/labour_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/machine.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/machine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/maintain_period.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/maintain_period.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/order_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/recover.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/recover.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/accessories.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/accessories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/app/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/app/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/app/finishmaintain.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/app/finishmaintain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/app/maintenance.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/app/maintenance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/app/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/app/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/labour.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/labour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/wpcms_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/wpcms_app.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,52 +45,67 @@
     <favorites_list name="后台" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/customer_maintain.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="593" column="75" selection-start-line="593" selection-start-column="75" selection-end-line="593" selection-end-column="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>href=&quot;customer_maintain.html&quot;</find>
+      <find>maintenance</find>
+      <find>DATE_FORMAT(maintain_time,'%Y-%m-%d %h:%i')</find>
+      <find>%Y-%m-%d %h:%i</find>
+      <find>window</find>
+      <find>更换对象</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>href=&quot;maintain_period.html&quot;</replace>
+      <replace>DATE_FORMAT(maintain_time,'%Y-%m-%d %H:%i')</replace>
+      <replace>%Y-%m-%d %H:%i</replace>
+      <replace>更换客户</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.idea/后台.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/public/labour_detail.html" />
+        <option value="$PROJECT_DIR$/public/analysis.html" />
+        <option value="$PROJECT_DIR$/public/labour_list.html" />
+        <option value="$PROJECT_DIR$/public/create_order.html" />
+        <option value="$PROJECT_DIR$/routes/accessories.js" />
+        <option value="$PROJECT_DIR$/public/customer_detail.html" />
+        <option value="$PROJECT_DIR$/public/customer_list.html" />
+        <option value="19c940fd-b8aa-40c9-b42e-820bf99557b3/consoles/Connection" />
+        <option value="4a015edd-672f-4b9d-96d7-c3de125d52f0/dataset_filters/schemas/wpcms/tables/customer" />
+        <option value="$PROJECT_DIR$/routes/wpcms_app.js" />
+        <option value="$PROJECT_DIR$/routes/app/search.js" />
+        <option value="4a015edd-672f-4b9d-96d7-c3de125d52f0/consoles/mysql" />
+        <option value="$PROJECT_DIR$/common/mysql.js" />
+        <option value="$PROJECT_DIR$/routes/app/finishmaintain.js" />
+        <option value="$PROJECT_DIR$/routes/app/maintenance.js" />
+        <option value="$PROJECT_DIR$/routes/app/customer.js" />
+        <option value="$PROJECT_DIR$/public/order_list.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="24" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="227" />
+    <option name="y" value="25" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -87,6 +132,26 @@
               <item name="后台" type="b2602c69:ProjectViewProjectNode" />
               <item name="后台" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="后台" type="b2602c69:ProjectViewProjectNode" />
+              <item name="后台" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="后台" type="b2602c69:ProjectViewProjectNode" />
+              <item name="后台" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="后台" type="b2602c69:ProjectViewProjectNode" />
+              <item name="后台" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="后台" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -94,9 +159,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.1" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -138,37 +206,62 @@
       <option name="presentableId" value="Default" />
       <updated>1554567912624</updated>
       <workItem from="1554567914988" duration="1510000" />
+      <workItem from="1556677952825" duration="2862000" />
+      <workItem from="1556680928463" duration="6849000" />
+      <workItem from="1556757263427" duration="920000" />
+      <workItem from="1556759060561" duration="21802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1510000" />
+    <option name="totallyTimeSpent" value="33943000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1065" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1065" extended-state="7" />
     <layout>
-      <window_info id="npm" sideWeight="0.5016026" side_tool="true" weight="0.17913593" />
-      <window_info id="Favorites" sideWeight="0.50053704" side_tool="true" weight="0.17913593" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49839744" visible="true" weight="0.17913593" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5943662" visible="true" weight="0.17910448" />
       <window_info id="Structure" order="1" sideWeight="0.5016026" side_tool="true" weight="0.17913593" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32975295" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="npm" order="2" sideWeight="0.5026853" side_tool="true" weight="0.17913593" />
+      <window_info id="Favorites" order="3" sideWeight="0.50053704" side_tool="true" weight="0.17913593" />
+      <window_info anchor="bottom" id="DB Execution Console" weight="0.32867885" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32975295" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928178" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32116005" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32867885" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.311493" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32928178" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32867885" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="DB Browser" order="3" sideWeight="0.4056338" visible="true" weight="0.17910448" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -195,26 +288,361 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="184">
+          <caret line="44" column="53" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/customer_maintain.html">
+    <entry file="file://$PROJECT_DIR$/public/pro_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="593" column="75" selection-start-line="593" selection-start-column="75" selection-end-line="593" selection-end-column="75" />
+        <state relative-caret-position="-18804" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/labour_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5134">
+          <caret line="302" column="51" selection-start-line="302" selection-start-column="51" selection-end-line="302" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5083">
+          <caret line="299" column="140" selection-start-line="299" selection-start-column="140" selection-end-line="299" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/labour_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5321">
+          <caret line="313" column="37" selection-start-line="313" selection-start-column="37" selection-end-line="313" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/machine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/maintain_period.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5831">
+          <caret line="343" column="51" selection-start-line="343" selection-start-column="51" selection-end-line="343" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/customer_maintain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" column="96" selection-start-line="130" selection-start-column="96" selection-end-line="130" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/customer_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13039">
+          <caret line="767" column="32" selection-start-line="767" selection-start-column="32" selection-end-line="767" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/customer_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="146" column="6" selection-start-line="135" selection-start-column="4" selection-end-line="146" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/create_order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1887">
+          <caret line="111" column="71" selection-start-line="111" selection-start-column="71" selection-end-line="111" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/accessories.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://19c940fd-b8aa-40c9-b42e-820bf99557b3/objects/schemas/wpcms_online/tables/labour">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="3" readonly="false">
+          <columns>
+            <column name="labour_id" position="0" visible="true" />
+            <column name="labour_name" position="1" visible="true" />
+            <column name="labour_pw" position="2" visible="true" />
+            <column name="labour_avatarUrl" position="3" visible="true" />
+            <column name="labour_authriory" position="4" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://19c940fd-b8aa-40c9-b42e-820bf99557b3/objects/schemas/wpcms/tables/customer">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="19" readonly="false">
+          <columns>
+            <column name="customer_id" position="0" visible="true" />
+            <column name="customer_from" position="1" visible="true" />
+            <column name="customer_star" position="2" visible="true" />
+            <column name="real_name" position="3" visible="true" />
+            <column name="mobile_1" position="4" visible="true" />
+            <column name="mobile_2" position="5" visible="true" />
+            <column name="customer_area" position="6" visible="true" />
+            <column name="customer_avatarUrl" position="7" visible="true" />
+            <column name="address" position="8" visible="true" />
+            <column name="longitude" position="9" visible="true" />
+            <column name="latitude" position="10" visible="true" />
+            <column name="create_time" position="11" visible="true" />
+            <column name="remark" position="12" visible="true" />
+            <column name="customer_status" position="13" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://19c940fd-b8aa-40c9-b42e-820bf99557b3/consoles/Connection">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="0" column="33" selection-start="33" selection-end="33" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://4a015edd-672f-4b9d-96d7-c3de125d52f0/objects/schemas/wpcms/tables/labour">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="4" readonly="false">
+          <columns>
+            <column name="labour_id" position="0" visible="true" />
+            <column name="labour_name" position="1" visible="true" />
+            <column name="labour_pw" position="2" visible="true" />
+            <column name="labour_avatarUrl" position="3" visible="true" />
+            <column name="labour_authriory" position="4" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://4a015edd-672f-4b9d-96d7-c3de125d52f0/objects/schemas/wpcms/tables/sales">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="6" readonly="false">
+          <columns>
+            <column name="sale_id" position="0" visible="true" />
+            <column name="customer_id" position="1" visible="true" />
+            <column name="machine_code" position="2" visible="true" />
+            <column name="machine_id" position="3" visible="true" />
+            <column name="sale_time" position="4" visible="true" />
+            <column name="sale_money" position="5" visible="true" />
+            <column name="sale_store" position="6" visible="true" />
+            <column name="sale_remark" position="7" visible="true" />
+            <column name="sale_man" position="8" visible="true" />
+            <column name="insert_festatus" position="9" visible="true" />
+            <column name="last_maintain" position="10" visible="true" />
+            <column name="maintain_labour" position="11" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://4a015edd-672f-4b9d-96d7-c3de125d52f0/objects/schemas/wpcms/tables/customer">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="19" readonly="false">
+          <columns>
+            <column name="customer_id" position="0" visible="true" />
+            <column name="customer_from" position="1" visible="true" />
+            <column name="customer_star" position="2" visible="true" />
+            <column name="real_name" position="3" visible="true" />
+            <column name="mobile_1" position="4" visible="true" />
+            <column name="mobile_2" position="5" visible="true" />
+            <column name="customer_area" position="6" visible="true" />
+            <column name="customer_avatarUrl" position="7" visible="true" />
+            <column name="address" position="8" visible="true" />
+            <column name="longitude" position="9" visible="true" />
+            <column name="latitude" position="10" visible="true" />
+            <column name="create_time" position="11" visible="true" />
+            <column name="remark" position="12" visible="true" />
+            <column name="customer_status" position="13" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://4a015edd-672f-4b9d-96d7-c3de125d52f0/objects/schemas/wpcms/tables/customermaintain">
+      <provider selected="true" editor-type-id="1.DATA">
+        <state row-count="5" readonly="false">
+          <columns>
+            <column name="customer_maintain_id" position="0" visible="true" />
+            <column name="customer_id" position="1" visible="true" />
+            <column name="labour_id" position="2" visible="true" />
+            <column name="record" position="3" visible="true" />
+            <column name="maintain_time" position="4" visible="true" />
+          </columns>
+          <sorting />
+          <content-types />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/parseCustomer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1918">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/update.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="916">
+          <caret line="1248" column="4" selection-start-line="1248" selection-start-column="4" selection-end-line="1248" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/Pool.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1081">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state relative-caret-position="357">
+          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/customerMaintain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1696" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2223">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/customer_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="683" column="20" lean-forward="true" selection-start-line="683" selection-start-column="20" selection-end-line="683" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/wpcms_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="888">
+          <caret line="619" column="35" selection-start-line="619" selection-start-column="35" selection-end-line="619" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/order_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="520" lean-forward="true" selection-start-line="520" selection-end-line="520" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/customer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="175" column="153" selection-start-line="175" selection-start-column="153" selection-end-line="175" selection-end-column="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/maintenance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/app/finishmaintain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="134" selection-start-line="52" selection-start-column="134" selection-end-line="52" selection-end-column="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://4a015edd-672f-4b9d-96d7-c3de125d52f0/consoles/mysql">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

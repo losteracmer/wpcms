@@ -1,7 +1,29 @@
 var mysql = require('mysql');
+var mysqlp = require('promise-mysql');
 var mysqlConfig = require('../config.js').mysqlConfig;
 
 var pool = mysql.createPool(mysqlConfig);
+
+var pp = mysqlp.createPool(mysqlConfig);
+
+exports.connectionp = async function () {
+    return await pp.getConnection();
+}
+
+exports.connection = function(){
+    return new Promise(function (resolve,reject) {
+        pool.getConnection((err,connection) =>{
+            if (err) {
+                reject(err);
+            }else {
+                resolve(connection);
+
+            }
+        })
+    })
+}
+
+
 //查询语句
 exports.query = function(sql) {
     return new Promise(function(resolve, reject) {

@@ -24,26 +24,32 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="19c940fd-b8aa-40c9-b42e-820bf99557b3">
+      <connection connection-id="4a015edd-672f-4b9d-96d7-c3de125d52f0">
+        <schema name="mysql" object-types="table, function, view" />
         <schema name="wpcms" object-types="procedure, table, index, constraint, function, column, dataset trigger, view" />
-        <schema name="wpcms_online" object-types="procedure, table, index, constraint, function, column, dataset trigger, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="19c940fd-b8aa-40c9-b42e-820bf99557b3">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="4a015edd-672f-4b9d-96d7-c3de125d52f0">
+      <console name="mysql" type="STANDARD" schema="wpcms" session="Main"><![CDATA[insert into maintain(maintain_time,maintain_status,labour_id,maintain_for,maintain_record) values('2019-05-02 16:47:07.200',1,'wpc','20','????')]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="19c940fd-b8aa-40c9-b42e-820bf99557b3" />
+    <connection id="4a015edd-672f-4b9d-96d7-c3de125d52f0" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="19c940fd-b8aa-40c9-b42e-820bf99557b3" dataset="wpcms_online.labour" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="19c940fd-b8aa-40c9-b42e-820bf99557b3" dataset="wpcms.customer" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4a015edd-672f-4b9d-96d7-c3de125d52f0" dataset="wpcms.customer" active-filter-id="279ead35-9790-460d-9fd1-88fbbc43fa12">
+      <filter id="279ead35-9790-460d-9fd1-88fbbc43fa12" name="Filter" temporary="false" custom-name="false" type="custom">
+        <condition><![CDATA[-- enter your custom conditions here<br>1=1 <br>limit 0 ,100;]]></condition>
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="4a015edd-672f-4b9d-96d7-c3de125d52f0" dataset="wpcms.customermaintain" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4a015edd-672f-4b9d-96d7-c3de125d52f0" dataset="wpcms.sales" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4a015edd-672f-4b9d-96d7-c3de125d52f0" dataset="wpcms.labour" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -68,15 +74,15 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="19c940fd-b8aa-40c9-b42e-820bf99557b3" active="true">
+      <connection id="4a015edd-672f-4b9d-96d7-c3de125d52f0" active="true">
         <database>
-          <name value="Connection" />
+          <name value="mysql" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="5.5" />
           <driver-source value="EXTERNAL" />
-          <driver-library value="E:\maven\maven_repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+          <driver-library value="E:\maven\maven_repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" />
           <driver value="com.mysql.jdbc.Driver" />
           <url-type value="DATABASE" />
           <host value="localhost" />
@@ -88,7 +94,7 @@
           <deprecated-pwd value="NDQ1MjQ3NzIx" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -107,14 +113,14 @@
           <client-key-file value="" />
         </ssl-settings>
         <details>
-          <charset value="UTF-8" />
+          <charset value="ISO-8859-1" />
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
           <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
-          <environment-type value="development" />
+          <environment-type value="default" />
           <idle-time-to-disconnect value="30" />
           <idle-time-to-disconnect-pool value="5" />
           <credential-expiry-time value="10" />

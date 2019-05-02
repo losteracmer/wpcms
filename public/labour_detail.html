@@ -299,7 +299,7 @@
 								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 更换周期
+									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 客户维护
 										</span></a>
 								</li>
 								<li class="sidebar-item">
@@ -307,7 +307,7 @@
 										</span></a>
 								</li>
 								<li class="sidebar-item">
-									<a href="customer_maintain.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 客户维护
+									<a href="maintain_period.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 更换周期
 										</span></a>
 								</li>
 							</ul>
@@ -443,7 +443,7 @@
 													<div class="sl-right">
 														<div>
 															<a href="javascript:void(0)" class="link">更换: <%=item.fe_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
-															<div class="sub_title">更换对象: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
+															<div class="sub_title">更换客户: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
 															<%if(item.maintain_record){%>
 															<blockquote class="m-t-10">
 																	<%=item.maintain_record%>
@@ -476,7 +476,7 @@
 													<div class="sl-right">
 														<div>
 															<a href="javascript:void(0)" class="link">更换: <%=item.accessory_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
-															<div class="sub_title">更换对象: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
+															<div class="sub_title">更换客户: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
 															<%if(item.accmaintain_record){%>
 															<blockquote class="m-t-10">
 																	<%=item.accmaintain_record%>

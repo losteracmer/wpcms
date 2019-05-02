@@ -31,7 +31,7 @@ router.use('/addmaintain',(Request,Response)=>{
         Response.send({
             code:403,
             msg:'缺少参数，请核查'
-        })
+        });
         return ;
     }
     let sql = `insert into accmaintain(accessory_id,accmaintain_labour,sale_id,accmaintain_status,create_time) values(?,?,?,?,?)`;

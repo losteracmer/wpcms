@@ -15,4 +15,6 @@ router.use('/update',require('./app/update'));
 router.use('/work',require('./app/workList'));
 
 router.use('/customer',require('./app/customer'));
+
+router.use('/search',require('./app/search'));
 module.exports = router;
