@@ -2,690 +2,723 @@
 <html dir="ltr" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-	<title>员工详情</title>
-	<!-- Custom CSS -->
-	<link href="dist/css/style.min.css" rel="stylesheet">
-	<link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>员工详情</title>
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="./assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <![endif]-->
+    <style>
+        .bordered{
+            border:1px solid red;
+        }
+    </style>
 </head>
 
 <body>
-	<!-- ============================================================== -->
-	<!-- Preloader - style you can find in spinners.css -->
-	<!-- ============================================================== -->
-	<div class="preloader">
-		<div class="lds-ripple">
-			<div class="lds-pos"></div>
-			<div class="lds-pos"></div>
-		</div>
-	</div>
-	<!-- ============================================================== -->
-	<!-- Main wrapper - style you can find in pages.scss -->
-	<!-- ============================================================== -->
-	<div id="main-wrapper">
-		<!-- ============================================================== -->
-		<!-- Topbar header - style you can find in pages.scss -->
-		<!-- ============================================================== -->
-		<header class="topbar">
-			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
-				<div class="navbar-header">
-					<!-- This is for the sidebar toggle which is visible on mobile only -->
-					<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-						<i class="ti-menu ti-close"></i>
-					</a>
-					<!-- ============================================================== -->
-					<!-- Logo -->
-					<!-- ============================================================== -->
-					<div class="navbar-brand">
-						<a href="index.html" class="logo">
-							<!-- Logo icon -->
-							<b class="logo-icon">
-								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-								<!-- Dark Logo icon -->
-								<img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-								<!-- Light Logo icon -->
-								<img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-							</b>
-							<!--End Logo icon -->
-							<!-- Logo text -->
-							<span class="logo-text">
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header">
+                <!-- This is for the sidebar toggle which is visible on mobile only -->
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                    <i class="ti-menu ti-close"></i>
+                </a>
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-brand">
+                    <a href="index.html" class="logo">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+                            <!-- Light Logo icon -->
+                            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo"/>
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
 								<!-- dark Logo text -->
-								<img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-								<!-- Light Logo text -->
-								<img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+								<img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
+                            <!-- Light Logo text -->
+								<img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage"/>
 							</span>
-						</a>
-					</div>
-					<!-- ============================================================== -->
-					<!-- End Logo -->
-					<!-- ============================================================== -->
-					<!-- ============================================================== -->
-					<!-- Toggle which is visible on mobile only -->
-					<!-- ============================================================== -->
-					<a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse"
-					 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<i class="ti-more"></i>
-					</a>
-				</div>
-				<!-- ============================================================== -->
-				<!-- End Logo -->
-				<!-- ============================================================== -->
-				<div class="navbar-collapse collapse" id="navbarSupportedContent">
-					<!-- ============================================================== -->
-					<!-- toggle and nav items -->
-					<!-- ============================================================== -->
-					<ul class="navbar-nav float-left mr-auto">
-						<!-- <li class="nav-item d-none d-md-block">
-                            <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
-                                <i class="mdi mdi-menu font-24"></i>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Toggle which is visible on mobile only -->
+                <!-- ============================================================== -->
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                   data-toggle="collapse"
+                   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                   aria-label="Toggle navigation">
+                    <i class="ti-more"></i>
+                </a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-left mr-auto">
+                    <!-- <li class="nav-item d-none d-md-block">
+                        <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                            <i class="mdi mdi-menu font-24"></i>
+                        </a>
+                    </li> -->
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item search-box">
+                        <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-magnify font-20 mr-1"></i>
+                                <div class="ml-1 d-none d-sm-block">
+                                    <span>Search</span>
+                                </div>
+                            </div>
+                        </a>
+                        <form class="app-search position-absolute">
+                            <input type="text" class="form-control" placeholder="这个功能还没开发哦~~~~">
+                            <a class="srh-btn">
+                                <i class="ti-close"></i>
                             </a>
-                        </li> -->
-						<!-- ============================================================== -->
-						<!-- Search -->
-						<!-- ============================================================== -->
-						<li class="nav-item search-box">
-							<a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-								<div class="d-flex align-items-center">
-									<i class="mdi mdi-magnify font-20 mr-1"></i>
-									<div class="ml-1 d-none d-sm-block">
-										<span>Search</span>
-									</div>
-								</div>
-							</a>
-							<form class="app-search position-absolute">
-								<input type="text" class="form-control" placeholder="这个功能还没开发哦~~~~">
-								<a class="srh-btn">
-									<i class="ti-close"></i>
-								</a>
-							</form>
-						</li>
-					</ul>
-					<!-- ============================================================== -->
-					<!-- Right side toggle and nav items -->
-					<!-- ============================================================== -->
-					<ul class="navbar-nav float-right">
-						<!-- ============================================================== -->
-						<!-- Messages -->
-						<!-- ============================================================== -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true"
-							 aria-expanded="false">
-								<i class="font-22 mdi mdi-email-outline"></i>
+                        </form>
+                    </li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-right">
+                    <!-- ============================================================== -->
+                    <!-- Messages -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2"
+                           data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="font-22 mdi mdi-email-outline"></i>
 
-							</a>
-							<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
+                             aria-labelledby="2">
 								<span class="with-arrow">
 									<span class="bg-danger"></span>
 								</span>
-								<ul class="list-style-none">
-									<li>
-										<div class="drop-title text-white bg-danger">
-											<h4 class="m-b-0 m-t-5">2新消息</h4>
-											<span class="font-light">信息内容</span>
-										</div>
-									</li>
-									<li>
-										<div class="message-center message-body">
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="drop-title text-white bg-danger">
+                                        <h4 class="m-b-0 m-t-5">2新消息</h4>
+                                        <span class="font-light">信息内容</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message-center message-body">
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="message-item">
 												<span class="user-img">
-													<img src="assets/images/users/1.jpg" alt="user" class="rounded-circle">
+													<img src="assets/images/users/1.jpg" alt="user"
+                                                         class="rounded-circle">
 													<span class="profile-status online pull-right"></span>
 												</span>
-												<div class="mail-contnet">
-													<h5 class="message-title">员工小王</h5>
-													<span class="mail-desc">永阳花苑发水了，飞流直下，无法控制</span>
-													<span class="time">9:30 AM</span>
-												</div>
-											</a>
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item">
+                                            <div class="mail-contnet">
+                                                <h5 class="message-title">员工小王</h5>
+                                                <span class="mail-desc">永阳花苑发水了，飞流直下，无法控制</span>
+                                                <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="message-item">
 												<span class="user-img">
-													<img src="assets/images/users/2.jpg" alt="user" class="rounded-circle">
+													<img src="assets/images/users/2.jpg" alt="user"
+                                                         class="rounded-circle">
 													<span class="profile-status busy pull-right"></span>
 												</span>
-												<div class="mail-contnet">
-													<h5 class="message-title">管理员</h5>
-													<span class="mail-desc">老板，新机器有大牛5000￥购买30台，卖否？</span>
-													<span class="time">19:10 AM</span>
-												</div>
-											</a>
-										</div>
-									</li>
-									<li>
-										<a class="nav-link text-center link text-dark" href="javascript:void(0);">
-											<b>开发中~~~QAQ</b>
-											<i class="fa fa-angle-right"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<!-- ============================================================== -->
-						<!-- End Messages -->
-						<!-- ============================================================== -->
-						<!-- ============================================================== -->
-						<!-- Comment -->
-						<!-- ============================================================== -->
-						<li class="nav-item dropdown border-right">
-							<a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true"
-							 aria-expanded="false">
-								<i class="mdi mdi-bell-outline font-22"></i>
-								<span class="badge badge-pill badge-info noti"></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+                                            <div class="mail-contnet">
+                                                <h5 class="message-title">管理员</h5>
+                                                <span class="mail-desc">老板，新机器有大牛5000￥购买30台，卖否？</span>
+                                                <span class="time">19:10 AM</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-center link text-dark" href="javascript:void(0);">
+                                        <b>开发中~~~QAQ</b>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- End Messages -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Comment -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown border-right">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="mdi mdi-bell-outline font-22"></i>
+                            <span class="badge badge-pill badge-info noti"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
 								<span class="with-arrow">
 									<span class="bg-primary"></span>
 								</span>
-								<ul class="list-style-none">
-									<li>
-										<div class="drop-title bg-primary text-white">
-											<h4 class="m-b-0 m-t-5">4 New</h4>
-											<span class="font-light">提醒</span>
-										</div>
-									</li>
-									<li>
-										<div class="message-center notifications">
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="drop-title bg-primary text-white">
+                                        <h4 class="m-b-0 m-t-5">4 New</h4>
+                                        <span class="font-light">提醒</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="message-center notifications">
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="message-item">
 												<span class="btn btn-danger btn-circle">
 													<i class="fa fa-link"></i>
 												</span>
-												<div class="mail-contnet">
-													<h5 class="message-title">提示</h5>
-													<span class="mail-desc">有位客户说今天给他换处理器</span>
-													<span class="time">9:30 AM</span>
-												</div>
-											</a>
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item">
+                                            <div class="mail-contnet">
+                                                <h5 class="message-title">提示</h5>
+                                                <span class="mail-desc">有位客户说今天给他换处理器</span>
+                                                <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="javascript:void(0)" class="message-item">
 												<span class="btn btn-success btn-circle">
 													<i class="ti-calendar"></i>
 												</span>
-												<div class="mail-contnet">
-													<h5 class="message-title">备忘</h5>
-													<span class="mail-desc">明天放假，下班打卡别忘关灯</span>
-													<span class="time">9:10 AM</span>
-												</div>
-											</a>
+                                            <div class="mail-contnet">
+                                                <h5 class="message-title">备忘</h5>
+                                                <span class="mail-desc">明天放假，下班打卡别忘关灯</span>
+                                                <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
 
-										</div>
-									</li>
-									<li>
-										<a class="nav-link text-center m-b-5 text-dark" href="javascript:void(0);">
-											<strong>开发中~~~QAQ</strong>
-											<i class="fa fa-angle-right"></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<!-- ============================================================== -->
-						<!-- End Comment -->
-						<!-- ============================================================== -->
-						<!-- ============================================================== -->
-						<!-- User profile and search -->
-						<!-- ============================================================== -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true"
-							 aria-expanded="false">
-								<img id="adminAvatarUrl" src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="40">
-								<span id="adminNickName" class="m-l-5 font-medium d-none d-sm-inline-block">loading... <i class="mdi mdi-chevron-down"></i></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-center m-b-5 text-dark" href="javascript:void(0);">
+                                        <strong>开发中~~~QAQ</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- End Comment -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href=""
+                           data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <img id="adminAvatarUrl" src="assets/images/users/2.jpg" alt="user" class="rounded-circle"
+                                 width="40">
+                            <span id="adminNickName" class="m-l-5 font-medium d-none d-sm-inline-block">loading... <i
+                                    class="mdi mdi-chevron-down"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
 								<span class="with-arrow">
 									<span class="bg-primary"></span>
 								</span>
-								<div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-									<div class="">
-										<img id="adminAvatarUrl2" src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="60">
-									</div>
-									<div class="m-l-10">
-										<h4 id="adminNickName2" class="m-b-0">loading...</h4>
-										<p id="adminAccount" class=" m-b-0">loading...</p>
-									</div>
-								</div>
-								<a class="dropdown-item" href="javascript:void(0)">
-									<i class="ti-user m-r-5 m-l-5"></i> 我的描述</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)">
-									<i class="ti-settings m-r-5 m-l-5"></i> 账户设置</a>
-								<div class="dropdown-divider"></div>
-								<a id="logoutBtn" class="dropdown-item" href="javascript:void(0)">
-									<i class="fa fa-power-off m-r-5 m-l-5"></i> 退出登录</a>
-								<div class="dropdown-divider"></div>
-								<div class="p-l-30 p-10">
-									<a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">关于</a>
-								</div>
-							</div>
-						</li>
-						<!-- ============================================================== -->
-						<!-- User profile and search -->
-						<!-- ============================================================== -->
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- ============================================================== -->
-		<!-- End Topbar header -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-		<aside class="left-sidebar">
-			<!-- Sidebar scroll-->
-			<div class="scroll-sidebar">
-				<!-- Sidebar navigation-->
-				<nav class="sidebar-nav">
-					<ul id="sidebarnav">
-						<!-- User Profile-->
-						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">首页</span></li>
-						<li class="sidebar-item">
-							<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-								 class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item">
-									<a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span class="hide-menu"> 客户维护
+                            <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+                                <div class="">
+                                    <img id="adminAvatarUrl2" src="assets/images/users/2.jpg" alt="user"
+                                         class="rounded-circle" width="60">
+                                </div>
+                                <div class="m-l-10">
+                                    <h4 id="adminNickName2" class="m-b-0">loading...</h4>
+                                    <p id="adminAccount" class=" m-b-0">loading...</p>
+                                </div>
+                            </div>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="ti-user m-r-5 m-l-5"></i> 我的描述</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)">
+                                <i class="ti-settings m-r-5 m-l-5"></i> 账户设置</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="logoutBtn" class="dropdown-item" href="javascript:void(0)">
+                                <i class="fa fa-power-off m-r-5 m-l-5"></i> 退出登录</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="p-l-30 p-10">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">关于</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <!-- User Profile-->
+                    <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">首页</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i
+                                class="mdi mdi-av-timer"></i><span class="hide-menu">首页 </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="index.html" class="sidebar-link"><i class="mdi mdi-timer-off"></i><span
+                                        class="hide-menu"> 客户维护
 										</span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span class="hide-menu"> 销售分析
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="analysis.html" class="sidebar-link"><i class="mdi mdi-chart-line"></i><span
+                                        class="hide-menu"> 销售分析
 										</span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="maintain_period.html" class="sidebar-link"><i class="ti ti-pulse"></i><span class="hide-menu"> 更换周期
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="maintain_period.html" class="sidebar-link"><i class="ti ti-pulse"></i><span
+                                        class="hide-menu"> 更换周期
 										</span></a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">业务</span></li>
-						<li class="sidebar-item">
-							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-								 class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
-							<ul aria-expanded="false" class="collapse first-level">
-								<li class="sidebar-item">
-									<a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span class="hide-menu">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">业务</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i
+                                class="mdi mdi-inbox-arrow-down"></i><span class="hide-menu">订单 </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="create_order.html" class="sidebar-link"><i class="mdi mdi-cart-plus"></i><span
+                                        class="hide-menu">
 											创建订单
 										</span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="order_list.html" class="sidebar-link"><i class="mdi mdi-cart"></i><span class="hide-menu"> 查看订单
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="order_list.html" class="sidebar-link"><i class="mdi mdi-cart"></i><span
+                                        class="hide-menu"> 查看订单
 										</span></a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">客户</span></li>
-						<li class="sidebar-item">
-							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-								 class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
-							<ul aria-expanded="false" class="collapse first-level">
-								<li class="sidebar-item">
-									<a href="customer_list.html" class="sidebar-link"><i class="mdi mdi-account-star-variant"></i><span class="hide-menu">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">客户</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i
+                                class="mdi mdi-account-network"></i><span class="hide-menu">客户 </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="customer_list.html" class="sidebar-link"><i
+                                        class="mdi mdi-account-star-variant"></i><span class="hide-menu">
 											客户管理
 										</span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="customer_detail.html" class="sidebar-link"><i class="mdi mdi-account-box"></i><span class="hide-menu">
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="customer_detail.html" class="sidebar-link"><i
+                                        class="mdi mdi-account-box"></i><span class="hide-menu">
 											客户详情 </span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="recover.html" class="sidebar-link"><i class="fas fa-arrow-circle-down"></i><span class="hide-menu">
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="recover.html" class="sidebar-link"><i
+                                        class="fas fa-arrow-circle-down"></i><span class="hide-menu">
 											数据恢复 </span></a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-small-cap"><i class="mdi mdi-tune"></i> <span class="hide-menu">设备</span></li>
-						<li class="sidebar-item">
-							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-								 class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
-							<ul aria-expanded="false" class="collapse first-level">
-								<li class="sidebar-item">
-									<a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span class="hide-menu">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-small-cap"><i class="mdi mdi-tune"></i> <span class="hide-menu">设备</span></li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i
+                                class="mdi mdi-codepen"></i><span class="hide-menu">设备管理 </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="machine.html" class="sidebar-link"><i class="mdi mdi-vector-triangle"></i><span
+                                        class="hide-menu">
 											净水机
 										</span></a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">员工</span></li>
-						<li class="sidebar-item">
-							<a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-								 class="mdi mdi-bulletin-board"></i><span class="hide-menu">员工管理 </span></a>
-							<ul aria-expanded="false" class="collapse first-level">
-								<li class="sidebar-item">
-									<a href="labour_list.html" class="sidebar-link"><i class="mdi mdi-svg"></i><span class="hide-menu"> 员工列表
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span class="hide-menu">员工</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link two-column has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                           aria-expanded="false"><i
+                                class="mdi mdi-bulletin-board"></i><span class="hide-menu">员工管理 </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="labour_list.html" class="sidebar-link"><i class="mdi mdi-svg"></i><span
+                                        class="hide-menu"> 员工列表
 										</span></a>
-								</li>
-								<li class="sidebar-item">
-									<a href="labour_detail.html" class="sidebar-link"><i class="mdi mdi-chart-histogram"></i><span class="hide-menu">
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="labour_detail.html" class="sidebar-link"><i
+                                        class="mdi mdi-chart-histogram"></i><span class="hide-menu">
 											员工详情 </span></a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
-				<!-- End Sidebar navigation -->
-			</div>
-			<!-- End Sidebar scroll-->
-		</aside>
-		<!-- ============================================================== -->
-		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Page wrapper  -->
-		<!-- ============================================================== -->
-		<div class="page-wrapper">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
 
-			<!-- ============================================================== -->
-			<!-- Container fluid  -->
-			<!-- ============================================================== -->
-			<div class="container-fluid">
-				<!-- ============================================================== -->
-				<!-- Start Page Content -->
-				<!-- ============================================================== -->
-				<!-- Row -->
-				<div class="row">
-					<!-- Column -->
-					<div class="col-lg-12 col-xlg-12 col-md-12">
-						<div class="card">
-							<div class="card-body">
-								<center class="m-t-30"> <img id="labour_avatarUrl" src="assets/images/users/5.jpg" class="rounded-circle" width="150" />
-									<h4 class="card-title m-t-10" id="labour_name">正在加载...</h4>
-								</center>
-							</div>
-							<div>
-								<hr>
-							</div>
-						</div>
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-12 col-xlg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="m-t-30" style="text-align: center;"><img id="labour_avatarUrl"
+                                                                                 src="assets/images/users/5.jpg"
+                                                                                 class="rounded-circle" width="150"/>
+                                <h4 class="card-title m-t-10" id="labour_name">正在加载...</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                        </div>
+                    </div>
 
-					</div>
-					<!-- Column -->
-					<!-- Column -->
-					<div class="col-lg-12 col-xlg-12 col-md-12">
-						<div class="card">
-							<!-- Tabs -->
-							<ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#lvxinTimeLine" role="tab"
-									 aria-controls="pills-timeline" aria-selected="true">滤芯</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="pills-timeline-tab" data-toggle="pill" href="#peijianTimeLine" role="tab"
-									 aria-controls="pills-timeline" aria-selected="false">配件</a>
-								</li>
-							</ul>
-							<!-- Tabs -->
-							<div class="tab-content" id="pills-tabContent">
-								<div class="tab-pane fade show active" id="lvxinTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
-									<div class="card-body">
-										<div class="profiletimeline m-t-0" id="maintenance">
-											<script type="text/template" id="maintenanceTemplate">
-												<%if(maintenance.length == 0){%>
-													<div class="card-title">该员工没有滤芯更换记录</div>
-												<%}%>
-												<%for(var i=0;i<maintenance.length;i++){ var item = maintenance[i];%>
-											
-												<div class="sl-item">
-													<div class="sl-left"> <img src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>" alt="user" class="rounded-circle" /> </div>
-													<div class="sl-right">
-														<div>
-															<a href="javascript:void(0)" class="link">更换: <%=item.fe_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
-															<div class="sub_title">更换客户: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
-															<%if(item.maintain_record){%>
-															<blockquote class="m-t-10">
-																	<%=item.maintain_record%>
-															</blockquote>
-															<%}%>
-															<h6>时间: <%=item.maintain_time%></h6>
-														</div>
-													</div>
-												</div>
-												<hr>
-												<%}%>
-											</script>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="peijianTimeLine" role="tabpanel" aria-labelledby="pills-timeline-tab">
-									<div class="card-body">
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-12 col-xlg-12 col-md-12">
+                    <div class="card">
+                        <!-- Tabs -->
+                        <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill"
+                                   href="#lvxinTimeLine" role="tab"
+                                   aria-controls="pills-timeline" aria-selected="true">滤芯</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-timeline-tab2" data-toggle="pill" href="#peijianTimeLine"
+                                   role="tab"
+                                   aria-controls="pills-timeline" aria-selected="false">配件</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-timeline-tab3" data-toggle="pill"
+                                   href="#labourstoragePanel" role="tab"
+                                   aria-selected="false">保留</a>
+                            </li>
+                        </ul>
+                        <!-- Tabs -->
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="lvxinTimeLine" role="tabpanel"
+                                 aria-labelledby="pills-timeline-tab">
+                                <div class="card-body">
+                                    <div class="profiletimeline m-t-0" id="maintenance">
+                                        <script type="text/template" id="maintenanceTemplate">
+                                            <%if(maintenance.length == 0){%>
+                                            <div class="card-title">该员工没有滤芯更换记录</div>
+                                            <%}%>
+                                            <%for(var i=0;i
+                                            <maintenance.length;i++){ var item = maintenance[i];%>
 
-										<hr>
-										<h4>配件维修记录:</h4>
-										<div class="profiletimeline m-t-0" id="accmaintain">
-											<script type="text/template" id="accmaintainTemplate">
-												<%if(accmaintain.length == 0){%>
-													<div class="card-title">该用户没有配件更换记录</div>
-												<%}%>
-												<%for(var i=0;i<accmaintain.length;i++){ var item = accmaintain[i];%>
-											
-												<div class="sl-item">
-													<div class="sl-left"> <img src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>" alt="user" class="rounded-circle" /> </div>
-													<div class="sl-right">
-														<div>
-															<a href="javascript:void(0)" class="link">更换: <%=item.accessory_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
-															<div class="sub_title">更换客户: <a href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a></div>
-															<%if(item.accmaintain_record){%>
-															<blockquote class="m-t-10">
-																	<%=item.accmaintain_record%>
-															</blockquote>
-															<%}%>
-															<%if(item.accmaintain_status == 1){%>
-															<h6>维修时间: <%=item.finish_time%></h6>
-															<%}else{%>
-																<h6 class="text-warning">未完成</h6>
-																<button type="button" class="btn waves-effect waves-light btn-xs btn-info doitbtn-makesucess" data-accmaintain_id="<%=item.accmaintain_id%>" >设置完成</button>
-															<%}%>
-														</div>
-													</div>
-												</div>
-												<hr>
-												<%}%>	
-											</script>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Column -->
-				</div>
-				<!-- Row -->
-				<!-- ============================================================== -->
-				<!-- End PAge Content -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- Right sidebar -->
-				<!-- ============================================================== -->
-				<!-- .right-sidebar -->
-				<!-- ============================================================== -->
-				<!-- End Right sidebar -->
-				<!-- ============================================================== -->
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Container fluid  -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- footer -->
-			<!-- ============================================================== -->
-			<footer class="footer text-center">
-				All Rights Reserved by losteracmer. Designed and Developed by
-				<a href="#">sst</a>.
-			</footer>
-			<!-- ============================================================== -->
-			<!-- End footer -->
-			<!-- ============================================================== -->
-		</div>
-		<!-- ============================================================== -->
-		<!-- End Page wrapper  -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Wrapper -->
-	<!-- ============================================================== -->
+                                            <div class="sl-item">
+                                                <div class="sl-left"><img
+                                                        src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>"
+                                                        alt="user" class="rounded-circle"/></div>
+                                                <div class="sl-right">
+                                                    <div>
+                                                        <a href="javascript:void(0)" class="link">更换:
+                                                            <%=item.fe_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
+                                                        <div class="sub_title">更换客户: <a
+                                                                href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a>
+                                                        </div>
+                                                        <%if(item.maintain_record){%>
+                                                        <blockquote class="m-t-10">
+                                                            <%=item.maintain_record%>
+                                                        </blockquote>
+                                                        <%}%>
+                                                        <h6>时间: <%=item.maintain_time%></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <%}%>
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="peijianTimeLine" role="tabpanel"
+                                 aria-labelledby="pills-timeline-tab">
+                                <div class="card-body">
 
-	<!-- ============================================================== -->
-	<!-- All Jquery -->
-	<!-- ============================================================== -->
-	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap tether Core JavaScript -->
-	<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-	<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- apps -->
-	<script src="dist/js/app.min.js"></script>
-	<script src="dist/js/app.init.js"></script>
-	<script src="dist/js/app-style-switcher.js"></script>
-	<!-- slimscrollbar scrollbar JavaScript -->
-	<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="assets/extra-libs/sparkline/sparkline.js"></script>
-	<!--Wave Effects -->
-	<script src="dist/js/waves.js"></script>
-	<!--Menu sidebar -->
-	<script src="dist/js/sidebarmenu.js"></script>
-	<!--Custom JavaScript -->
-	<script src="dist/js/custom.min.js"></script>
-	<script src="assets/libs/toastr/build/toastr.min.js"></script>
-	<!--This page JavaScript -->
-	<script src="../../assets/libs/block-ui/jquery.blockUI.js"></script>
-	<script src="../../assets/extra-libs/block-ui/block-ui.js"></script>
-	<script src="js/adminMsg.js"></script>
+                                    <hr>
+                                    <h4>配件维修记录:</h4>
+                                    <div class="profiletimeline m-t-0" id="accmaintain">
+                                        <script type="text/template" id="accmaintainTemplate">
+                                            <%if(accmaintain.length == 0){%>
+                                            <div class="card-title">该用户没有配件更换记录</div>
+                                            <%}%>
+                                            <%for(var i=0;i
+                                            <accmaintain.length;i++){ var item = accmaintain[i];%>
 
-	<script src="./dist/js/template-web.js"></script>
-	<script>
-		function doBolckUI() {
-			$.blockUI({
-				message: '<i class="fas fa-spin fa-sync text-white"></i><i class="text-white">提交请求中...</i>',
-				overlayCSS: {
-					backgroundColor: '#000',
-					opacity: 0.5,
-					cursor: 'wait'
-				},
-				css: {
-					color: '#333',
-					border: 0,
-					padding: 0,
-					backgroundColor: 'transparent'
-				},
-			})
-		}
+                                            <div class="sl-item">
+                                                <div class="sl-left"><img
+                                                        src="<%=item.labour_avatarUrl||'assets/images/users/1.jpg'%>"
+                                                        alt="user" class="rounded-circle"/></div>
+                                                <div class="sl-right">
+                                                    <div>
+                                                        <a href="javascript:void(0)" class="link">更换:
+                                                            <%=item.accessory_model%></a> <span class="sl-date">订单流水号：<%=item.sale_id%></span>
+                                                        <div class="sub_title">更换客户: <a
+                                                                href='/customer_detail.html?customer_id=<%=item.customer_id%>'><%=item.real_name%></a>
+                                                        </div>
+                                                        <%if(item.accmaintain_record){%>
+                                                        <blockquote class="m-t-10">
+                                                            <%=item.accmaintain_record%>
+                                                        </blockquote>
+                                                        <%}%>
+                                                        <%if(item.accmaintain_status == 1){%>
+                                                        <h6>维修时间: <%=item.finish_time%></h6>
+                                                        <%}else{%>
+                                                        <h6 class="text-warning">未完成</h6>
+                                                        <button type="button"
+                                                                class="btn waves-effect waves-light btn-xs btn-info doitbtn-makesucess"
+                                                                data-accmaintain_id="<%=item.accmaintain_id%>">设置完成
+                                                        </button>
+                                                        <%}%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <%}%>
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="labourstoragePanel" role="tabpanel"
+                                 aria-labelledby="pills-timeline-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">保留材料
+                                                    <div class="mdi-margin">
+                                                        <div class="form-group">
+                                                            <button class="btn btn-success" type="button"
+                                                                    onclick="addNewFE();"><i
+                                                                    class="fa fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </h4>
 
-		function getorder(pars) {
-			$.ajax({
-				url: '/sales/customerorder',
-				data: pars,
-				success: function (data, textStatus) {
-					var orderlistStr = template('orderListTemplate', data);
-					$("#choseorderselect").html(orderlistStr);
-				},
-				error: function (xhr, textStatus) {
-					alert('网络异常')
-				}
-			})
-		}
+                                                <div id="labourstragecontainter">
 
-		function getaccmaintain(pars) {
-			//获取配件列表
-			console.log("getaccmaintain");
-			$.ajax({
-				url: '/accessories/getlist',
-				success: function (data, textStatus) {
-					console.log('accessories list 请求成功' + JSON.stringify(data));
+                                                </div>
 
-					var accessorieslistStr = template('accessoriesListTemplate', data);
-					$("#choseaccessoriesselect").html(accessorieslistStr);
-				},
-				error: function (xhr, textStatus) {
-					alert('网络异常')
-				}
-			})
-		}
-		$(document).ready(function () {
-			var pars = window.location.href.split('?')[1];
-			console.log('参数:' + pars);
-			$.ajax({
-				url: '/labour/getdetail' + '?' + pars,
-				success: function (data, textStatus) {
-					console.log('get data: ' + JSON.stringify(data))
-					if (data.code == 200) {
-						$("#labour_name").html(data.detail.labour_name);
-						$("#labour_avatarUrl").attr('src', data.detail.labour_avatarUrl);
-						//input 内容更新
-					} else if (data.code == 302) {
+                                                <script type="text/template" id="labourstorageTemplate">
+                                                    <%for(var i=0;i<labourStorageList.length;i++)
+                                                    {var item = labourStorageList[i];%>
+                                                    <form class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <select name="fe_model"
+                                                                        class="select2 form-control custom-select"
+                                                                        style="width: 100%; height:36px;" disabled>
 
-						window.location.href = data.href;
-					} else {
-						toastr.error(data.msg);
-					}
-				}
-			});
-			//滤芯维修记录
-			$.ajax({
-				url: '/labour/maintenance' + '?' + pars,
-				success: function (data, textStatus) {
-					if (data.code == 200) {
+                                                                    <option value="<%=item.fe_id%>" selected><%=item.fe_model%></option>
 
-						var maintenanceStr = template('maintenanceTemplate', data);
-						$("#maintenance").html(maintenanceStr);
-					} else {
-						toastr.warning(data.msg);
-					}
-				}
-			})
-			//配件维修记录
-			$.ajax({
-				url: '/labour/accmaintenance' + '?' + pars,
-				success: function (data, textStatus) {
-					if (data.code == 200) {
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group">
+                                                                <input type="number" class="form-control" name="quantity" value="<%=item.quantity%>"
+                                                                       name="quantity" placeholder="数量" disabled>
+                                                            </div>
+                                                        </div>
 
-						var accmaintainStr = template('accmaintainTemplate', data);
-						$("#accmaintain").html(accmaintainStr);
-					} else {
-						toastr.warning(data.msg);
-					}
-				}
-			})
+                                                        <div class="col-sm-1">
+                                                            <div class="form-group">
+                                                                <button class="btn btn-primary" type="button" onclick="showAddNumberModel(<%=item.fe_id%>)">
+                                                                    增加
+                                                                </button>
+                                                            </div>
+                                                        </div>
 
-		})
-		$(document).ready(function () {
-			$("#accmaintain").on("click", ".doitbtn-makesucess", function (that) {
-				var accmaintain_id = $(this).data('accmaintain_id');
+                                                    </form>
+                                                    <%}%>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-				$.ajax({
-					url: '/accessories/setaccmaintainfinish',
-					data: {
-						accmaintain_id: accmaintain_id
-					},
-					success: function (data) {
-						if (data.code == 200) {
-							toastr.success(data.msg);
-							//getaccmaintain(window.location.href.split('?')[1]);
-							setTimeout(() => {
-								window.location.reload();
-							}, 1300);
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="modal fade" id="addQuantityModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="addQuantityForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i>增加持有数量（若减少则填写负数）
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <button type="button" class="btn btn-info"><i class="ti-bag text-white"></i></button>
+                            <input id="addNumber" type="number" class="form-control" placeholder="增加数量" aria-label="name"
+                                   name="addnumber">
+                        </div>
 
-						} else {
-							toastr.error(data.msg);
-						}
-					},
-					error: function (error) {
-						toastr.error('网络异常');
-					}
-				})
-			})
-		})
-	</script>
+                        <textarea id="addRecord" class="form-control" rows="3" placeholder="备注信息" name="recorde"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-success" id="addQuantityBtn"><i class="ti-save"></i> 保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        All Rights Reserved by losteracmer. Designed and Developed by
+        <a href="#">sst</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- apps -->
+<script src="dist/js/app.min.js"></script>
+<script src="dist/js/app.init.js"></script>
+<script src="dist/js/app-style-switcher.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="dist/js/custom.min.js"></script>
+<script src="assets/libs/toastr/build/toastr.min.js"></script>
+<!--This page JavaScript -->
+<script src="../../assets/libs/block-ui/jquery.blockUI.js"></script>
+<script src="../../assets/extra-libs/block-ui/block-ui.js"></script>
+
+<script src="js/adminMsg.js"></script>
+
+<script src="./dist/js/template-web.js"></script>
+<script src="./js/labour_detail.js">
+
+</script>
 </body>
 
 </html>

@@ -140,5 +140,26 @@ router.use('/finishedaccmaintenance',(Request,Response)=>{
     })
 })
 
+router.use("/storage", async (Request, Response) => {
+    let labour_id = Request.query.labour_id;
+
+    let sql = `select * from labourstorage ,filterelement where filterelement.fe_id = labourstorage.fe_id and labour_id = '${labour_id}' `;
+
+    try {
+        let resset = await mysql.query(sql);
+        Response.send({
+            code: 200,
+            labourStorageList: resset
+        })
+    } catch (e) {
+        console.log("ERROR storage",e)
+        Response.send({
+            code: 500,
+            msg: "服务器错误"
+        })
+    }
+
+
+});
 
 module.exports = router;
