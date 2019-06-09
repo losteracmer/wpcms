@@ -406,6 +406,9 @@
 									 width="150" />
 									<h4 class="card-title m-t-10" id="real_name">正在加载...</h4>
 								</center>
+								<center class="m-t-30">
+									<button id="postpone">postpone</button>
+								</center>
 							</div>
 							<div>
 								<hr>
@@ -424,7 +427,9 @@
 							<div class="card-body">
 								<h4 class="card-title">
 									购买记录
+									
 								</h4>
+								
 								<hr>
 								<div id="orderList">
 									<script type="text/template" id="orderTemplate">
@@ -435,8 +440,13 @@
 											<h4>购买机器: <%=item.machine_model%></h4>
 											<h5>购买时间: <%=item.sale_time%></h5>
 											<h6>购买店铺: <%=item.sale_store%></h6>
+											<h6>上次维护时间：<%=item.last_maintain%>
 											<h6>流水号: <%=item.sale_id%></h6>
+											<button type="button" class="btn waves-effect btn-sm waves-light btn-rounded btn-outline-dark"
+												id="addMachine" data-sale_id="<%=item.sale_id%>" >推迟提醒</button>
+										   
 										<hr>
+										
 										<%}%>
 									</script>
 								</div>
@@ -704,6 +714,7 @@
 					</div>
 					<!-- Column -->
 				</div>
+
 				<!-- Row -->
 				<!-- ============================================================== -->
 				<!-- End PAge Content -->
@@ -715,6 +726,36 @@
 				<!-- ============================================================== -->
 				<!-- End Right sidebar -->
 				<!-- ============================================================== -->
+			</div>
+			<div class="modal fade" id="delayremind" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form>
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10">设置延迟提醒</i></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h6>设置推迟维护后，最近维护时间将为选择值(默认为今天)，且半年后会重新出现</h6>
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">最近一次维护时间:</h4>
+										<form class="m-t-20">
+											<input id="delaytimeid" type="date" value="-1" name="delaytimeid">
+										</form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="button" class="btn btn-success" onclick=setDelayTime()><i class="fas fa-paper-plane" id="confirmDelay"></i>
+										确定</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->

@@ -1,4 +1,4 @@
-
+var Gsale_id = null;
 
 function doBolckUI() {
     $.blockUI({
@@ -18,6 +18,7 @@ function doBolckUI() {
 }
 
 function getorder(pars) {
+    console.log("getorder")
     $.ajax({
         url: '/sales/customerorder',
         data: pars,
@@ -95,6 +96,48 @@ function getCustomerFestatus(pars) {
     })
 }
 
+function getCustomerOrder(pars){
+    $.ajax({
+        url: '/sales/customerorder' + '?' + pars,
+        success: function (data, textStatus) {
+            if (data.code == 200) {
+                var orderTemplateStr = template('orderTemplate', data);
+                $("#orderList").html(orderTemplateStr);
+            } else {
+                toastr.warning(data.msg);
+            }
+        }
+    })
+}
+//设置推迟时间
+function setDelayTime() {
+    var pars = window.location.href.split('?')[1];
+    //延迟提醒 ，就是更新 lastMaintain 时间，达到延迟提醒的作用
+    var delaytime = $("#delaytimeid").val();
+    //alert(delaytime)
+    var sale_id = Gsale_id;
+    $.ajax({
+        url: '/customermaintain/delayremind',
+        data: {
+            sale_id: sale_id,
+            delaytime: delaytime
+        },
+        success: function (data, textStatus) {
+            if (data.code == 200) {
+                //alert(data.msg)
+                $("#delayremind").modal("hide");
+                toastr.success(data.msg);
+                getCustomerOrder(pars);
+            } else {
+                toastr.error(data.msg);
+            }
+        },
+        error: function (xhr, textStatus) {
+            alert(JSON.stringify(xhr));
+        }
+    })
+
+}
 $(document).ready(function () {
     var pars = window.location.href.split('?')[1];
     //console.log('参数:' + pars);
@@ -293,6 +336,14 @@ $(document).ready(function () {
                     }
                 })
             }
+        
+    })
+    $("#orderList").on("click", "button",function () {
+        
+        var sale_id = $(this).data("sale_id")
+        Gsale_id = sale_id;
+        console.log("sale_id: " + sale_id);
+        $("#delayremind").modal("show");
         
     })
     //注册 input type date 事件

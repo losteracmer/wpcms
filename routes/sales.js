@@ -64,7 +64,7 @@ router.use("/customerorder",(Request,Response)=>{
         })
         return ;
     }
-    let sql = `select sale_id,real_name,machine_model,machine_code,DATE_FORMAT(sale_time,'%Y %m %d %H:%i')AS 'sale_time',sale_store from orders where customer_id = ${customer_id}`;
+    let sql = `select sale_id,real_name,machine_model,machine_code,DATE_FORMAT(sale_time,'%Y %m %d %H:%i')AS 'sale_time',sale_store ,DATE_FORMAT(last_maintain,'%Y-%m-%d')AS 'last_maintain' from orders where customer_id = ${customer_id}`;
     mysql.query(sql).then(resset=>{
         Response.send({
             code:200,
